@@ -13,8 +13,9 @@ class filtroContraste extends Filtro {
             for (let y = 0; y < this.height; y++) {
                 index = ( x + y * this.width ) * 4;
                 imgContrast.data[ index ] = factor * ( this.getR( x, y ) - 128 ) + 128;
-                imgContrast.data[ index ] = factor * ( this.getG( x, y ) - 128 ) + 128;
-                imgContrast.data[ index ] = factor * ( this.getB( x, y ) - 128 ) + 128;
+                imgContrast.data[ index + 1] = factor * ( this.getG( x, y ) - 128 ) + 128;
+                imgContrast.data[ index + 2] = factor * ( this.getB( x, y ) - 128 ) + 128;
+                imgContrast.data[ index + 3] = 255;
             }
         }
         this.context.putImageData( imgContrast, 0, 0 );

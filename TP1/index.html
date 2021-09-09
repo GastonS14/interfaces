@@ -11,15 +11,55 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </head>
 <body> 
-    <div class="container mt-2 d-flex justify-content-center">
-        <canvas id="myCanvas" width="250" height="150" style="border:1px solid #000000;"> </canvas>
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-8">
+                <canvas id="myCanvas" width= '600' height="150" style="border:1px solid #000000;" > </canvas>
+            </div>
+            <div class="col-4">
+                <!--
+                <select id="color" class="form-select form-select-sm" aria-label=".form-select-sm">
+                    <option class="bg-dark" value="black" selected></option>
+                    <option class="bg-danger" value="red"></option>
+                    <option class="bg-primary" value="blue"></option>
+                    <option class="bg-warning" value="yellow"></option>
+                    <option class="bg-success" value="green"></option>
+                </select>
+                -->
+                <div class="container mt-2">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" id="lapiz" onclick="paint()"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg> 
+                        </button>
+                        <button type="button" class="btn border-dark btn-outline-secondaryg dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <select id="color" class="dropdown-menu form-select form-select-sm" aria-label=".form-select-sm">
+                            <option class="dropdown-item" value="black">Negro</option>
+                            <option class="dropdown-item" value="red"> Rojo</option>
+                            <option class="dropdown-item" value="blue">Azul</option>
+                        </select>
+                    </div>
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" id="goma" onclick="borrar()"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+                        <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <div class="container mt-2"> 
         <div class="mb-3">
             <label class="form-label"> Choose an image </label>
             <input class="form-control" type="file" id="inputImg">
         </div>
     </div>
+
     <div class="container">
         <button class="btn btn-danger" onclick="saveImg()"> Load image </button>
         <button class="btn btn-secondary" onclick="filtroBN()"> Black & White </button>
