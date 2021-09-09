@@ -1,0 +1,22 @@
+class filtroContraste extends Filtro { 
+
+    constructor ( imgData, canvas, contrast ) { 
+        super( imgData, canvas );
+        this.contrast = contrast; // esto lo voy a hardcodear, deberiamos ponerle un select o dropdown en el html 
+    }
+
+    setFiltro () { 
+        let imgContrast = new ImageData ( this.width, this.height );
+        let index = 0;
+        let factor = ( 259 * ( this.contrast + 255 ) ) / ( 255 * ( 259 - this.contrast ) );
+        for (let x = 0; x < this.width; x++) {
+            for (let y = 0; y < this.height; y++) {
+                index = ( x + y * this.width ) * 4;
+                imgContrast.data[ index ] = factor * ( this.getR( x, y ) - 128 ) + 128;
+                imgContrast.data[ index ] = factor * ( this.getG( x, y ) - 128 ) + 128;
+                imgContrast.data[ index ] = factor * ( this.getB( x, y ) - 128 ) + 128;
+            }
+        }
+        this.context.putImageData( imgContrast, 0, 0 );
+    }
+}
