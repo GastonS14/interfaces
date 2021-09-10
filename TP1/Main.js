@@ -105,6 +105,18 @@
         }
     }
 
+    function fBordesVert() { 
+        if ( isImage ) { 
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d"); 
+            let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
+            let filtro = new filtroBordesVert( imageData, canvas );
+            filtro.setFiltro();
+        } else { 
+            this.showError ();
+        }
+    }
+
     // filtro blanco y negro
     function filtroBN () {
         if ( isImage ) { 
@@ -149,6 +161,30 @@
             // let contraste = document.getElementById("contraste").value; -> seria algo asi ( ver FiltroContraste.js )
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroContraste ( imageData, canvas, 100 );
+            filtro.setFiltro();
+        } else { 
+           this.showError();
+        }
+    }
+
+    function fBrillo () { 
+        if ( isImage ) { 
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d"); 
+            let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
+            let filtro = new filtroBrillo ( imageData, canvas, 15 );
+            filtro.setFiltro();
+        } else { 
+           this.showError();
+        }
+    }
+
+    function fBinarizacion () { 
+        if ( isImage ) { 
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d"); 
+            let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
+            let filtro = new filtroBinario ( imageData, canvas );
             filtro.setFiltro();
         } else { 
            this.showError();

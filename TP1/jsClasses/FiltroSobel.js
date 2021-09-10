@@ -13,15 +13,15 @@ class filtroSobel extends Filtro {
         for (let i = 0; i < 3; i++) {
             this.matrizSobel[i] = [];
         }
-        this.matrizSobel[ 0 ] [ 0 ] = -1;
-        this.matrizSobel[ 0 ] [ 1 ] = -2;
-        this.matrizSobel[ 0 ] [ 2 ] = -1;
+        this.matrizSobel[ 0 ] [ 0 ] = -190;
+        this.matrizSobel[ 0 ] [ 1 ] = -290;
+        this.matrizSobel[ 0 ] [ 2 ] = -190;
         this.matrizSobel[ 1 ] [ 0 ] = 0;
         this.matrizSobel[ 1 ] [ 1 ] = 0;
         this.matrizSobel[ 1 ] [ 2 ] = 0;
-        this.matrizSobel[ 2 ] [ 0 ] = 1;
-        this.matrizSobel[ 2 ] [ 1 ] = 2;
-        this.matrizSobel[ 2 ] [ 2 ] = 1;
+        this.matrizSobel[ 2 ] [ 0 ] = 190;
+        this.matrizSobel[ 2 ] [ 1 ] = 290;
+        this.matrizSobel[ 2 ] [ 2 ] = 190;
     }
 
     // carga matriz aux, usada para testear 
@@ -47,7 +47,7 @@ class filtroSobel extends Filtro {
                 anchorX= x+1;
                 anchorY= y+1;
                 index = ( anchorX + anchorY * this.width ) * 4;
-                this.setData( imgSobel, this.multiplicadorMatrizz ( x , y, imgSobel ), index );
+                this.setData( imgSobel, this.multiplicadorMatrizz ( x , y ), index );
                 //imgSobel[x+1][y+1] = this.multiplicadorMatrizz ( x , y );
                 // con el mod saco el indice correspondiente a Y para saber que celda multiplicar en la matrizSobel ! (Y=3)mod3 = 0 ; (Y=4)mod3 = 1
                 //this.setData(imgSobel, this.multripladorMatriz( y%3, index ), index );
@@ -58,7 +58,7 @@ class filtroSobel extends Filtro {
     }
     
     // Multiplica la matriz sobel por una subMatriz de la imagen
-    multiplicadorMatrizz ( x, y, imgSobel ) {
+    multiplicadorMatrizz ( x, y ) {
         let index, sum = 0;
         let auxY = y;
         for (let i = 0; i < 3; i++) {
@@ -66,7 +66,7 @@ class filtroSobel extends Filtro {
                 index = ( x + y * this.width ) * 4;
                 if (! ( i === 1 && j === 1) ) {
                     sum += this.imgDataGris.data[ index ] * this.matrizSobel[ x%3 ] [ y%3 ];  
-                    this.setData( imgSobel, 0, index );
+                    //this.setData( imgSobel, 0, index );
                 }
                 y += 1;
             }

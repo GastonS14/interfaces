@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row mt-2">
             <div class="col-8">
-                <canvas id="myCanvas" width='600' height="150" style="border:1px solid #000000;"> </canvas>
+                <canvas id="myCanvas" width='300' height="150" style="border:1px solid #000000;"> </canvas>
             </div>
             <div class="col-4">
                 <div class="container mt-2">
@@ -56,16 +56,23 @@
                 <label class="form-label"> Choose an image </label>
                 <input class="form-control" type="file" id="inputImg">
             </div>
+            <div class="mb-3">
+                <button class="btn btn-danger" onclick="saveImg()"> Load image </button>
+            </div>
         </div>
 
         <div class="container">
-            <button class="btn btn-danger" onclick="saveImg()"> Load image </button>
-            <button class="btn btn-secondary" onclick="filtroBN()"> Black & White </button>
+            <button class="btn btn-secondary" onclick="filtroBN()"> Grises </button>
             <button class="btn btn-warning" onclick="fSepia()"> Sepia </button>
-            <button class="btn btn-info" onclick="fInverso()"> Inverso </button>
-            <button class="btn btn-success" onclick="fContraste()"> Contraste </button>
+            <button class="btn btn-secondary" onclick="fBrillo()"> Brillo </button>
+            <button class="btn btn-warning" onclick="fBinarizacion()"> Binario </button>
+            <button class="btn btn-secondary" onclick="fInverso()"> Inverso </button>
+            <button class="btn btn-warning" onclick="fContraste()"> Contraste </button>
+        </div>
+        <div class="container mt-3">
             <button class="btn btn-outline-dark" onclick="fBlur()"> Blur </button>
-            <button class="btn btn-dark" onclick="fSobel()"> Sobel </button>
+            <button class="btn btn-outline-dark" onclick="fSobel()"> Deteccion de bordes horizontal </button>
+            <button class="btn btn-outline-dark" onclick="fBordesVert()"> Deteccion de bordes vertical </button>
         </div>
         <div class="container d-flex mt-2 ">
             <button class="btn btn-danger" onclick="restart()"> Undo </button>
@@ -96,6 +103,9 @@
         <script src="jsClasses/FiltroSepia.js"> </script>
         <script src="jsClasses/FiltroInverso.js"> </script>
         <script src="jsClasses/FiltroContraste.js"> </script>
+        <script src="jsClasses/FiltroBordesVert.js"> </script>
+        <script src="jsClasses/FiltroBrillo.js"> </script>
+        <script src="jsClasses/FiltroBinario.js"> </script>
 
 </body>
 
