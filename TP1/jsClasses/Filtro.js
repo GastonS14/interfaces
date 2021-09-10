@@ -24,7 +24,8 @@ class Filtro {
         let index = ( x + y * this.width ) * 4;
         return this.imageData.data[ index + 2];
     }
-
+    
+    // Dado una imagen le setea el nuevo color a un pixel determinado por index
     setData ( imgData, color, index ) { 
         imgData.data[ index + 0 ] = color;
         imgData.data[ index + 1 ] = color;
