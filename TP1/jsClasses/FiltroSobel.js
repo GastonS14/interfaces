@@ -41,16 +41,14 @@ class filtroSobel extends Filtro {
         let filtroGris = new FiltroBW( this.imageData, this.canvas );
         this.imgDataGris = filtroGris.getFiltro(); 
         let index = 0;
-        let anchorY, anchorX;
+        let anchorY;
+        let anchorX;
         for (let x = 0; x < this.width; x+=3) {
+            anchorX= x+1;
             for (let y = 0; y < this.height; y+=3) {
-                anchorX= x+1;
                 anchorY= y+1;
                 index = ( anchorX + anchorY * this.width ) * 4;
-                this.setData( imgSobel, this.multiplicadorMatrizz ( x , y ), index );
-                //imgSobel[x+1][y+1] = this.multiplicadorMatrizz ( x , y );
-                // con el mod saco el indice correspondiente a Y para saber que celda multiplicar en la matrizSobel ! (Y=3)mod3 = 0 ; (Y=4)mod3 = 1
-                //this.setData(imgSobel, this.multripladorMatriz( y%3, index ), index );
+                this.setData( imgSobel, this.multiplicadorMatriz ( x , y ), index );
             } 
         }
         this.context.putImageData( imgSobel, 0, 0 );
@@ -58,13 +56,13 @@ class filtroSobel extends Filtro {
     }
     
     // Multiplica la matriz sobel por una subMatriz de la imagen
-    multiplicadorMatrizz ( x, y ) {
+    multiplicadorMatriz ( x, y ) {
         let index, sum = 0;
         let auxY = y;
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 index = ( x + y * this.width ) * 4;
-                if (! ( i === 1 && j === 1) ) {
+                if ( i === 1 || j === 1 ) {
                     sum += this.imgDataGris.data[ index ] * this.matrizSobel[ x%3 ] [ y%3 ];  
                     //this.setData( imgSobel, 0, index );
                 }

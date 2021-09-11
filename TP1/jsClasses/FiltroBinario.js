@@ -5,7 +5,8 @@ class filtroBinario extends Filtro {
     }
 
     setFiltro () { 
-        let color = 0,index = 0;
+        let color = 0;
+        let index = 0;
         let retorno = new ImageData( this.width, this.height );
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {

@@ -10,46 +10,50 @@ class Filtro {
 
     setFiltro() {};
 
-    getR ( x, y ) {
-        let index = ( x + y * this.width ) * 4;
-        return this.imageData.data[ index + 0];
+    getRed ( x, y ) {
+        let index = this.calculateIndex(x, y, this.width);
+        return this.imageData.data[ index ];
     }
 
-    getG ( x, y ) {
-        let index = ( x + y * this.width ) * 4;
+    getGreen ( x, y ) {
+        let index = this.calculateIndex(x, y, this.width);
         return this.imageData.data[ index + 1];
     }
 
-    getB ( x, y ) {
-        let index = ( x + y * this.width ) * 4;
+    getBlue ( x, y ) {
+        let index = this.calculateIndex(x, y, this.width);
         return this.imageData.data[ index + 2];
     }
 
     getAverage ( x, y ) { 
-        return ( this.getR( x, y ) + this.getG( x, y ) + this.getB ( x, y ) ) / 3;
+        return ( this.getRed( x, y ) + this.getGreen( x, y ) + this.getBlue ( x, y ) ) / 3;
     }
     
     // Dado una imagen le setea el nuevo color a un pixel determinado por index
     setData ( imgData, color, index ) { 
-        imgData.data[ index + 0 ] = color;
+        imgData.data[ index ] = color;
         imgData.data[ index + 1 ] = color;
         imgData.data[ index + 2 ] = color;
         imgData.data[ index + 3 ] = 255; // ojo con esto xD
     }
 
     setR ( x, y, color ) { 
-        let index = ( x + y * this.width ) * 4;
-        this.imageData.data [ index + 0 ] = color;
+        let index = this.calculateIndex(x, y, this.width);
+        this.imageData.data [ index ] = color;
     }
     
     setG ( x, y, color ) { 
-        let index = ( x + y * this.width ) * 4;
+        let index = this.calculateIndex(x, y, this.width);
         this.imageData.data [ index + 1 ] = color;
     }
 
     setB ( x, y, color ) { 
-        let index = ( x + y * this.width ) * 4;
+        let index = this.calculateIndex(x, y, this.width);
         this.imageData.data [ index + 2 ] = color;
+    }
+
+    calculateIndex(x, y, width) {
+        return  ( x + y * width ) * 4;
     }
 
 }
