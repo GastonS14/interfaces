@@ -1,4 +1,4 @@
-class FiltroBW extends Filtro {
+class FiltroGrey extends Filtro {
     
     constructor ( imgData, canvas ) { 
         super( imgData, canvas );
@@ -12,7 +12,7 @@ class FiltroBW extends Filtro {
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
                 index = this.calculateIndex(x, y, this.width);
-                this.color.setColors( this.getR(x,y), this.getG(x,y), this.getB( x,y ) );
+                this.color.setColors( this.getRed(x,y), this.getGreen(x,y), this.getBlue( x,y ) );
                 gray = this.getAverageGrey( this.color.getR(), this.color.getG(), this.color.getB() );
                 this.setData ( retorno, gray, index );
             }
@@ -32,7 +32,7 @@ class FiltroBW extends Filtro {
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
                 index = this.calculateIndex(x, y, this.width);
-                this.color.setColors( this.getR(x,y), this.getG(x,y), this.getB( x,y ) );
+                this.color.setColors( this.getRed(x,y), this.getGreen(x,y), this.getBlue( x,y ) );
                 gray = this.getAverageGrey( this.color.getR(), this.color.getG(), this.color.getB() );
                 this.setData ( retorno, gray, index );
             }

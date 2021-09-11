@@ -1,4 +1,4 @@
-class filtroSobel extends Filtro { 
+class filtroBordeHorizontal extends Filtro {
 
     constructor( imgData, canvas) { 
         super( imgData, canvas );
@@ -38,16 +38,12 @@ class filtroSobel extends Filtro {
 
     setFiltro ( ) { 
         let imgSobel = new ImageData( this.width, this.height );
-        let filtroGris = new FiltroBW( this.imageData, this.canvas );
+        let filtroGris = new FiltroGrey( this.imageData, this.canvas );
         this.imgDataGris = filtroGris.getFiltro(); 
         let index = 0;
-        let anchorY;
-        let anchorX;
-        for (let x = 0; x < this.width; x+=3) {
-            anchorX= x+1;
-            for (let y = 0; y < this.height; y+=3) {
-                anchorY= y+1;
-                index = ( anchorX + anchorY * this.width ) * 4;
+        for (let x = 0; x < this.width; x++) {
+            for (let y = 0; y < this.height; y++) {
+                index = ( x + y * this.width ) * 4;
                 this.setData( imgSobel, this.multiplicadorMatriz ( x , y ), index );
             } 
         }
@@ -57,15 +53,15 @@ class filtroSobel extends Filtro {
     
     // Multiplica la matriz sobel por una subMatriz de la imagen
     multiplicadorMatriz ( x, y ) {
-        let index, sum = 0;
+        let index;
+        let sum = 0;
         let auxY = y;
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 index = ( x + y * this.width ) * 4;
-                if ( i === 1 || j === 1 ) {
-                    sum += this.imgDataGris.data[ index ] * this.matrizSobel[ x%3 ] [ y%3 ];  
+
+                    sum += this.imgDataGris.data[ index ] * this.matrizSobel[ x%3 ] [ y%3 ];
                     //this.setData( imgSobel, 0, index );
-                }
                 y += 1;
             }
             x += 1; 

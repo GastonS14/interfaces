@@ -98,7 +98,7 @@
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
-            let filtro = new filtroSobel( imageData, canvas );
+            let filtro = new filtroBordeHorizontal( imageData, canvas );
             filtro.setFiltro();
         } else { 
             this.showError ();
@@ -110,7 +110,7 @@
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
-            let filtro = new filtroBordesVert( imageData, canvas );
+            let filtro = new filtroBordeVertical( imageData, canvas );
             filtro.setFiltro();
         } else { 
             this.showError ();
@@ -123,7 +123,7 @@
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
-            let filtro = new FiltroBW ( imageData, canvas );
+            let filtro = new FiltroGrey ( imageData, canvas );
             filtro.setFiltro();
         } else { 
             this.showError();
@@ -212,4 +212,3 @@
 
 
 
- 

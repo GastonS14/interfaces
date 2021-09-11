@@ -1,4 +1,4 @@
-class filtroBordesVert extends filtroSobel { 
+class filtroBordeVertical extends filtroBordeHorizontal {
 
     constructor ( imgData, canvas ) { 
         super ( imgData, canvas );

@@ -11,9 +11,9 @@ class filtroBrillo extends Filtro {
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
                 index = ( x + y * this.width ) * 4;
-                retorno.data[ index ] = this.getR(x,y) + this.aumentoBrillo;
-                retorno.data[ index + 1 ] = this.getG(x,y) + this.aumentoBrillo;
-                retorno.data[ index + 2 ] = this.getB(x,y) + this.aumentoBrillo;
+                retorno.data[ index ] = this.getRed(x,y) + this.aumentoBrillo;
+                retorno.data[ index + 1 ] = this.getGreen(x,y) + this.aumentoBrillo;
+                retorno.data[ index + 2 ] = this.getBlue(x,y) + this.aumentoBrillo;
                 retorno.data[ index + 3 ] = 255;
             }
         }

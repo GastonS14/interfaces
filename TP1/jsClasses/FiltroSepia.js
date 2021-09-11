@@ -20,21 +20,21 @@ class filtroSepia extends Filtro {
     }
 
     getSepiaRed ( x, y ) { 
-        let redSepia = ( this.getR(x, y) * .393) + ( this.getG(x, y) * .769) + ( this.getB(x, y) * .189);
+        let redSepia = ( this.getRed(x, y) * .393) + ( this.getGreen(x, y) * .769) + ( this.getBlue(x, y) * .189);
         if ( redSepia > 255 ) 
             return 255;
         return redSepia;
     }
 
     getSepiaGreen ( x, y ) { 
-        let greenSepia = (this.getR(x, y) * .349) + (this.getG(x, y) * .686) + (this.getB(x, y) * .168);
+        let greenSepia = (this.getRed(x, y) * .349) + (this.getGreen(x, y) * .686) + (this.getBlue(x, y) * .168);
         if ( greenSepia > 255 ) 
             return 255;
         return greenSepia;
     }
 
     getSepiaBlue ( x, y ) { 
-        let blueSepia = (this.getR(x, y) * .272) + (this.getG(x, y) * .534) + ( this.getB(x, y) * .131) 
+        let blueSepia = (this.getRed(x, y) * .272) + (this.getGreen(x, y) * .534) + ( this.getBlue(x, y) * .131)
         if ( blueSepia > 255 ) 
             return 255;
         return blueSepia;
