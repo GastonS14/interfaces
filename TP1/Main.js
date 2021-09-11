@@ -57,8 +57,7 @@
     }
 
     function dibujar ( img ) {
-        let canvas = document.getElementById("myCanvas");
-        let ctx = canvas.getContext("2d"); 
+        
  
         let image = new Image();
         image.src = "img/github.png"; // no funciona desde un input, tengo que descargar la img y guardarla en img/
