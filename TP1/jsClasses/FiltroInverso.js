@@ -4,6 +4,9 @@ class filtroInverso extends Filtro {
         super ( imgData, canvas );
     }
 
+    /* 
+        Lleva cada color a su inverso, es decir, invierte los colores, por ejemplo en caso de tener 255 lo llevaria a 0.
+    */
     setFiltro () { 
         let imgInversa = new ImageData( this.width, this.height );
         let index = 0; 

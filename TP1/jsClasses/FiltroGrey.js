@@ -2,41 +2,29 @@ class FiltroGrey extends Filtro {
     
     constructor ( imgData, canvas ) { 
         super( imgData, canvas );
+        this.imgDataGris = new ImageData( this.width, this.height );
     }
 
+    /* 
+        Iguala los valores del pixel, seteando sus valores por el promedio de los tres ( r,g,b ), generando asi una escala de grises.
+    */
     setFiltro() {
-        let index = 0;
-        //let color = new Color(9,9,9); // subirlo a clase Filtro
-        let gray = 0;
+        let index = 0, gray = 0;
         let retorno = new ImageData( this.width, this.height );
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
                 index = this.calculateIndex(x, y, this.width);
-                this.color.setColors( this.getRed(x,y), this.getGreen(x,y), this.getBlue( x,y ) );
-                gray = this.getAverageGrey( this.color.getR(), this.color.getG(), this.color.getB() );
+                gray = this.getAverage( x , y );
                 this.setData ( retorno, gray, index );
             }
         }
+        this.imgDataGris = retorno;
         this.context.putImageData( retorno, 0, 0);
     }
 
-    getAverageGrey( r, g, b) {
-        return ( r + g + b ) / 3;
-    }
-
     getFiltro () { 
-        let index = 0;
-        //let color = new Color(9,9,9); // subirlo a clase Filtro
-        let gray = 0;
-        let retorno = new ImageData( this.width, this.height );
-        for (let x = 0; x < this.width; x++) {
-            for (let y = 0; y < this.height; y++) {
-                index = this.calculateIndex(x, y, this.width);
-                this.color.setColors( this.getRed(x,y), this.getGreen(x,y), this.getBlue( x,y ) );
-                gray = this.getAverageGrey( this.color.getR(), this.color.getG(), this.color.getB() );
-                this.setData ( retorno, gray, index );
-            }
-        }
-        return retorno;
+
+        return this.imgDataGris;
+
     }
 }

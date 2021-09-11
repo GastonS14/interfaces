@@ -5,6 +5,9 @@ class filtroContraste extends Filtro {
         this.contrast = contrast; // esto lo voy a hardcodear, deberiamos ponerle un select o dropdown en el html 
     }
 
+    /*
+        
+    */
     setFiltro () { 
         let imgContrast = new ImageData ( this.width, this.height );
         let index = 0;

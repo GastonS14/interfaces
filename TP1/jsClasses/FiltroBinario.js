@@ -4,9 +4,12 @@ class filtroBinario extends Filtro {
         super( imgData, canvas);
     }
 
+    /*
+        El valor de cada pixel se llevara al extremo, es decir, blanco o negro segun el resultado de comparacion
+            con la mitad de 255. 
+    */
     setFiltro () { 
-        let color = 0;
-        let index = 0;
+        let color = 0, index = 0;
         let retorno = new ImageData( this.width, this.height );
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
@@ -21,6 +24,7 @@ class filtroBinario extends Filtro {
         this.context.putImageData( retorno, 0, 0);
     }
 
+    // Compara el promedio de los valores rgb del pixel con la mitad de 255
     compareTo ( value ) {
         let half = 255/2;
         if ( value > half ) 

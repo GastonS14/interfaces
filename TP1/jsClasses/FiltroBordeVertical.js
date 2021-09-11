@@ -3,11 +3,14 @@ class filtroBordeVertical extends filtroBordeHorizontal {
     constructor ( imgData, canvas ) { 
         super ( imgData, canvas );
         this.cargarMatrizSobelVertical();
-        this.matrizSobel = this.findMatrizSobel(); // aca esta el problema. no me conoce esta matriz
-        // da igual si le pongo super o this cuando hace setFiltro() no la conoce. 
+        this.matrizSobel = this.findMatrizSobel(); 
     }
 
-    setFiltro () { 
+    /*
+        Utiliza el metodo del padre sobreescribiendo la matriz sobel por una de accion vertical.
+        Polimorfismo puro y duro :)
+    */
+     setFiltro () { 
         super.setFiltro();
     }
 
