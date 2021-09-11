@@ -4,6 +4,9 @@ class filtroBlur extends Filtro {
         super( imgData, canvas );
     }
 
+    /*
+        El valor de cada pixel estara dado por el promedio de sus adyacentes. Logrando asi la difuminacion. 
+    */
     setFiltro ( ) {
         let retorno = new ImageData( this.width, this.height ); 
         let index = 0;
@@ -19,6 +22,9 @@ class filtroBlur extends Filtro {
         this.context.putImageData( retorno, 0, 0 );
     }
 
+    /*
+        Obtiene el promedio de todos los adyacentes al pixel actual  
+    */
     averagePixel ( x , y, imgData, color ) { 
         let top = this.averageTop ( x, y, imgData, color );
         let middle = this.averageMiddle ( x, y, imgData, color );

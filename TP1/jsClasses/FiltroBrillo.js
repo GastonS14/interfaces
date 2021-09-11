@@ -5,6 +5,9 @@ class filtroBrillo extends Filtro {
         this.aumentoBrillo = aumentoBrillo;
     }
 
+    /*
+        A cada pixel se lo lleva a un valor cercano a 255 para aumentar la luz y asi generar efecto brillo.
+    */
     setFiltro () { 
         let index = 0;
         let retorno = new ImageData( this.width, this.height );

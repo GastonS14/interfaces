@@ -6,7 +6,11 @@ class filtroBordeVertical extends filtroBordeHorizontal {
         this.matrizSobel = this.findMatrizSobel();
     }
 
-    setFiltro () { 
+    /*
+        Utiliza el metodo del padre sobreescribiendo la matriz sobel por una de accion vertical.
+        Polimorfismo puro y duro :)
+    */
+     setFiltro () { 
         super.setFiltro();
     }
 

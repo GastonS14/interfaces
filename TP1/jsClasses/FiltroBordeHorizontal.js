@@ -3,7 +3,7 @@ class filtroBordeHorizontal extends Filtro {
     constructor( imgData, canvas) { 
         super( imgData, canvas );
         this.matrizSobel = [];
-        this.matrizAux = [];
+        this.matrizAux = []; // usada para testear el algoritmo multiplicadorMatriz
         this.cargarMatrizSobel();
         this.imgDataGris = new ImageData ( this.width, this.height );
         this.cargarMatriz ();
@@ -24,6 +24,10 @@ class filtroBordeHorizontal extends Filtro {
         this.matrizSobel[ 2 ] [ 2 ] = 1;
     }
 
+    /*
+        A cada pixel de la imagen se le setea el valor dado por el algoritmo multriplicadorMatriz. Este algoritmo
+            multiplica cada adyacente al pixel actual por su correspondiente valor en la matriz sobel.
+    */
     setFiltro ( ) { 
         let imgSobel = new ImageData( this.width, this.height );
         let filtroGris = new FiltroGrey( this.imageData, this.canvas );
@@ -83,7 +87,6 @@ class filtroBordeHorizontal extends Filtro {
     test ( x, y ) {
         let sum = 0;
         let auxY = y;
-        let auxX = x;
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 //index = ( x + y * this.width ) * 4;

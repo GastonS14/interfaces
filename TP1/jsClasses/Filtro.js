@@ -5,7 +5,6 @@ class Filtro {
         this.width = canvas.width;
         this.height = canvas.height;
         this.context = canvas.getContext ("2d");
-        this.color = new Color(0,0,0);
     }
 
     setFiltro() {};

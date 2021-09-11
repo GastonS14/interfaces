@@ -14,20 +14,15 @@
     function borrar() { 
         goma = true;
         lapiz = false;
-        console.log ( " goma : " + goma );
-        console.log ( " lapiz : " + lapiz );
     }
 
     function paint () { 
         goma = false;
         lapiz = true;
-        console.log ( " goma : " + goma );
-        console.log ( " lapiz : " + lapiz );
     }
 
     canvas.addEventListener("mouseup", function () {
         isMouseDown = false; 
-        console.log ( "mouse is up ");
         x = 0;
         y = 0;
         paint();
@@ -35,19 +30,14 @@
 
     canvas.addEventListener("mousedown", function ( event ) {
         isMouseDown = true;
-        console.log ( "mouse is down" );
         x = event.offsetX;
         y = event.offsetY;
     });
 
     canvas.addEventListener( "mousemove", function ( event ) {
         if ( isMouseDown ) {
-            console.log( "mouse is down/hold and move ");
             ctx.beginPath();
-            let color =  document.getElementById("color").value;
-            ctx.strokeStyle = color;
-            console.log( color );
-            console.log( typeof color );
+            ctx.strokeStyle = document.getElementById("color").value;
             ctx.lineWidth = 1;//document.getElementById("grosor").value;
             ctx.moveTo( x, y );
             if ( goma ) { 
@@ -64,8 +54,6 @@
 
     function fBlur () { 
         if ( isImage ) {
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
             let filtro = new filtroBlur( imageData, canvas );
             filtro.setFiltro();
@@ -76,8 +64,6 @@
 
     function fSobel () {
         if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
             let filtro = new filtroBordeHorizontal( imageData, canvas );
             filtro.setFiltro();
@@ -88,8 +74,6 @@
 
     function fBordesVert() { 
         if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
             let filtro = new filtroBordeVertical( imageData, canvas );
             filtro.setFiltro();
@@ -101,8 +85,6 @@
     // filtro blanco y negro
     function filtroBN () {
         if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new FiltroGrey ( imageData, canvas );
             filtro.setFiltro();
@@ -113,8 +95,6 @@
 
     function fSepia() { 
         if ( isImage ) {
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroSepia ( imageData, canvas );
             filtro.setFiltro();
@@ -125,8 +105,6 @@
 
     function fInverso() { 
         if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroInverso ( imageData, canvas );
             filtro.setFiltro();
@@ -136,9 +114,7 @@
     }
 
     function fContraste() { 
-        if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
+        if ( isImage ) {  
             // let contraste = document.getElementById("contraste").value; -> seria algo asi ( ver FiltroContraste.js )
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroContraste ( imageData, canvas, 100 );
@@ -150,8 +126,6 @@
 
     function fBrillo () { 
         if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroBrillo ( imageData, canvas, 15 );
             filtro.setFiltro();
@@ -162,8 +136,6 @@
 
     function fBinarizacion () { 
         if ( isImage ) { 
-            let canvas = document.getElementById("myCanvas");
-            let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroBinario ( imageData, canvas );
             filtro.setFiltro();
@@ -196,9 +168,7 @@
     }
 
     // canvas blanco
-    function restartBlank() {
-        let canvas = document.getElementById("myCanvas");
-        let ctx = canvas.getContext("2d");
+    function restart() { 
         ctx.putImageData( new ImageData( canvas.width, canvas.height ), 0, 0 );
         isImage = false;
         clearError();
