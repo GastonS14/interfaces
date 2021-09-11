@@ -2,7 +2,7 @@ class filtroSobel extends Filtro {
 
     constructor( imgData, canvas) { 
         super( imgData, canvas );
-        this.matrizSobel = new Array();
+        this.matrizSobel = [];
         this.matrizAux = [];
         this.cargarMatrizSobel();
         this.imgDataGris = new ImageData ( this.width, this.height );
