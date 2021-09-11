@@ -5,8 +5,9 @@ class filtroBinario extends Filtro {
     }
 
     setFiltro () { 
-        let color = 0,index = 0;
-        let retorno = new ImageData( this.width, this.height );
+        let color = 0;
+        let index = 0;
+        let imageData = new ImageData( this.width, this.height );
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
                 index = ( x + y * this.width ) * 4;
@@ -14,10 +15,10 @@ class filtroBinario extends Filtro {
                     color = 0;
                 else 
                     color = 225;
-                this.setData ( retorno, color, index );
+                this.setData ( imageData, color, index );
             }
         }
-        this.context.putImageData( retorno, 0, 0);
+        this.context.putImageData( imageData, 0, 0);
     }
 
     compareTo ( value ) {

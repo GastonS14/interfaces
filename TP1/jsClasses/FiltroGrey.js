@@ -1,4 +1,4 @@
-class FiltroBW extends Filtro {
+class FiltroGrey extends Filtro {
     
     constructor ( imgData, canvas ) { 
         super( imgData, canvas );
@@ -11,16 +11,16 @@ class FiltroBW extends Filtro {
         let retorno = new ImageData( this.width, this.height );
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
-                index = ( x + y * this.width ) * 4;
-                this.color.setColors( this.getR(x,y), this.getG(x,y), this.getB( x,y ) );
-                gray = this.getAverageGray( this.color.getR(), this.color.getG(), this.color.getB() );
+                index = this.calculateIndex(x, y, this.width);
+                this.color.setColors( this.getRed(x,y), this.getGreen(x,y), this.getBlue( x,y ) );
+                gray = this.getAverageGrey( this.color.getR(), this.color.getG(), this.color.getB() );
                 this.setData ( retorno, gray, index );
             }
         }
         this.context.putImageData( retorno, 0, 0);
     }
 
-    getAverageGray( r, g, b) {
+    getAverageGrey( r, g, b) {
         return ( r + g + b ) / 3;
     }
 
@@ -31,9 +31,9 @@ class FiltroBW extends Filtro {
         let retorno = new ImageData( this.width, this.height );
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
-                index = ( x + y * this.width ) * 4;
-                this.color.setColors( this.getR(x,y), this.getG(x,y), this.getB( x,y ) );
-                gray = this.getAverageGray( this.color.getR(), this.color.getG(), this.color.getB() );
+                index = this.calculateIndex(x, y, this.width);
+                this.color.setColors( this.getRed(x,y), this.getGreen(x,y), this.getBlue( x,y ) );
+                gray = this.getAverageGrey( this.color.getR(), this.color.getG(), this.color.getB() );
                 this.setData ( retorno, gray, index );
             }
         }

@@ -1,9 +1,9 @@
-class filtroBordesVert extends filtroSobel { 
+class filtroBordeVertical extends filtroBordeHorizontal {
 
     constructor ( imgData, canvas ) { 
         super ( imgData, canvas );
-        super.matrizSobel = this.cargarMatrizSobelVertical(); // aca esta el problema. no me conoce esta matriz
-        // da igual si le pongo super o this cuando hace setFiltro() no la conoce. 
+        this.cargarMatrizSobelVertical();
+        this.matrizSobel = this.findMatrizSobel();
     }
 
     setFiltro () { 
@@ -23,6 +23,10 @@ class filtroBordesVert extends filtroSobel {
         this.matrizSobel[ 2 ] [ 0 ] = -1;
         this.matrizSobel[ 2 ] [ 1 ] = 0;
         this.matrizSobel[ 2 ] [ 2 ] = 1;
+    }
+
+    findMatrizSobel() {
+        return this.matrizSobel;
     }
 
 

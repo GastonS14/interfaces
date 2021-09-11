@@ -1,13 +1,15 @@
 
-    // Necesito una var global para guardar la imagen original para restablecer el canvas xD
-    var isMouseDown = false;
-    var canvas = document.getElementById("myCanvas"); 
-    var ctx = canvas.getContext("2d");
-    var x = 0;
-    var y = 0;
-    var goma = false;
-    var lapiz = true;
-    var isImage = false;
+    // Necesito una var global para guardar la imagen original para restablecer el canvas
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    let isMouseDown = false;
+    let x = 0;
+    let y = 0;
+    let goma = false;
+    let lapiz = true;
+    let isImage = false;
+    // array to save images
+    let images = []
 
     function borrar() { 
         goma = true;
@@ -23,7 +25,7 @@
         console.log ( " lapiz : " + lapiz );
     }
 
-    document.getElementById("myCanvas").addEventListener("mouseup", function () {
+    canvas.addEventListener("mouseup", function () {
         isMouseDown = false; 
         console.log ( "mouse is up ");
         x = 0;
@@ -31,14 +33,14 @@
         paint();
     });
 
-    document.getElementById("myCanvas").addEventListener("mousedown", function ( event ) {
+    canvas.addEventListener("mousedown", function ( event ) {
         isMouseDown = true;
         console.log ( "mouse is down" );
         x = event.offsetX;
         y = event.offsetY;
     });
-    
-    document.getElementById("myCanvas").addEventListener( "mousemove", function ( event ) { 
+
+    canvas.addEventListener( "mousemove", function ( event ) {
         if ( isMouseDown ) {
             console.log( "mouse is down/hold and move ");
             ctx.beginPath();
@@ -60,27 +62,6 @@
         }
     });
 
-
-    function saveImg () { 
-        let img = document.getElementById("inputImg").files[0];
-        dibujar( img );
-    }
-
-    function dibujar ( img ) {
-        let canvas = document.getElementById("myCanvas");
-        let ctx = canvas.getContext("2d"); 
- 
-        let image = new Image();
-        image.src = "img/github.png"; // no funciona desde un input, tengo que descargar la img y guardarla en img/
-        
-        image.onload = function () { 
-            ctx.drawImage( image, 0,0, canvas.width,canvas.height );
-            isImage = true;
-            clearError();
-        }
-       
-    }
-
     function fBlur () { 
         if ( isImage ) {
             let canvas = document.getElementById("myCanvas");
@@ -98,7 +79,7 @@
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
-            let filtro = new filtroSobel( imageData, canvas );
+            let filtro = new filtroBordeHorizontal( imageData, canvas );
             filtro.setFiltro();
         } else { 
             this.showError ();
@@ -110,7 +91,7 @@
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData ( 0,0, canvas.width, canvas.height );
-            let filtro = new filtroBordesVert( imageData, canvas );
+            let filtro = new filtroBordeVertical( imageData, canvas );
             filtro.setFiltro();
         } else { 
             this.showError ();
@@ -123,7 +104,7 @@
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d"); 
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
-            let filtro = new FiltroBW ( imageData, canvas );
+            let filtro = new FiltroGrey ( imageData, canvas );
             filtro.setFiltro();
         } else { 
             this.showError();
@@ -191,15 +172,6 @@
         }
     }
 
-    // canvas blanco
-    function restart() { 
-        let canvas = document.getElementById("myCanvas");
-        let ctx = canvas.getContext("2d"); 
-        ctx.putImageData( new ImageData( canvas.width, canvas.height ), 0, 0 );
-        isImage = false;
-        clearError();
-    }
-
     function clearError() { 
         document.getElementById("NoImageError").classList.add("dontShow");
     }
@@ -208,8 +180,76 @@
         document.getElementById("NoImageError").classList.remove("dontShow");
     }
 
+    function download() {
+        let link = window.document.createElement( 'a' );
+        let url = canvas.toDataURL();
+        let lastImage = getLastImage();
+        if(lastImage !== null) {
+            let filename = `edited_${lastImage.name}`;
+            link.setAttribute( 'href', url );
+            link.setAttribute( 'download', filename );
+            link.style.visibility = 'hidden';
+            window.document.body.appendChild( link );
+            link.click();
+            window.document.body.removeChild( link );
+        }
+    }
+
+    // canvas blanco
+    function restartBlank() {
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        ctx.putImageData( new ImageData( canvas.width, canvas.height ), 0, 0 );
+        isImage = false;
+        clearError();
+    }
+
+    // Original canvas
+    function restartOriginal() {
+        let img = getLastImage();
+        if(img !== null) {
+            dibujar(img);
+        }
+    }
+
+    function getLastImage() {
+        if(images.length === 0) return null;
+        return images[images.length-1];
+    }
+
+    function loadImage () {
+        let img = document.getElementById("inputImg").files[0];
+        if(validImage(img) && img !== undefined) {
+            images.push(img);
+            dibujar( img );
+        }
+    }
+
+    // validate if the img already exists in the array by name
+    function validImage(image) {
+        for (let i = 0; i < images.length; i++) {
+            if(images[i].name === image.name) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // We only call this function with a valid image
+    function dibujar ( img ) {
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        let image = new Image();
+
+        image.src = `img/${img.name}`;
+        image.onload = function () {
+            ctx.drawImage( image, 0, 0, canvas.width, canvas.height );
+            isImage = true;
+            clearError();
+        }
+    }
+
     
 
 
 
- 

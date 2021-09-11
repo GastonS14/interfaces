@@ -1,6 +1,5 @@
 class filtroBlur extends Filtro { 
 
-
     constructor ( imgData, canvas ) { 
         super( imgData, canvas );
     }
@@ -23,13 +22,12 @@ class filtroBlur extends Filtro {
     averagePixel ( x , y, imgData, color ) { 
         let top = this.averageTop ( x, y, imgData, color );
         let middle = this.averageMiddle ( x, y, imgData, color );
-        let botton = this.averageBotton( x, y, imgData, color );
-        return ( top + botton + middle )/3;
+        let bottom = this.averageBotton( x, y, imgData, color );
+        return ( top + bottom + middle )/3;
     }
 
     averageTop ( x, y, imgData, color  ) { 
         let promedio = new Promedio();
-        promedio.setSuma ( this.getValue ( x, y, imgData, color  ) ); // en el que estoy parado
         if ( y > 0 ) {
             promedio.setSuma( this.getValue( x, y-1, imgData, color  ) );  // arriba
 
@@ -73,7 +71,7 @@ class Promedio {
 
     constructor ( ){
         this.suma = 0;
-        this.cantidad = 0;
+        this.cantidad = 1;
         this.promedio = 0;
     }
 
