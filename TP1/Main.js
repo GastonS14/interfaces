@@ -41,7 +41,6 @@
             ctx.lineWidth = 1;//document.getElementById("grosor").value;
             ctx.moveTo( x, y );
             if ( goma ) { 
-                console.log( goma );
                 ctx.strokeStyle = "white";
                 ctx.lineWidth = 10;
             }
@@ -189,7 +188,7 @@
 
     function loadImage () {
         let img = document.getElementById("inputImg").files[0];
-        if(validImage(img) && img !== undefined) {
+        if(validImage(img) && img != undefined) {
             images.push(img);
             dibujar( img );
         }

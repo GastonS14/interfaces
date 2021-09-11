@@ -18,10 +18,10 @@ class filtroBinario extends Filtro {
                     color = 0;
                 else 
                     color = 225;
-                this.setData ( imageData, color, index );
+                this.setData ( retorno, color, index );
             }
         }
-        this.context.putImageData( imageData, 0, 0);
+        this.context.putImageData( retorno, 0, 0);
     }
 
     // Compara el promedio de los valores rgb del pixel con la mitad de 255

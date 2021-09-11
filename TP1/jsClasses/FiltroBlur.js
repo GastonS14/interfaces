@@ -77,7 +77,7 @@ class Promedio {
 
     constructor ( ){
         this.suma = 0;
-        this.cantidad = 1;
+        this.cantidad = 0;
         this.promedio = 0;
     }
 
