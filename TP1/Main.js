@@ -202,7 +202,7 @@
             ctx.drawImage( img, 0, 0, canvas.width, canvas.height );
             isImage = true;
             clearError();
-            images.push( img );
+            images.splice(0, 1, img );
         }
     }
 
