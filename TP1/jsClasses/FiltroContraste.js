@@ -2,7 +2,7 @@ class filtroContraste extends Filtro {
 
     constructor ( imgData, canvas, contrast ) { 
         super( imgData, canvas );
-        this.contrast = contrast; // esto lo voy a hardcodear, deberiamos ponerle un select o dropdown en el html 
+        this.contrast = contrast; 
     }
 
     /*

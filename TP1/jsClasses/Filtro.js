@@ -33,7 +33,7 @@ class Filtro {
         imgData.data[ index ] = color;
         imgData.data[ index + 1 ] = color;
         imgData.data[ index + 2 ] = color;
-        imgData.data[ index + 3 ] = 255; // ojo con esto xD
+        imgData.data[ index + 3 ] = 255; 
     }
 
     setR ( x, y, color ) { 

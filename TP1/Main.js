@@ -37,7 +37,7 @@
         if ( isMouseDown ) {
             ctx.beginPath();
             ctx.strokeStyle = document.getElementById("color").value;
-            ctx.lineWidth = 1;//document.getElementById("grosor").value;
+            ctx.lineWidth = 1;
             ctx.moveTo( x, y );
             if ( goma ) { 
                 ctx.strokeStyle = "white";
@@ -113,7 +113,6 @@
 
     function fContraste() { 
         if ( isImage ) {  
-            // let contraste = document.getElementById("contraste").value; -> seria algo asi ( ver FiltroContraste.js )
             let imageData = ctx.getImageData( 0,0, canvas.width, canvas.height)
             let filtro = new filtroContraste ( imageData, canvas, 100 );
             filtro.setFiltro();
@@ -142,14 +141,6 @@
         }
     }
 
-    function clearError() { 
-        document.getElementById("NoImageError").classList.add("dontShow");
-    }
-
-    function showError () { 
-        document.getElementById("NoImageError").classList.remove("dontShow");
-    }
-
     function download() {
         let link = window.document.createElement( 'a' );
         let url = canvas.toDataURL();
@@ -175,9 +166,8 @@
     // Original canvas
     function restartOriginal() {
         let img = getLastImage();
-        if(img !== null) {
-            dibujar(img);
-        }
+        if( img !== null ) 
+            ctx.drawImage( img, 0, 0, canvas.width, canvas.height );
     }
 
     function getLastImage() {
@@ -185,39 +175,45 @@
         return images[images.length-1];
     }
 
+    /* 
+        Carga una imagen desde disco, utiliza un file reader para generar el src de la imagen a dibujar,
+        luego la dibuja en el canvas.
+    */
     function loadImage () {
         let img = document.getElementById("inputImg").files[0];
-        if(validImage(img) && img != undefined) {
-            images.push(img);
-            dibujar( img );
+        if( img != undefined ) {
+            const reader = new FileReader();
+            reader.onload = ( function ( ) { 
+                                return setImageAndDraw( new Image() );
+                            } );
+            reader.readAsDataURL(img);
         }
     }
 
-    // validate if the img already exists in the array by name
-    function validImage(image) {
-        for (let i = 0; i < images.length; i++) {
-            if(images[i].name === image.name) {
-                return false;
-            }
-        }
-        return true;
+    function setImageAndDraw ( image ) { 
+        image.src = event.target.result; 
+        image.alt = "User Image from disk";
+        dibujar ( image );
     }
 
     // We only call this function with a valid image
     function dibujar ( img ) {
-        let canvas = document.getElementById("myCanvas");
-        let ctx = canvas.getContext("2d");
-        let image = new Image();
-
-        image.src = `img/${img.name}`;
-        image.onload = function () {
-            ctx.drawImage( image, 0, 0, canvas.width, canvas.height );
+        img.onload = () =>  { 
+            ctx.drawImage( img, 0, 0, canvas.width, canvas.height );
             isImage = true;
             clearError();
+            images.push( img );
         }
     }
 
-    
+    function clearError() { 
+        document.getElementById("NoImageError").classList.add("dontShow");
+    }
+
+    function showError () { 
+        document.getElementById("NoImageError").classList.remove("dontShow");
+    }
+
 
 
 
