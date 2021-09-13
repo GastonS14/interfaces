@@ -1,5 +1,4 @@
 
-    // Necesito una var global para guardar la imagen original para restablecer el canvas
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
     let isMouseDown = false;
