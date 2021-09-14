@@ -1,6 +1,10 @@
 
-    const canvas = document.getElementById("myCanvas");
+    let canvas = document.getElementById("myCanvas");
+    const canvasCopy = document.createElement("canvas");
+    canvasCopy.width = canvas.width;
+    canvasCopy.height = canvas.height;
     const ctx = canvas.getContext("2d");
+    const ctxCopy = canvasCopy.getContext( "2d" );
     let isMouseDown = false;
     let x = 0;
     let y = 0;
@@ -8,7 +12,9 @@
     let lapiz = true;
     let isImage = false;
     // array to save images
-    let images = []
+    let images = [];
+    let maxWidthCanvas = 700;
+    let maxHeightCanvas = 330;
 
     function borrar() { 
         goma = true;
@@ -158,6 +164,7 @@
 
     // canvas blanco
     function restart() { 
+        restartSize();
         ctx.putImageData( new ImageData( canvas.width, canvas.height ), 0, 0 );
         isImage = false;
         clearError();
@@ -180,14 +187,23 @@
         luego la dibuja en el canvas.
     */
     function loadImage () {
+        restartSize ();
         let img = document.getElementById("inputImg").files[0];
         if( img != undefined ) {
             const reader = new FileReader();
-            reader.onload = ( function ( ) { 
+            reader.onload = function () { 
                                 return setImageAndDraw( new Image() );
-                            } );
+                            } 
             reader.readAsDataURL(img);
         }
+    }
+
+    /*
+        Setea las dimensiones del contexto del canvas al valor original 
+    */
+    function restartSize () { 
+        ctx.canvas.width = ctxCopy.canvas.width;
+        ctx.canvas.height = ctxCopy.canvas.height;
     }
 
     function setImageAndDraw ( image ) { 
@@ -197,12 +213,27 @@
     }
 
     // We only call this function with a valid image
-    function dibujar ( img ) {
-        img.onload = () =>  { 
-            ctx.drawImage( img, 0, 0, canvas.width, canvas.height );
+    function dibujar ( image ) {
+        image.onload = function () { 
+            calculateCanvasSize( image );
+            ctx.drawImage( image, 0, 0, canvas.width, canvas.height );
             isImage = true;
             clearError();
-            images.splice(0, 1, img );
+            images.splice( 0,1, image); 
+        }
+    }
+
+    /*
+        Calcula el ratio y dependendiento de su valor se setean las dimensiones del canvas.
+    */
+    function calculateCanvasSize ( image ) { 
+        let aspectRatio = Math.min ( canvas.width / image.width ,  canvas.height / image.height );
+        if ( aspectRatio > 1 ){ // canvas mas grande que imagen
+            ctx.canvas.width = image.width;
+            ctx.canvas.height = image.height;
+        } else {    // canvas mas chico que imagen
+            ctx.canvas.width = image.width * aspectRatio;
+            ctx.canvas.height = image.height * aspectRatio;
         }
     }
 
