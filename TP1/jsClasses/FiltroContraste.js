@@ -6,7 +6,7 @@ class filtroContraste extends Filtro {
     }
 
     /*
-        
+        Se calcula el factor a partir del contraste, se calcula el valor de cada pixel aplicando el factor antes calculado. 
     */
     setFiltro () { 
         let imgContrast = new ImageData ( this.width, this.height );

@@ -4,6 +4,10 @@ class filtroSepia extends Filtro {
         super ( imgData, canvas );
     }
 
+    /*
+        El color de cada pixel se define por la multiplicacion de una constante con valor entr 0-1 por el valor
+            de cada color en el pixel.  
+    */
     setFiltro () { 
         let imgSepia = new ImageData( this.width, this.height );
         let index = 0;
