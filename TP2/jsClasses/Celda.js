@@ -6,7 +6,7 @@ class celda {
         this.width = 50;
         this.height = 48;
         this.img = new Image(); 
-        this.hasFicha = false;
+        this.hasFicha = null;
     }
 
     setImg ( img ) { 
@@ -21,6 +21,18 @@ class celda {
         let ctx = canvas.getContext("2d");
         ctx.drawImage( this.img, this.posX, this.posY );
     }
+
+    // esto no funciona, una cosa de locos 
+    hasFicha() { 
+        return this.hasFicha != null;
+    }
+
+    addFicha ( ficha ) { 
+        this.hasFicha = ficha;
+        this.setImg( ficha.getImg() );
+        this.draw();
+    }
+
 
 
 }

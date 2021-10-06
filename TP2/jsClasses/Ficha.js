@@ -5,6 +5,8 @@ class ficha {
         this.posY = posY;
         this.img = new Image();
         this.img.src = 'img/fichaNegra.png'
+        this.width = 50;
+        this.height = 48;
     }
 
     draw( posX, posY ) { 
@@ -15,7 +17,6 @@ class ficha {
     }
 
     isInside ( x, y ) { 
-        // ( x < this.posX >= x && x < ( this.posX+51 ) ) && ( this.posY >= y && y < ( this.posY+49 ) ); // esto no funciona 
         return ( x > this.posX && x < ( this.posX + 50 ) ) && ( y > this.posY && y < ( this.posY + 48 ) ) 
     }
 
@@ -24,8 +25,8 @@ class ficha {
     }
 
     setPosition ( x, y ) { 
-        this.posX = x;
-        this.posY = y;
+        this.posX = x-this.width/2;
+        this.posY = y-this.height/2;
     }
 
     getPosX () { 
@@ -34,6 +35,10 @@ class ficha {
 
     getPosY () { 
         return this.posY;
+    }
+
+    getImg () { 
+        return this.img;
     }
     
 }
