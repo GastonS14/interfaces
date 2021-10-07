@@ -1,6 +1,8 @@
 class ficha { 
 
     constructor( posX, posY ) { 
+        this.originalPosX = posX;
+        this.originalPosY = posY;
         this.posX = posX;
         this.posY = posY;
         this.img = new Image();
@@ -22,6 +24,11 @@ class ficha {
 
     resaltar () { 
         console.log("#jajajj")
+    }
+
+    restorePos( ) { 
+        this.posX = this.originalPosX;
+        this.posY = this.originalPosY;
     }
 
     setPosition ( x, y ) { 

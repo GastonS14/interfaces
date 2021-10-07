@@ -11,47 +11,63 @@
     <link rel="stylesheet" href="css/style.css">
     <title>EntregableDos</title>
 </head>
-<body>
-    <div class="container align-content-center ">
+<body class="bg-dark">
+    <header class="bg-dark m-0 text-white">
+        <h1 class="h1 text-uppercase text-white text-center"> <spam id="manyInLine"> 4 </spam> en linea </h1>
+        <h4 class="h4 text-uppercase ms-2"> Customize your experience </h4>
+            <form class="row gx-3 gy-2 align-items-center justify-content-center">
+                <div class="col-sm-3">
+                    <label class="" for="specificSizeInputName">Name</label>
+                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 1 Name">
+                </div>
+                <div class="col-sm-3">
+                    <label class="" for="specificSizeInputName">Chip color</label>
+                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 1 color">
+                </div>
+                <div class="col-sm-3">
+                    <label class="" for="specificSizeInputName">Chip image</label>
+                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 1 image">
+                </div>
+            </form>
+            <form class="row gx-3 gy-2 align-items-center justify-content-center mt-1">
+                <div class="col-sm-3">
+                    <label class="" for="specificSizeInputName">Name</label>
+                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 2 Name">
+                </div>
+                <div class="col-sm-3">
+                    <label class="" for="specificSizeInputName">Chip color</label>
+                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 2 color">
+                </div>
+                <div class="col-sm-3">
+                    <label class="" for="specificSizeInputName">Chip image</label>
+                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 2 image">
+                </div>
+            </form>
+            <form class="row gx-3 gy-2 align-items-center justify-content-center mt-1 pb-3 border-3 border-bottom ">
+                <div class="col-sm-3">
+                    <label class="text-center" for="specificSizeSelect"> Board size </label>
+                    <select id="boardSize" class="form-select form-select-sm" aria-label=".form-select-sm" onchange="changeSize()">
+                        <option value="6" > 6x6 </option>
+                        <option value="7" selected> 7x7 </option>
+                        <option value="8"> 8x8 </option>
+                    </select>
+                </div>
+            </form>
+    </header>
+    <div class="container align-content-center mt-3">
+        <div class="container p-2 "> 
+            <h2 class="h2 text-uppercase text-warning text-center"> Good luck !</h2>
+        </div>
         <div class="container d-flex mt-2">
-            <canvas id="myCanvas" width="1000" height="500" style="border: 1px solid black;">       </canvas>
+            <canvas class="bg-white" id="myCanvas" width="1000" height="500" style="border: 1px solid black;">       </canvas>
         </div>    
-        <div class="row mt-2">
-                <div class="col-8">
-                    <canvas id="playingZone" width="300" height="48"></canvas>  
-                </div>
-            </div>
-            <div class="row">  
-                <div class="col-8 border-end">  
-                    <canvas id="asd" width='300' height="288" > </canvas> 
-                </div>
-                <div class="col-4 bg-secondary bg-gradient ">
-                    <div class="row">
-                        <h1 class="text-uppercase text-white text-center">  Custom game </h1>
-                        <div class="row p-3 border-top border-white">
-                            <div class="col-auto text-center"> 
-                                <label class="text-uppercase text-white"> Board size </label>
-                                <select id="boardSize" class="form-select form-select-sm" aria-label=".form-select-sm" onchange="changeSize()">
-                                    <option value="6" > 6x6 </option>
-                                    <option value="7" selected> 7x7 </option>
-                                    <option value="8"> 8x8 </option>
-                                </select>
-                            </div>
-                        </div> 
-                        <div class="col-6 ">
-                            <h4 class="text-center text-uppercase text-white"> Player 1</h4>
-                            <canvas id="canvasPlayer1" width='350' height="96" > </canvas> 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <h4 class="text-center text-uppercase text-white"> Player 2 </h4>
-                            <canvas id="canvasPlayer2" width='350' height="96" > </canvas> 
-                        </div>
-                    </div>
-                </div>
-            </div>
     </div>
+    <footer class="footer">
+        <div>
+            <p> Esto genera espacio abajo jeje</p>
+        </div>
+    </footer>
+
     <script src="jsClasses/Celda.js"></script>
     <script src="jsClasses/jugador.js"></script>
     <script src="jsClasses/Ficha.js"></script>
