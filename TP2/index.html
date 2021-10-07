@@ -22,7 +22,11 @@
                 </div>
                 <div class="col-sm-3">
                     <label class="" for="specificSizeInputName">Chip color</label>
-                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 1 color">
+                    <select id="colorPlayer1" class="form-select form-select-sm" aria-label=".form-select-sm" onchange="changeColorChipP()">
+                        <option value="red" class="bg-danger text-uppercase text-danger" > RED </option>
+                        <option value="black" class="bg-dark text-uppercase " selected> BLACK </option>
+                        <option value="yellow" class="bg-warning text-uppercase text-uppercase"> YELLOW </option>
+                    </select>
                 </div>
                 <div class="col-sm-3">
                     <label class="" for="specificSizeInputName">Chip image</label>
@@ -36,7 +40,11 @@
                 </div>
                 <div class="col-sm-3">
                     <label class="" for="specificSizeInputName">Chip color</label>
-                    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Player 2 color">
+                    <select id="colorPlayer2" class="form-select form-select-sm" aria-label=".form-select-sm" onchange="changeColorChipP2()">
+                        <option value="red" class="bg-danger text-uppercase text-danger" > RED </option>
+                        <option value="black" class="bg-dark text-uppercase " selected> BLACK </option>
+                        <option value="yellow" class="bg-warning text-uppercase text-uppercase"> YELLOW </option>
+                    </select>
                 </div>
                 <div class="col-sm-3">
                     <label class="" for="specificSizeInputName">Chip image</label>

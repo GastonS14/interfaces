@@ -1,6 +1,7 @@
 class celda { 
 
-    constructor ( posX, posY ) { 
+    constructor ( posX, posY, ctx ) { 
+        this.ctx = ctx;
         this.posX = posX;
         this.posY = posY;
         this.width = 50;
@@ -17,9 +18,7 @@ class celda {
     }
 
     draw () { 
-        let canvas = document.getElementById("myCanvas"); 
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage( this.img, this.posX, this.posY );
+        this.ctx.drawImage( this.img, this.posX, this.posY );
     }
 
     // esto no funciona, una cosa de locos 

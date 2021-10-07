@@ -7,8 +7,8 @@ document.getElementById("myCanvas").addEventListener('mousemove', mouseIsMoving)
 
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-let p = new jugador ("juan", 7, canvas);
-let p1 = new jugador( "gaston",7, canvas);
+let p = new jugador ("juan", 7, canvas, 480, 15 );
+let p1 = new jugador( "gaston",7, canvas, 750, 15 );
 let t = new Tablero ( canvas );
 let lastChip = null;
 let isMouseDown = false;
@@ -23,14 +23,14 @@ function drawBoard() {
 
 function initPlayers () { 
     p.renderFichas();
-    //p1.renderFichas();
+    p1.renderFichas();
 }
 
 function reDraw() {
     ctx.putImageData(new ImageData( canvas.width, canvas.height ), 0 , 0); 
     t.reDraw();
     p.drawFichas();
-    //p1.drawFichas();
+    p1.drawFichas();
 }
 
 function changeSize() { 
@@ -38,6 +38,7 @@ function changeSize() {
     ctx.putImageData(new ImageData( canvas.width, canvas.height ), 0 , 0); 
     t.setBoardSize( newSize );
     p.setBoardSize( newSize );
+    p1.setBoardSize( newSize );
     document.getElementById("manyInLine").innerHTML = newSize;
 }
 
@@ -58,9 +59,10 @@ function mouseIsUp ( e ) {
     isMouseUp = true;
     isMouseDown = false;
     let added = controlChip( e.layerX, e.layerY );
-    if ( added ) 
+    if ( added ) {
         p.removeFicha( lastChip );
-    else 
+        p1.removeFicha( lastChip );
+    } else 
         lastChip.restorePos();
     lastChip = null;
     reDraw();

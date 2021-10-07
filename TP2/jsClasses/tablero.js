@@ -29,19 +29,18 @@ class Tablero {
 
     // primera y unica renderizacion
     render () { 
-        let userSize = this.boardSize
-        let boardWidth = this.img.width * userSize;
-        let boardHeight = this.img.height * userSize;
+        let boardWidth = this.img.width * this.boardSize;
+        let boardHeight = this.img.height * this.boardSize;
         const startX = this.rangeX.x0;
         const startY = this.rangeY.y0;
         let ctx = this.ctx;
         let board = this.board;
         let i=0, j=0;
-        this.img.onload = function () { 
+        this.img.onload = function () {
             for (let x = startX; x < boardWidth+50; x+= this.width ) {
                 j = 0;
                 for (let y = startY; y < boardHeight+50; y+= this.height ) {
-                    const c = new celda( x, y ); 
+                    const c = new celda( x, y, ctx ); 
                     c.setImg( this );
                     board[i][j] = c;
                     ctx.drawImage( this, x, y);
@@ -66,21 +65,18 @@ class Tablero {
      *   Esto se usa para el reSize del tablero, notese que es igual a render, solo que no usa el evento onload.
     */
     forChangingBoardSize() {
-    let userSize = this.boardSize
-    let boardWidth = this.img.width * userSize;
-    let boardHeight = this.img.height * userSize;
-    const startX = this.rangeX.x0;
-    const startY = this.rangeY.y0;
-    let ctx = this.ctx;
-    let board = this.board;
-    let i=0, j=0; 
+        let boardWidth = this.img.width * this.boardSize;
+        let boardHeight = this.img.height * this.boardSize;
+        const startX = this.rangeX.x0;
+        const startY = this.rangeY.y0;
+        let i=0, j=0; 
         for (let x = startX; x < boardWidth+50; x+= this.img.width ) {
             j = 0;
             for (let y = startY; y < boardHeight+50; y+= this.img.height ) {
-                const c = new celda( x, y ); 
+                const c = new celda( x, y, ctx ); 
                 c.setImg( this.img );
-                board[i][j] = c;
-                ctx.drawImage( this.img, x, y);
+                this.board[i][j] = c;
+                this.ctx.drawImage( this.img, x, y);
                 j++;
             }
             i++;
