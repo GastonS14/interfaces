@@ -68,11 +68,20 @@
                         <option value="8"> 8x8 </option>
                     </select>
                 </div>
+                <div class="col-sm-3">
+                    <label class="text-center" for="specificSizeSelect"> Difficulty </label>
+                    <select id="userTime" class="form-select form-select-sm" aria-label=".form-select-sm" onchange="setDifficulty()">
+                        <option value="180"> EASY </option>
+                        <option value="100" selected> MEDIUM </option>
+                        <option value="60" > HARD </option>
+                    </select>
+                </div>
             </form>
     </header>
     <div class="container align-content-center mt-3">
-        <div class="container p-2 "> 
-            <h2 class="h2 text-uppercase text-warning text-center"> Good luck !</h2>
+        <div class="container d-flex p-2 justify-content-evenly"> 
+            <h2 class="h2 text-uppercase text-warning  "> Good luck !</h2>
+            <p class="h2 text-white text-uppercase "> <span id="time">100</span>  seconds  </p>
         </div>
         <div class="container d-flex mt-2">
             <canvas class="bg-white" id="myCanvas" width="1000" height="500" style="border: 1px solid black;">       </canvas>

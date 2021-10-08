@@ -16,6 +16,8 @@ let t = new Tablero ( canvas );
 let lastChip = null;
 let isMouseDown = false;
 let isMouseUp = true;
+let timer = null;
+let userTime = document.getElementById("userTime").value;
 
 drawBoard();
 initPlayers();
@@ -63,6 +65,7 @@ function mouseIsUp ( e ) {
     isMouseDown = false;
     let added = controlChip( e.layerX, e.layerY );
     if ( added ) {
+        chronometer();
         dontShowHeader();
         p.removeFicha( lastChip );
         p1.removeFicha( lastChip );
@@ -127,4 +130,32 @@ function restartGame() {
     p.jaja();
     p1.jaja();
     showHeader();
+    dropTimer ();
+}
+
+function setDifficulty() {
+    userTime = document.getElementById("userTime").value;
+    document.getElementById("time").innerHTML = userTime;
+}
+
+function chronometer () { 
+    if ( timer == null ) {
+        let time = document.getElementById("time").innerHTML;
+        timer = setInterval( function () { setTime( time-- ) }, 1000 );
+    }
+}
+
+function setTime( value ) {
+    document.getElementById("time").innerHTML = value;
+    if ( value === 0 ) 
+        restartGame();
+}
+
+function dropTimer () { 
+    if ( timer != null ) {
+        clearInterval( timer );
+        clearInterval( timer );
+        timer = null;
+        document.getElementById("time").innerHTML = userTime;
+    }
 }
