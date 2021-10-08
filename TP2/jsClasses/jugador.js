@@ -1,11 +1,11 @@
 class jugador { 
     
-    constructor ( name, boarSize, canvas, posXchips, posYchips) {
+    constructor ( name, boarSize, canvas, posXchips, posYchips, imgSrc) {
         this.canvas = canvas;
         this.boarSize = boarSize; 
         this.name = name;
         this.img = new Image();
-        this.img.src = './img/fichaNegra.png';
+        this.img.src = imgSrc;
         this.posXchips = posXchips; 
         this.posYchips = posYchips;
         this.fichas = new Array();
@@ -27,7 +27,7 @@ class jugador {
             for (let x = initX; x < canvas.width; x+=50 ) {
                 for (let y = initY; y < canvas.height-48; y+=48) {
                     if ( count < amountFichas ) {
-                        const f = new ficha( x, y); 
+                        const f = new ficha( x, y, this); 
                         f.setPosition( x, y);      
                         f.draw( x, y);
                         fichas.push( f );  
@@ -54,8 +54,8 @@ class jugador {
         for (let x = initX; x < canvas.width; x+=50 ) {
             for (let y = initY; y < canvas.height-48; y+=48) {
                 if ( count < amountFichas ) {
-                    const f = new ficha( x, y); 
-                    f.setPosition( x, y);      
+                    const f = new ficha( x, y, this.img ); 
+                    f.setPosition( x, y, this.img);      
                     f.draw( x, y);
                     fichas.push( f );  
                     count++;
@@ -82,6 +82,11 @@ class jugador {
     setBoardSize ( newSize ) { 
         this.boarSize = newSize;
         this.setCantMaxFichas( newSize * newSize / 2 );
+    }
+
+    setImage( img ) { 
+        this.img.src = img;
+        this.drawFichas();
     }
 
 
@@ -113,6 +118,10 @@ class jugador {
 
     changeChipColor() { 
        
+    }
+
+    setName( newName ) { 
+        this.name = newName;
     }
 
 }

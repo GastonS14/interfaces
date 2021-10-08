@@ -2,11 +2,10 @@ class Tablero {
 
     constructor ( canvas ) { 
         this.canvas = canvas; 
-        this.playingZone = document.getElementById("playingZone");
         this.ctx = canvas.getContext("2d");
         this.boardSize = document.getElementById("boardSize").value;
         this.img = new Image();
-        this.img.src = 'img/tableDraw.png';
+        this.img.src = './img/tableDraw.png';
         this.img.height = 48;
         this.img.width = 50;
         this.board = Array();

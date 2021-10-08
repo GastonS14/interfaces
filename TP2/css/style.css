@@ -1,0 +1,47 @@
+.my-btn { 
+    width: 32px !important;
+    height: 32px !important;
+    background-position: center !important;
+    margin-right: 6px;
+}
+
+.f1p1{ 
+    background-image: url(../img/federer.png) !important;
+}
+
+.f2p1 { 
+    background-image: url(../img/max.png) !important;
+}
+
+.f3p1 { 
+    background-image: url(../img/delpo.png) !important;
+}
+
+.f4p1 { 
+    background-image: url(../img/messi.png) !important;
+}
+
+.f5p1 { 
+    background-image: url(../img/red.png) !important;
+}
+
+
+.f1p2{ 
+    background-image: url(../img/nadal.png) !important;
+}
+
+.f2p2 { 
+    background-image: url(../img/lewis.png) !important;
+}
+
+.f3p2 { 
+    background-image: url(../img/djk.png) !important;
+}
+
+.f4p2 { 
+    background-image: url(../img/cr7.png) !important;
+}
+
+.f5p2 { 
+    background-image: url(../img/black.png) !important;
+}

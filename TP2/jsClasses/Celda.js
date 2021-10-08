@@ -14,21 +14,19 @@ class celda {
         this.img = img;
     }
 
-    setFicha ( ) { 
+    setFicha ( ficha ) {
+        this.hasFicha = ficha; 
     }
 
     draw () { 
         this.ctx.drawImage( this.img, this.posX, this.posY );
-    }
-
-    // esto no funciona, una cosa de locos 
-    hasFicha() { 
-        return this.hasFicha != null;
+        if ( this.hasFicha ) 
+            this.ctx.drawImage( this.hasFicha, this.posX+10, this.posY+10 );
     }
 
     addFicha ( ficha ) { 
         this.hasFicha = ficha;
-        this.setImg( ficha.getImg() );
+        this.setFicha( ficha.getImg() );
         this.draw();
     }
 

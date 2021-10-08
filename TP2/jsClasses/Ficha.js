@@ -1,14 +1,13 @@
 class ficha { 
 
-    constructor( posX, posY ) { 
+    constructor( posX, posY, img) { 
         this.originalPosX = posX;
         this.originalPosY = posY;
         this.posX = posX;
         this.posY = posY;
-        this.img = new Image();
-        this.img.src = 'img/fichaNegra.png'
-        this.width = 50;
-        this.height = 48;
+        this.img = img;
+        this.width = 30;
+        this.height = 30;
     }
 
     draw( posX, posY ) { 
@@ -19,7 +18,7 @@ class ficha {
     }
 
     isInside ( x, y ) { 
-        return ( x > this.posX && x < ( this.posX + 50 ) ) && ( y > this.posY && y < ( this.posY + 48 ) ) 
+        return ( x > this.posX && x < ( this.posX + this.width ) ) && ( y > this.posY && y < ( this.posY + this.height ) ) 
     }
 
     resaltar () { 
