@@ -10,8 +10,8 @@ document.getElementById("inputNameP2").addEventListener('keyup', setNameP2);
 
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-let p = new jugador ("juan", 7, canvas, 480, 15, "./img/black.png" );
-let p1 = new jugador( "gaston",7, canvas, 750, 15, "./img/red.png" );
+let p = new jugador ("user1", 7, canvas, 480, 15, "./img/black.png" );
+let p1 = new jugador( "user2",7, canvas, 750, 15, "./img/red.png" );
 let t = new Tablero ( canvas );
 let lastChip = null;
 let isMouseDown = false;
@@ -86,7 +86,6 @@ function controlChip( posX, posY ) {
     const rangeX = t.getRangeX();
     const rangeY = t.getRangeY();
     if ( ( posX > rangeX.x0 && posX < rangeX.x1 ) && ( posY < rangeY.y0 && posY < rangeY.y1 )  ) {
-        console.log(  Math.floor(posX / 50)  - 1 ); // 50 es el width de la celda xD
         return t.addFicha( Math.floor(posX/ 50) - 1, lastChip ); 
     }
     return false;
@@ -107,29 +106,35 @@ function changeChipP1() {
 }
 
 function setNameP() {
-    p.setName( document.getElementById("inputNameP").value);
-    console.log(p.name);
+    let newName = document.getElementById("inputNameP").value;
+    if ( p1.getName() === newName )
+        newName += '1';
+    p.setName( newName );
 }
 
 function setNameP2() {
-    p1.setName( document.getElementById("inputNameP2").value );
+    let newName = document.getElementById("inputNameP2").value;
+    if ( p.getName() === newName )
+        newName+='1';
+    p1.setName( newName );
 }
 
 function dontShowHeader () {
     document.getElementById("customize").classList.add("dontShow");
 }
 
-// Cuando alguien gana o se restablece el juego, llamar a esta funcion
-function showHeader() {
+function showGame() {
     document.getElementById("customize").classList.remove("dontShow");
+    document.getElementById("game").classList.remove("dontShow");
 }
 
 function restartGame() {    
     ctx.putImageData(new ImageData( canvas.width, canvas.height ), 0 , 0);    
     t.forChangingBoardSize();
-    p.jaja();
-    p1.jaja();
-    showHeader();
+    p.renderWithoutLoad(); 
+    p1.renderWithoutLoad(); 
+    dontShowTemplates();
+    showGame();
     dropTimer ();
 }
 
@@ -148,7 +153,7 @@ function chronometer () {
 function setTime( value ) {
     document.getElementById("time").innerHTML = value;
     if ( value === 0 ) 
-        restartGame();
+        timeOut();
 }
 
 function dropTimer () { 
@@ -159,3 +164,31 @@ function dropTimer () {
         document.getElementById("time").innerHTML = userTime;
     }
 }
+
+function setWinner ( winnerName ) { 
+    document.getElementById("winnerName").innerHTML = winnerName;
+    showTemplate('winner');
+}
+
+function timeOut () { 
+    showTemplate('timeOut');
+}
+
+function showTemplate ( templateName ) { 
+    document.getElementById("game").classList.add("dontShow");
+    dontShowHeader();
+    switch (templateName) {
+        case 'winner':
+            document.getElementById("winner").classList.remove("dontShow");
+            break;
+        case 'timeOut':
+            document.getElementById("timeOut").classList.remove("dontShow");
+            break;
+    }
+}
+
+function dontShowTemplates () {
+    document.getElementById("winner").classList.add("dontShow");
+    document.getElementById("timeOut").classList.add("dontShow");
+}
+

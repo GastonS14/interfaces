@@ -12,6 +12,10 @@ class jugador {
         this.cantMaxFichas = boarSize*boarSize/2;
     }
 
+    getName() { 
+        return this.name;
+    }
+
     renderFichas() { 
         let amountFichas = Math.round( this.cantMaxFichas );
         let count = 0; 
@@ -19,10 +23,6 @@ class jugador {
         let fichas = this.fichas;
         let initX = this.posXchips;
         let initY = this.posYchips;
-        
-        // El jugador dos, va a empezar la renderizacion en y = 220 
-        // Para ello, en cada instancia de jugador deberiamos pasarle esa posicion 
-        
         this.img.onload = function () {
             for (let x = initX; x < canvas.width; x+=50 ) {
                 for (let y = initY; y < canvas.height-48; y+=48) {
@@ -33,24 +33,20 @@ class jugador {
                         fichas.push( f );  
                         count++;
                     } else {
-
                         break;
                     }
                 }  
             } 
         }
     }
-    jaja () {
+
+    renderWithoutLoad () {
         let amountFichas = Math.round( this.cantMaxFichas );
         let count = 0; 
         this.fichas = new Array();
         let fichas = this.fichas;
         let initX = this.posXchips;
         let initY = this.posYchips;
-        
-        // El jugador dos, va a empezar la renderizacion en y = 220 
-        // Para ello, en cada instancia de jugador deberiamos pasarle esa posicion 
-        
         for (let x = initX; x < canvas.width; x+=50 ) {
             for (let y = initY; y < canvas.height-48; y+=48) {
                 if ( count < amountFichas ) {
@@ -76,7 +72,7 @@ class jugador {
 
     setCantMaxFichas ( newCantidad ) { 
         this.cantMaxFichas = newCantidad;
-        this.jaja();
+        this.renderWithoutLoad();
     }
 
     setBoardSize ( newSize ) { 
@@ -89,24 +85,14 @@ class jugador {
         this.drawFichas();
     }
 
-
     mouseIsDown ( posX, posY ) { 
         for (let i = 0; i < this.fichas.length; i++) {
             const ficha = this.fichas[i]; 
             if ( ficha.isInside( posX, posY ) ) { 
-                ficha.resaltar();
                 return ficha;
             }
         }
         return null;
-    }
-
-    mouseIsUp () { 
-        console.log("jha")
-    }
-
-    mouseIsMoving () { 
-        console.log("AJjaj")
     }
 
     removeFicha ( ficha ) { 
@@ -114,10 +100,6 @@ class jugador {
             if ( this.fichas[i].getPosX() === ficha.getPosX() && this.fichas[i].getPosY() === ficha.getPosY())
                 this.fichas.splice(i,1);
         }
-    }
-
-    changeChipColor() { 
-       
     }
 
     setName( newName ) { 

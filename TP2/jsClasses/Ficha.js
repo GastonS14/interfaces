@@ -21,10 +21,6 @@ class ficha {
         return ( x > this.posX && x < ( this.posX + this.width ) ) && ( y > this.posY && y < ( this.posY + this.height ) ) 
     }
 
-    resaltar () { 
-        console.log("#jajajj")
-    }
-
     restorePos( ) { 
         this.posX = this.originalPosX;
         this.posY = this.originalPosY;

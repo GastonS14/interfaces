@@ -3,6 +3,7 @@
     height: 32px !important;
     background-position: center !important;
     margin-right: 6px;
+    cursor: pointer;
 }
 
 .f1p1{ 
@@ -52,4 +53,15 @@
 
 body { 
     margin: 8px !important;
+}
+
+.font-winner { 
+    font-family: 'Courier New','cursive';
+    font-style: italic;
+    font-size: 400%;
+}
+
+.myPosition { 
+    margin-top: 10% !important;
+    margin-left: 10% !important;
 }
