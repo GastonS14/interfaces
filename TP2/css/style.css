@@ -45,3 +45,11 @@
 .f5p2 { 
     background-image: url(../img/black.png) !important;
 }
+
+.dontShow { 
+    display: none !important;
+}
+
+body { 
+    margin: 8px !important;
+}

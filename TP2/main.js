@@ -63,6 +63,7 @@ function mouseIsUp ( e ) {
     isMouseDown = false;
     let added = controlChip( e.layerX, e.layerY );
     if ( added ) {
+        dontShowHeader();
         p.removeFicha( lastChip );
         p1.removeFicha( lastChip );
     } else 
@@ -109,4 +110,21 @@ function setNameP() {
 
 function setNameP2() {
     p1.setName( document.getElementById("inputNameP2").value );
+}
+
+function dontShowHeader () {
+    document.getElementById("customize").classList.add("dontShow");
+}
+
+// Cuando alguien gana o se restablece el juego, llamar a esta funcion
+function showHeader() {
+    document.getElementById("customize").classList.remove("dontShow");
+}
+
+function restartGame() {    
+    ctx.putImageData(new ImageData( canvas.width, canvas.height ), 0 , 0);    
+    t.forChangingBoardSize();
+    p.jaja();
+    p1.jaja();
+    showHeader();
 }
