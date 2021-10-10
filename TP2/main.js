@@ -39,12 +39,11 @@ function reDraw() {
 }
 
 function changeSize() { 
-    newSize = document.getElementById("boardSize").value;
+    newSize = parseInt(document.getElementById("boardSize").value);
     ctx.putImageData(new ImageData( canvas.width, canvas.height ), 0 , 0); 
     t.setBoardSize( newSize );
     p.setBoardSize( newSize );
     p1.setBoardSize( newSize );
-    document.getElementById("manyInLine").innerHTML = newSize;
 }
 
 function mouseIsDown ( e ) {

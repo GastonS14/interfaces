@@ -2,14 +2,14 @@ class jugador {
     
     constructor ( name, boarSize, canvas, posXchips, posYchips, imgSrc) {
         this.canvas = canvas;
-        this.boarSize = boarSize; 
+        this.boarSize = parseInt(boarSize); 
         this.name = name;
         this.img = new Image();
         this.img.src = imgSrc;
         this.posXchips = posXchips; 
         this.posYchips = posYchips;
         this.fichas = new Array();
-        this.cantMaxFichas = boarSize*boarSize/2;
+        this.cantMaxFichas = boarSize*(boarSize+1)/2;
     }
 
     getName() { 
@@ -77,7 +77,7 @@ class jugador {
 
     setBoardSize ( newSize ) { 
         this.boarSize = newSize;
-        this.setCantMaxFichas( newSize * newSize / 2 );
+        this.setCantMaxFichas( newSize * (newSize + 1 ) / 2 );
     }
 
     setImage( img ) { 

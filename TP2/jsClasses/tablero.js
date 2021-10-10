@@ -4,6 +4,8 @@ class Tablero {
         this.canvas = canvas; 
         this.ctx = canvas.getContext("2d");
         this.boardSize = document.getElementById("boardSize").value;
+        this.boardWidth = this.boardSize;
+        this.boardHeight = parseInt(this.boardSize) + 1;
         this.img = new Image();
         this.img.src = './img/tableDraw.png';
         this.img.height = 48;
@@ -16,12 +18,12 @@ class Tablero {
         }
         this.rangeY = { 
             y0 : 50,
-            y1 : this.img.height * this.boardSize + 50
+            y1 : this.img.height * this.boardHeight + 50
         }
     }
 
     generateBoard () { 
-        for (let i = 0; i < this.boardSize; i++) {
+        for (let i = 0; i < this.boardHeight; i++) {
             this.board[i] = [];
         }
     }
@@ -29,7 +31,7 @@ class Tablero {
     // primera y unica renderizacion
     render () { 
         let boardWidth = this.img.width * this.boardSize;
-        let boardHeight = this.img.height * this.boardSize;
+        let boardHeight = this.img.height * this.boardHeight;
         const startX = this.rangeX.x0;
         const startY = this.rangeY.y0;
         let ctx = this.ctx;
@@ -53,7 +55,7 @@ class Tablero {
     // Esto se usa para redibujar cuando la fichas estan en movimiento
     reDraw () { 
         for (let i = 0; i < this.boardSize; i++) {
-            for (let j = 0; j < this.boardSize; j++) {
+            for (let j = 0; j < this.boardHeight; j++) {
                 const c = this.board[i][j];
                 c.draw();
             }
@@ -65,7 +67,7 @@ class Tablero {
     */
     forChangingBoardSize() {
         let boardWidth = this.img.width * this.boardSize;
-        let boardHeight = this.img.height * this.boardSize;
+        let boardHeight = this.img.height * this.boardHeight;
         const startX = this.rangeX.x0;
         const startY = this.rangeY.y0;
         let i=0, j=0; 
@@ -91,7 +93,7 @@ class Tablero {
     }
 
     setRangeY ( ) { 
-        this.rangeY.y1 = this.rangeY.y0 + this.img.height * this.boardSize
+        this.rangeY.y1 = this.rangeY.y0 + this.img.height * this.boardHeight;
     }
 
     setRangeX () { 
@@ -100,7 +102,8 @@ class Tablero {
 
     // llamar este metodo desde juego cuando cambie user cambie la dimension
     setBoardSize( size ) { 
-        this.boardSize = size;
+        this.boardSize = parseInt(size);
+        this.boardHeight = parseInt(size) + 1;
         this.board = new Array( size );
         this.generateBoard();
         this.setRangeX();
@@ -109,7 +112,7 @@ class Tablero {
     }
 
     addFicha ( pos, ficha ) { 
-        for (let i = this.boardSize-1; i >= 0; i--) {
+        for (let i = this.boardHeight-1; i >= 0; i--) {
             const celda = this.board[pos][i]; 
             if ( !celda.hasFicha ){ 
                 celda.addFicha( ficha );
