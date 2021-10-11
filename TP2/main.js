@@ -18,6 +18,7 @@ let isMouseDown = false;
 let isMouseUp = true;
 let timer = null;
 let userTime = document.getElementById("userTime").value;
+let turno = null;
 
 drawBoard();
 initPlayers();
@@ -51,27 +52,54 @@ function mouseIsDown ( e ) {
     isMouseUp = false;
     if ( lastChip != null )
         lastChip = null
-    const elem = p.mouseIsDown( e.layerX, e.layerY );
-    if ( elem != null ) {
-        lastChip = elem;
+    if ( turno === null ) { 
+        const elem = p.mouseIsDown( e.layerX, e.layerY );
+        if ( elem != null ) {
+            lastChip = elem;
+            turno = p.getName();
+        } else { 
+            lastChip = p1.mouseIsDown( e.layerX, e.layerY );
+            if ( lastChip != null )
+                turno = p1.getName();
+        }
     } else { 
-        lastChip = p1.mouseIsDown( e.layerX, e.layerY )
-    }
+        if ( turno === p.getName() ) { 
+            lastChip = p1.mouseIsDown( e.layerX, e.layerY );
+            if ( lastChip === null ){
+                isMouseDown = false;
+                isMouseUp = true;
+            } else 
+                turno = p1.getName();
+        }else{ 
+            lastChip = p.mouseIsDown( e.layerX, e.layerY );
+            if ( lastChip === null ){
+                isMouseDown = false;
+                isMouseUp = true;
+            } else 
+                turno = p.getName();
+        }
+    } 
 }
 
 function mouseIsUp ( e ) { 
-    isMouseUp = true;
-    isMouseDown = false;
-    let added = controlChip( e.layerX, e.layerY );
-    if ( added ) {
-        chronometer();
-        dontShowHeader();
-        p.removeFicha( lastChip );
-        p1.removeFicha( lastChip );
-    } else 
-        lastChip.restorePos();
-    lastChip = null;
-    reDraw();
+    if (! (isMouseUp === true && isMouseDown === false) ) {
+        isMouseUp = true;
+        isMouseDown = false;
+        let added = controlChip( e.layerX, e.layerY );
+        if ( added ) {
+            if ( didWin( Math.floor( e.layerX/ 50) - 1, lastChip ) ) {
+                setWinner( turno );
+                return;
+            }
+            chronometer();
+            dontShowHeader();
+            p.removeFicha( lastChip );
+            p1.removeFicha( lastChip );
+        } else 
+            lastChip.restorePos();
+        lastChip = null;
+        reDraw();
+    }
 }
 
 function mouseIsMoving ( e ) { 
@@ -135,6 +163,7 @@ function restartGame() {
     dontShowTemplates();
     showGame();
     dropTimer ();
+    turno = null;
 }
 
 function setDifficulty() {
@@ -190,4 +219,9 @@ function dontShowTemplates () {
     document.getElementById("winner").classList.add("dontShow");
     document.getElementById("timeOut").classList.add("dontShow");
 }
+
+function didWin ( pos, ficha ) {
+    return t.findWinner( pos, ficha );
+}
+
 

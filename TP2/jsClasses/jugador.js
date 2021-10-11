@@ -106,6 +106,14 @@ class jugador {
         this.name = newName;
     }
 
+    containsChip ( posX, posY ) { 
+        this.fichas.forEach( ficha => {
+            if ( ficha.isInside( posX, posY ) )
+                return true;
+        });
+        return false;
+    }
+
 }
 
 

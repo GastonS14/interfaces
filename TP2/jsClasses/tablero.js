@@ -4,7 +4,7 @@ class Tablero {
         this.canvas = canvas; 
         this.ctx = canvas.getContext("2d");
         this.boardSize = document.getElementById("boardSize").value;
-        this.boardWidth = this.boardSize;
+        this.boardWidth = parseInt(this.boardSize);
         this.boardHeight = parseInt(this.boardSize) + 1;
         this.img = new Image();
         this.img.src = './img/tableDraw.png';
@@ -121,5 +121,128 @@ class Tablero {
         }
         return false;
     }
+
+    findPosY ( x ) { 
+        for (let i = 0; i < this.boardHeight; i++ ) {
+            const celda = this.board[x][i]; 
+            if ( celda.hasFicha ) 
+                return i;
+        }
+    }
+
+    findWinner ( x, ficha ) {
+        let y = this.findPosY( x );
+        let count = this.findAbove( x, y-1, ficha, 0 ) + this.findBelow( x, y+1, ficha, 0 );
+        if ( count >= 3 )
+            return true;
+        count = this.findRight( x+1, y, ficha, 0 ) + this.findLeft( x-1, y, ficha, 0 );
+        if ( count >= 3 )
+            return true;
+        count = this.findAcrossDownLeft( x-1, y+1, ficha, 0 ) + this.findAcrossUpRight( x+1, y-1, ficha, 0 );
+        if ( count >= 3 ) 
+            return true;
+        count = this.findAcrossUpLeft( x-1, y-1, ficha, 0 ) + this.findAcrossDownRight( x+1, y+1, ficha, 0 );
+        if ( count >= 3 )
+            return true;
+        return false;
+        //return ( this.findAcrossUpLeft( x-1, y-1, ficha, 1 ) + this.findAcrossDownRight( x+1, y+1, ficha, 1 ) === 3 );
+    }
+
+    findAbove ( x, y, ficha, iteraciones ) { 
+        if ( iteraciones === 3 )
+            return 0;
+        if ( y >= 0 ) {
+            if ( this.board[x][y].hasFicha != null ) { 
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findAbove( x, y-1, ficha, iteraciones+1 ) + 1;
+            }
+        }   
+        return 0;
+    }
+
+    findBelow ( x, y, ficha, iteraciones ) { 
+        if ( iteraciones === 3 )
+            return 0;
+        if ( y < this.boardHeight ) { 
+            if ( this.board[x][y].hasFicha != null ) { 
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findBelow( x, y+1, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
+    findRight( x, y, ficha, iteraciones) { 
+        if ( iteraciones === 3 )
+            return 0;
+        if ( x < this.boardWidth ) { 
+            if ( this.board[x][y].hasFicha != null ) { 
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findRight( x+1, y, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
+    findLeft ( x, y, ficha, iteraciones ) { 
+        if ( iteraciones === 3 )
+            return 0;
+        if ( x >= 0 ) {
+            if ( this.board[x][y].hasFicha != null ) {  
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findLeft( x-1, y, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
+    findAcrossUpLeft ( x, y, ficha, iteraciones ){ 
+        if ( iteraciones === 3 )
+            return 0;
+        if ( x >= 0 && y >= 0 ) { 
+            if ( this.board[x][y].hasFicha != null ) { 
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findAcrossUpLeft( x-1, y-1, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
+    findAcrossDownRight( x, y, ficha, iteraciones ) {
+        if ( iteraciones === 3 )
+            return 0;
+        if ( x < this.boardWidth && y < this.boardHeight ) { 
+            if ( this.board[x][y].hasFicha != null ) { 
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findAcrossDownRight( x+1, y+1, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
+    findAcrossDownLeft( x, y, ficha, iteraciones ){
+        if ( iteraciones === 3 )
+            return 0;
+        if ( x >= 0 && y < this.boardHeight ) {
+            if ( this.board[x][y].hasFicha != null ) {  
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findAcrossDownLeft( x-1, y+1, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
+    findAcrossUpRight( x, y, ficha, iteraciones ){
+        if ( iteraciones === 3 )
+            return 0;
+        if ( x < this.boardWidth && y >= 0 ) { 
+            if ( this.board[x][y].hasFicha != null ) { 
+                if ( this.board[x][y].hasFicha.src === ficha.getImg().src )
+                    return this.findAcrossUpRight( x+1, y-1, ficha, iteraciones+1 ) + 1;
+            }
+        }
+        return 0;
+    }
+
     
 }

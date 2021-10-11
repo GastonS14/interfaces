@@ -30,6 +30,9 @@ class celda {
         this.draw();
     }
 
+    getFicha ( ) { 
+        return this.hasFicha;
+    }
 
 
 }
