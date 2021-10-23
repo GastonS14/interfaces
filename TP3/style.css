@@ -1,19 +1,19 @@
 #batman { 
-    width: 92px;
-    height: 138px;
+    width: 120px;
+    height: 200px;
     margin: auto;
-    background: url( img/run7.png );
-    animation: walk 1s steps(6) infinite;
+    background: url( img/run8.png );
+    animation: walk 1.3s steps(14) infinite;
     position: absolute;
     bottom: 30;
-    top: 435px;
-    left: 100px;
+    top: 376px;
+    left: 280px;
 
 }
 
 @keyframes walk { 
     0% { background-position: 0;}
-    100% { background-position: -561px; }
+    100% { background-position: -1754px; }
 }
 
 .jump { 
@@ -74,6 +74,7 @@
     0% { background-position: 0px}
     100% { background-position: -1944px;}
 }
+
 
 .police{ 
     width: 100px;
