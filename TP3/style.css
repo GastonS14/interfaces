@@ -1,12 +1,12 @@
 #batman { 
     width: 120px;
-    height: 200px;
+    height: 160px;
     margin: auto;
-    background: url( img/run8.png );
+    background: url( img/character/run.png );
     animation: walk 1.3s steps(14) infinite;
     position: absolute;
     bottom: 30;
-    top: 376px;
+    top: 405px;
     left: 280px;
 
 }
@@ -16,6 +16,7 @@
     100% { background-position: -1754px; }
 }
 
+/* sprite sheet para saltar */
 .jump { 
     width: 100px;
     height: 150px;
@@ -23,7 +24,6 @@
     background: url( img/jokerJump.png );
     animation: jump .6s steps(3) infinite;
 }
-
 
 @keyframes jump { 
     0% { background-position: 0;}
@@ -76,27 +76,68 @@
 }
 
 
-.police{ 
-    width: 100px;
-    height: 135px;
+.joker{ 
+    width: 70px;
+    height: 120px;
     margin: auto;
-    background: url( img/policeAlone.png );
+    background: url( img/barrier/jokerAlto1.png );
     position: absolute;
     bottom: 30;
-    top: 435px;
+    top: 445px;
+    left: 1150px;
+}
+
+.joker1{ 
+    width: 105px;
+    height: 154px;
+    margin: auto;
+    background: url( img/barrier/joker1.png );
+    position: absolute;
+    bottom: 30;
+    top: 412px;
+    left: 1000px;
+}
+
+.joker2{ 
+    width: 111px;
+    height: 187px;
+    margin: auto;
+    background: url( img/barrier/joker2.png );
+    position: absolute;
+    bottom: 30;
+    top: 385px;
     left: 1200px;
 }
 
-.dolar { /*se va a tener que agachar para agarrar este billete*/ 
+.dolar { 
     width: 50px;
     height: 38px;
     margin: auto;
-    background: url( img/dolar1.png );
+    background: url( img/reward/dolar1.png );
     position: absolute;
     bottom: 30;
     top: 520px;
     left: 900px;
+    animation-duration: 3s;
+    animation-name: dolar;
+    animation-iteration-count: infinite;
 }
+
+@keyframes dolar {
+    0% { transform:rotateY(0deg); }
+    50% { transform:rotateY(180deg); }
+    100% { transform:rotateY(360deg); }
+}
+
+/* Descuenta 100 dolares al jugador */
+/* Se debe de agachar para no agarrarlo */
+.dolar-joker { 
+    background: url( img/barrier/dolarJoker.png );
+    top: 460px;
+    left: 700px;
+    background-repeat: no-repeat;
+}
+
 
 
 
