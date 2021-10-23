@@ -1,0 +1,102 @@
+#batman { 
+    width: 92px;
+    height: 138px;
+    margin: auto;
+    background: url( img/run7.png );
+    animation: walk 1s steps(6) infinite;
+    position: absolute;
+    bottom: 30;
+    top: 435px;
+    left: 100px;
+
+}
+
+@keyframes walk { 
+    0% { background-position: 0;}
+    100% { background-position: -561px; }
+}
+
+.jump { 
+    width: 100px;
+    height: 150px;
+    margin: auto;
+    background: url( img/jokerJump.png );
+    animation: jump .6s steps(3) infinite;
+}
+
+
+@keyframes jump { 
+    0% { background-position: 0;}
+    100% { background-position: -228px; }
+}
+
+.layer {
+    min-height: 600px; 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+
+.layer-0 { 
+    background: url( img/parallax/layer_1.png );
+    animation: scroll 4s infinite linear;
+}
+
+.layer-1 { 
+    background: url( img/parallax/layer_3.png );
+    animation: scroll 4s infinite linear;
+}
+
+.layer-2 { 
+    background: url( img/parallax/layer_2.png );   
+    animation: scroll 4s infinite linear;
+}
+
+.layer-3 { 
+    background: url( img/parallax/layer_4.png );
+    animation: scroll 4s infinite linear;
+}
+
+.layer-4 { 
+    background: url( img/parallax/layer_5.png ) repeat-x;
+}
+
+.layer-5 { 
+    background: url( img/parallax/layer_6.png ) repeat-x;
+}
+
+
+@keyframes scroll { 
+    0% { background-position: 0px}
+    100% { background-position: -1944px;}
+}
+
+.police{ 
+    width: 100px;
+    height: 135px;
+    margin: auto;
+    background: url( img/policeAlone.png );
+    position: absolute;
+    bottom: 30;
+    top: 435px;
+    left: 1200px;
+}
+
+.dolar { /*se va a tener que agachar para agarrar este billete*/ 
+    width: 50px;
+    height: 38px;
+    margin: auto;
+    background: url( img/dolar1.png );
+    position: absolute;
+    bottom: 30;
+    top: 520px;
+    left: 900px;
+}
+
+
+
+
