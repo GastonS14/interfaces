@@ -1,15 +1,31 @@
-#batman { 
+/* CONSTANTS */
+:root {
+    --constant-velocity: 4s;
+}
+
+.run {
+    animation: walk 1.3s steps(14) infinite;
+}
+
+.batman {
     width: 120px;
     height: 160px;
     margin: auto;
-    background: url( img/character/run.png );
-    animation: walk 1.3s steps(14) infinite;
     position: absolute;
+    opacity: 0.5;
+    background: url( img/character/run.png );
+    bottom: 11%;
+    top: 405px;
+    left: 280px;
+    border: 2px solid orangered;
+    /*
     bottom: 30;
     top: 405px;
     left: 280px;
-
+     */
 }
+
+/* ACTIONS */
 
 @keyframes walk { 
     0% { background-position: 0;}
@@ -25,10 +41,22 @@
     animation: jump .6s steps(3) infinite;
 }
 
+.jumper {
+    animation: jumper 1.2s linear 1;
+}
+
+@keyframes jumper {
+    0% {transform: translateY(0px); }
+    50% { transform: translateY(-400px); }
+    100% { transform: translateY(0px); }
+}
+
 @keyframes jump { 
     0% { background-position: 0;}
     100% { background-position: -228px; }
 }
+
+/* LAYERS */
 
 .layer {
     min-height: 600px; 
@@ -41,24 +69,24 @@
     background-size: cover;
 }
 
-.layer-0 { 
-    background: url( img/parallax/layer_1.png );
-    animation: scroll 4s infinite linear;
+.layer-0 {
+    background: url(img/parallax/layer_1.png);
+    animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-1 { 
     background: url( img/parallax/layer_3.png );
-    animation: scroll 4s infinite linear;
+    animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-2 { 
     background: url( img/parallax/layer_2.png );   
-    animation: scroll 4s infinite linear;
+    animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-3 { 
     background: url( img/parallax/layer_4.png );
-    animation: scroll 4s infinite linear;
+    animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-4 { 
@@ -69,12 +97,10 @@
     background: url( img/parallax/layer_6.png ) repeat-x;
 }
 
-
 @keyframes scroll { 
     0% { background-position: 0px}
     100% { background-position: -1944px;}
 }
-
 
 .joker{ 
     width: 70px;
@@ -82,40 +108,16 @@
     margin: auto;
     background: url( img/barrier/jokerAlto1.png );
     position: absolute;
-    bottom: 30;
     top: 445px;
     left: 1150px;
 }
 
-.joker1{ 
-    width: 105px;
-    height: 154px;
-    margin: auto;
-    background: url( img/barrier/joker1.png );
-    position: absolute;
-    bottom: 30;
-    top: 412px;
-    left: 1000px;
-}
-
-.joker2{ 
-    width: 111px;
-    height: 187px;
-    margin: auto;
-    background: url( img/barrier/joker2.png );
-    position: absolute;
-    bottom: 30;
-    top: 385px;
-    left: 1200px;
-}
-
-.dolar { 
+.dolar {
     width: 50px;
     height: 38px;
     margin: auto;
     background: url( img/reward/dolar1.png );
     position: absolute;
-    bottom: 30;
     top: 520px;
     left: 900px;
     animation-duration: 3s;
@@ -131,12 +133,14 @@
 
 /* Descuenta 100 dolares al jugador */
 /* Se debe de agachar para no agarrarlo */
-.dolar-joker { 
-    background: url( img/barrier/dolarJoker.png );
+.dolar-joker {
     top: 460px;
     left: 700px;
-    background-repeat: no-repeat;
+    background: url(img/barrier/dolarJoker.png) no-repeat;
 }
+
+
+
 
 
 
