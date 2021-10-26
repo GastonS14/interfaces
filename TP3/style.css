@@ -4,7 +4,6 @@
     --constant-velocity: 15s;
 }
 
-
 .batman {
     width: 120px;
     height: 160px;
@@ -12,51 +11,28 @@
     position: absolute;
     background: url( img/character/run.png );
     bottom: 11%;
+
     top: 59%;
     left: 20%;
-    
     /*
-    bottom: 30;
-    top: 405px;
-    left: 280px;
+    top: 46.3%;
+    left: 15%;
+
      */
+
 }
+
+/* ACTIONS */
 
 .run {
     animation: run 1.3s steps(14) infinite;
 }
 
-/* ACTIONS */
-
-@keyframes run { 
-    0% { background-position: 0;}
-    100% { background-position: -1754px; }
+.jump {
+    animation: jump 1.2s linear 1;
+    /* TODO("Change url image") */
+    background: url( img/barrier/dolarJoker.png );
 }
-
-/* sprite sheet para saltar */
-.jump { 
-    width: 100px;
-    height: 150px;
-    margin: auto;
-    background: url( img/jokerJump.png );
-    animation: jump .6s steps(3) infinite;
-}
-
-.jumper {
-    animation: jumper 1.2s linear 1;
-}
-
-@keyframes jumper {
-    0% {transform: translateY(0px); }
-    50% { transform: translateY(-400px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes jump { 
-    0% { background-position: 0;}
-    100% { background-position: -228px; }
-}
-
 
 .dodge {
     width: 117px;
@@ -66,12 +42,23 @@
     animation: dodge .5s steps(4) infinite;
 }
 
-@keyframes dodge { 
+@keyframes dodge {
     0% { background-position: 0;}
     0% { background-position: -468px;}
 }
 
-/* LAYERS */
+@keyframes jump {
+    0% {transform: translateY(0px); }
+    50% { transform: translateY(-400px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes run {
+    0% { background-position: 0; }
+    100% { background-position: -1754px; }
+}
+
+/* SCENARIOS */
 
 .layer {
     min-height: 600px; 
@@ -96,7 +83,7 @@
 }
 
 .layer-2 { 
-    background: url( img/parallax/night/layer_2.png );   
+    background: url( img/parallax/night/layer_2.png );
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
@@ -118,34 +105,34 @@
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
-.layer-7 { 
+.layer-7 {
     background: url( img/parallax/city/layer_2.png );
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
-.layer-8 { 
-    background: url( img/parallax/city/layer_3.png );   
+.layer-8 {
+    background: url( img/parallax/city/layer_3.png );
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
-.layer-9 { 
+.layer-9 {
     background: url( img/parallax/city/layer_4.png );
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
-.layer-10 { 
+.layer-10 {
     background: url( img/parallax/city/layer_5.png ) repeat-x;
 }
 
-.layer-11 { 
+.layer-11 {
     background: url( img/parallax/city/layer_6.png ) repeat-x;
 }
 
-.layer-12 { 
+.layer-12 {
     background: url( img/parallax/city/layer_7.png ) repeat-x;
 }
 
-.layer-13 { 
+.layer-13 {
     background: url( img/parallax/city/layer_8.png ) repeat-x;
 }
 
@@ -154,27 +141,25 @@
     100% { background-position: -1944px;}
 }
 
-.joker{ 
-    width: 70px;
-    height: 120px;
+/* OBSTACLES */
+
+.joker{
     margin: auto;
     background: url( img/barrier/jokerAlto1.png );
     position: absolute;
-    top: 445px;
-    left: 1150px;
 }
 
 .dolar {
-    width: 50px;
-    height: 38px;
     margin: auto;
     background: url( img/reward/dolar1.png );
     position: absolute;
-    top: 520px;
-    left: 900px;
     animation-duration: 3s;
     animation-name: dolar;
     animation-iteration-count: infinite;
+}
+
+.dolar-joker {
+    background: url(img/barrier/dolarJoker.png) no-repeat;
 }
 
 @keyframes dolar {
@@ -183,31 +168,16 @@
     100% { transform:rotateY(360deg); }
 }
 
-/* Descuenta 100 dolares al jugador */
-/* Se debe de agachar para no agarrarlo */
-.dolar-joker {
-    top: 460px;
-    left: 700px;
-    background: url(img/barrier/dolarJoker.png) no-repeat;
-}
-
-
-
-.my-btn { 
+.my-btn {
     width: 71px !important;
     height: 40px;
-} 
-
-.city { 
+}
+.city {
     background-image: url( img/background/cityPNG.png);
 }
-
-
-.night { 
+.night {
     background-image: url( img/background/night.png);
 }
-
-.dontShow { 
+.dontShow {
     display: none !important;
 }
-
