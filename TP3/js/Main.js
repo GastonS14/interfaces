@@ -90,4 +90,3 @@ function removeCityClasses () {
     document.getElementById("layer5").classList.remove("layer-9");
     document.getElementById("layer6").classList.remove("layer-8");
 }
-

@@ -66,13 +66,16 @@ class Game {
         time.innerHTML = userTime.value;
     }
 
+    /**
+     * saca el dont show
+     */
     beforePlay () {
         document.getElementById("customize").classList.add("dontShow");
         let aux = Array();
-        aux.push( document.getElementById("character") );
-        aux.push( document.getElementById("joker") );
-        aux.push( document.getElementById("dolarJoker") );
-        aux.push( document.getElementById("dolar") );
+        aux.push( batman );
+        aux.push( joker );
+        aux.push( dolarJoker );
+        aux.push( dolar );
         aux.forEach( e => {
             e.classList.remove("dontShow");
         });
