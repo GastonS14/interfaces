@@ -1,23 +1,20 @@
+
 /* CONSTANTS */
 :root {
-    --constant-velocity: 4s;
+    --constant-velocity: 15s;
 }
 
-.run {
-    animation: walk 1.3s steps(14) infinite;
-}
 
 .batman {
     width: 120px;
     height: 160px;
     margin: auto;
     position: absolute;
-    opacity: 0.5;
     background: url( img/character/run.png );
     bottom: 11%;
-    top: 405px;
-    left: 280px;
-    border: 2px solid orangered;
+    top: 59%;
+    left: 20%;
+    
     /*
     bottom: 30;
     top: 405px;
@@ -25,9 +22,13 @@
      */
 }
 
+.run {
+    animation: run 1.3s steps(14) infinite;
+}
+
 /* ACTIONS */
 
-@keyframes walk { 
+@keyframes run { 
     0% { background-position: 0;}
     100% { background-position: -1754px; }
 }
@@ -56,6 +57,20 @@
     100% { background-position: -228px; }
 }
 
+
+.dodge {
+    width: 117px;
+    height: 80px;
+    top: 72%;
+    background: url( img/character/dodge.png );
+    animation: dodge .5s steps(4) infinite;
+}
+
+@keyframes dodge { 
+    0% { background-position: 0;}
+    0% { background-position: -468px;}
+}
+
 /* LAYERS */
 
 .layer {
@@ -67,34 +82,71 @@
     left: 0;
     background-repeat: repeat-x;
     background-size: cover;
+    z-index: -1;
 }
 
 .layer-0 {
-    background: url(img/parallax/layer_1.png);
+    background: url(img/parallax/night/layer_1.png);
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-1 { 
-    background: url( img/parallax/layer_3.png );
+    background: url( img/parallax/night/layer_3.png );
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-2 { 
-    background: url( img/parallax/layer_2.png );   
+    background: url( img/parallax/night/layer_2.png );   
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-3 { 
-    background: url( img/parallax/layer_4.png );
+    background: url( img/parallax/night/layer_4.png );
     animation: scroll var(--constant-velocity) infinite linear;
 }
 
 .layer-4 { 
-    background: url( img/parallax/layer_5.png ) repeat-x;
+    background: url( img/parallax/night/layer_5.png ) repeat-x;
 }
 
 .layer-5 { 
-    background: url( img/parallax/layer_6.png ) repeat-x;
+    background: url( img/parallax/night/layer_6.png ) repeat-x;
+}
+
+.layer-6 {
+    background: url(img/parallax/city/layer_1.png);
+    animation: scroll var(--constant-velocity) infinite linear;
+}
+
+.layer-7 { 
+    background: url( img/parallax/city/layer_2.png );
+    animation: scroll var(--constant-velocity) infinite linear;
+}
+
+.layer-8 { 
+    background: url( img/parallax/city/layer_3.png );   
+    animation: scroll var(--constant-velocity) infinite linear;
+}
+
+.layer-9 { 
+    background: url( img/parallax/city/layer_4.png );
+    animation: scroll var(--constant-velocity) infinite linear;
+}
+
+.layer-10 { 
+    background: url( img/parallax/city/layer_5.png ) repeat-x;
+}
+
+.layer-11 { 
+    background: url( img/parallax/city/layer_6.png ) repeat-x;
+}
+
+.layer-12 { 
+    background: url( img/parallax/city/layer_7.png ) repeat-x;
+}
+
+.layer-13 { 
+    background: url( img/parallax/city/layer_8.png ) repeat-x;
 }
 
 @keyframes scroll { 
@@ -141,8 +193,21 @@
 
 
 
+.my-btn { 
+    width: 71px !important;
+    height: 40px;
+} 
+
+.city { 
+    background-image: url( img/background/cityPNG.png);
+}
 
 
+.night { 
+    background-image: url( img/background/night.png);
+}
 
-
+.dontShow { 
+    display: none !important;
+}
 

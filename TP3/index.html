@@ -8,16 +8,85 @@
     <title> RUNNER </title>
 </head>
 <body>
-    <div class="layer layer-5"> </div> 
-    <div class="layer layer-4"> </div> 
-    <div class="layer layer-3"> </div>
-    <div class="layer layer-2"> </div>
-    <div class="layer layer-1"> </div>
-    <div class="layer layer-0"> </div>
-    <div class="batman run"></div>
-    <div class="dolar"></div> 
-    <div class="dolar dolar-joker"></div>
-    <div class="joker"></div>
+    <div class="container bg-dark bg-gradient bg-opacity-50" id="customize"> 
+        <h1 class="h1 text-white text-center"> BATMAN RETURNS </h1>
+        <div id="game" class="container align-content-center mt-3 border-3 border-top">
+            <div class="container d-flex p-2 justify-content-evenly"> 
+                <p class="h2 text-warning text-uppercase"> Raise as many dollars as you can ! </p>
+            </div>
+        </div>
+        <header id="customize" class="m-0 text-white">
+            <h4 class="h4 text-uppercase ms-2 text-center border-3 border-top pt-3"> Customize your experience </h4>
+                <form class="row gx-3 gy-2 align-items-center justify-content-center text-white">
+                    <div class="col-sm-3">
+                        <h5 class="h6" for="specificSizeInputName">Name</h5>
+                        <input type="text" class="form-control" id="playerName" placeholder="Player Name">
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="h6" for="specificSizeSelect"> Difficulty </h5>
+                        <select id="userTime" class="form-select form-select-sm" aria-label=".form-select-sm" onchange="setDifficulty()">
+                            <option value="180"> EASY </option>
+                            <option value="120" selected> MEDIUM </option>
+                            <option value="60" > HARD </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 pt-3 mt-4">
+                        <p class="h2 text-warning text-uppercase"> <span id="time">120</span>  seconds  </p>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="h6"> Background </h5>
+                        <button type="button" value="city" class="btn btn-light my-btn city me-2" onclick="changeBackground()"> </button>
+                        <button type="button" value="night" class="btn btn-light my-btn night" onclick="changeBackground()"> </button>
+                    </div>
+                </form>
+        </header>
+        <div class="container border-3 border-top mt-3"> 
+            <h3 class="h3 text-center text-uppercase text-white mt-3"> Instructions </h3>
+            <div class="row text-white mt-3">
+                <div class="col-sm-3">
+                    <ul class="">
+                        <li class="text-primary text-center bg-dark bg-gradient bg-opacity-50 list-group-item">KEY</li>
+                        <li class="text-white text-center bg-dark bg-gradient bg-opacity-50 list-group-item">W</li>
+                        <li class="text-white text-center bg-dark bg-gradient bg-opacity-50 list-group-item">S</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="text-primary text-center bg-dark bg-gradient bg-opacity-50 list-group-item">ACTION</li>
+                        <li class="text-white text-center bg-dark bg-gradient bg-opacity-50 list-group-item">JUMP</li>
+                        <li class="text-white text-center bg-dark bg-gradient bg-opacity-50 list-group-item">CROUCH</li>
+                    </ul>
+                </div>
+                <div class="col-sm text-white justify-items-center align-content-center align-items-center">
+                    <h5 class="text-center text-wrap h4"> 
+                        <div class="spinner-grow text-danger me-5" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                          SOME ADVICES :
+                          <div class="spinner-grow text-danger ms-5" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                    </h5>
+                    <p class="text-wrap"> There are some joker's dollars, if you catch them, your rewards going to decrease !
+                        You should crouch. </p>
+                    <p class="text-wrap"> Also if you meet with the joker, you should jump him. </p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center pb-3 mt-5">
+                <button type="button" class="btn btn-primary" onclick="play()"> Let's play !</button>
+            </div>
+        </div>
+    </div>
+    <div class="layer layer-5" id="layer1"> </div> 
+    <div class="layer layer-4" id="layer2"></div> </div> 
+    <div class="layer layer-3" id="layer3"> </div>
+    <div class="layer layer-2" id="layer4"> </div>
+    <div class="layer layer-1" id="layer5"> </div>
+    <div class="layer layer-0" id="layer6"> </div>
+    <div class="batman run dontShow" id="character"></div>
+    <div class="dolar dontShow" id="dolar"></div> 
+    <div class="dolar dolar-joker dontShow" id="dolarJoker"></div>
+    <div class="joker dontShow" id="joker"></div>
     <!-- <div class="joker1"></div>
     <div class="joker2"></div> -->
 
@@ -28,5 +97,6 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="game.js"></script>
+<script src="toDoJuan.js"></script>
 </body>
 </html>
