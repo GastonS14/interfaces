@@ -8,21 +8,27 @@ const lastLayer = document.getElementById("layer6");
 const user = document.getElementById("playerName");
 const initButton = document.getElementById("initButton");
 const restart = document.querySelectorAll(".restart");
+const chrometer = document.getElementById("chrometer");
 
 let userName = "User"
 let game = new Game();
 
-document.addEventListener("keydown", game.agachate );
+document.addEventListener("keydown", game.crouch );
 document.addEventListener("keyup", game.run );
 document.getElementById("playerName").addEventListener('keyup', setName );
 userTime.addEventListener("change", game.setDifficulty);
-initButton.addEventListener('click', game.beforePlay );
+initButton.addEventListener('click', configure );
 batman.addEventListener("click", game.jump);
-restart.forEach(  e => e.addEventListener( "click", game.restart ) );
+restart.forEach(  e => e.addEventListener( "click", restartGame ) );
 
+function configure () { 
+    game.beforePlay();
+    game.init();
+}
 
-
-game.init();
+function restartGame () { 
+    game.restart();
+}
 
 function setName () {
     userName = user.value;

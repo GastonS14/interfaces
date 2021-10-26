@@ -192,3 +192,25 @@
     cursor:  pointer !important;
     pointer-events:all !important; 
 }
+
+.chrometer { 
+    width: 30% !important;
+    max-width: 30% !important;
+    padding-top: 1%;
+    border: 1px solid white !important;
+    margin-left: 10%;
+    text-align: center;
+    justify-content: center !important;
+    align-content: center !important;
+}
+
+.dollars { 
+    width: 25% !important;
+    max-width: 25% !important;
+    padding-top: 1%;
+    border: 1px solid white !important;
+    margin-right: 10%;
+    text-align: center;
+    justify-content: center !important;
+    align-content: center !important;
+}

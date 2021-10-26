@@ -1,4 +1,8 @@
 let agachado = false;
+let currentTime = parseInt( userTime.value ); 
+let timer = 0;
+var start = 0;
+
 class Game {
 
     constructor() {
@@ -28,16 +32,17 @@ class Game {
     }
 
     play() {
+        this.chrometer();
         // if it crashes, it loses
+        /*
         setInterval( () => {
             if(this.isCrashed() || this.hasWinner()) {
-                // Can we clean all the calls or the last?
-                // Since we don't have the id that returned by the SetInterval function at this point
                 document.getElementById("winner").classList.remove("dontShow");
                 document.getElementById("gameOver").classList.remove("dontShow");
                 clearInterval();
             }
         }, 1000)
+        */
     }   
 
     isCrashed() {
@@ -48,7 +53,7 @@ class Game {
         return false;
     }
 
-    agachate () {
+    crouch () {
         if ( event.key === 's' ) {
             if ( !agachado ){
                 agachado = true;
@@ -66,6 +71,8 @@ class Game {
 
     setDifficulty () {
         time.innerHTML = userTime.value;
+        chrometer.innerHTML = userTime.value;
+        currentTime = parseInt( userTime.value );
     }
 
     beforePlay () {
@@ -78,10 +85,12 @@ class Game {
         aux.forEach( e => {
             e.classList.remove("dontShow");
         });
+        document.getElementById("divChrometer").classList.remove("dontShow");
+        document.getElementById("divDollars").classList.remove("dontShow");
         //document.getElementById("gameOver").classList.remove("dontShow");
     }
 
-    restart () { 
+    showMenu () { 
         document.getElementById("customize").classList.remove("dontShow");
         let aux = Array();
         aux.push( document.getElementById("character") );
@@ -91,8 +100,33 @@ class Game {
         aux.forEach( e => {
             e.classList.add("dontShow");
         });
+    }
+
+    showWinner () { 
+        document.getElementById("winner").classList.remove("dontShow");
+    }
+
+    restart () { 
+        this.showMenu();
         document.getElementById("winner").classList.add("dontShow");
         document.getElementById("gameOver").classList.add("dontShow");
+    }
+
+    chrometer () { 
+        let setTimee = this.setTime;
+        let gameOverr = this.gameOver;
+        timer = setInterval ( function() { setTimee ( currentTime--, gameOverr ) }, 1000 );
+    }
+
+    setTime ( value, func ) { 
+        if ( value === 0 ) 
+            func();
+        chrometer.innerHTML = value;
+    }
+
+    gameOver () { 
+        document.getElementById("gameOver").classList.remove("dontShow");
+        clearInterval( timer );
     }
 }
 
