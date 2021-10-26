@@ -3,60 +3,42 @@
     --constant-velocity: 4s;
 }
 
-.run {
-    animation: walk 1.3s steps(14) infinite;
-}
-
+/* CHARACTER */
 .batman {
     width: 120px;
     height: 160px;
     margin: auto;
     position: absolute;
-    opacity: 0.5;
     background: url( img/character/run.png );
     bottom: 11%;
-    top: 405px;
-    left: 280px;
-    border: 2px solid orangered;
-    /*
-    bottom: 30;
-    top: 405px;
-    left: 280px;
-     */
+    top: 46.3%;
+    left: 15%;
 }
 
 /* ACTIONS */
 
-@keyframes walk { 
-    0% { background-position: 0;}
-    100% { background-position: -1754px; }
+.run {
+    animation: run 1.3s steps(14) infinite;
 }
 
-/* sprite sheet para saltar */
-.jump { 
-    width: 100px;
-    height: 150px;
-    margin: auto;
-    background: url( img/jokerJump.png );
-    animation: jump .6s steps(3) infinite;
+.jump {
+    animation: jump 1.2s linear 1;
+    /* TODO("Change url image") */
+    background: url( img/barrier/dolarJoker.png );
 }
 
-.jumper {
-    animation: jumper 1.2s linear 1;
-}
-
-@keyframes jumper {
-    0% {transform: translateY(0px); }
+@keyframes jump {
+    0% { transform: translateY(0); }
     50% { transform: translateY(-400px); }
     100% { transform: translateY(0px); }
 }
 
-@keyframes jump { 
+@keyframes run {
     0% { background-position: 0;}
-    100% { background-position: -228px; }
+    100% { background-position: -1754px; }
 }
 
-/* LAYERS */
+/* SCENARIOS */
 
 .layer {
     min-height: 600px; 
@@ -98,45 +80,36 @@
 }
 
 @keyframes scroll { 
-    0% { background-position: 0px}
+    0% { background-position: 0}
     100% { background-position: -1944px;}
 }
 
-.joker{ 
-    width: 70px;
-    height: 120px;
+/* OBSTACLES */
+
+.joker{
     margin: auto;
     background: url( img/barrier/jokerAlto1.png );
     position: absolute;
-    top: 445px;
-    left: 1150px;
+
 }
 
 .dolar {
-    width: 50px;
-    height: 38px;
     margin: auto;
     background: url( img/reward/dolar1.png );
     position: absolute;
-    top: 520px;
-    left: 900px;
     animation-duration: 3s;
     animation-name: dolar;
     animation-iteration-count: infinite;
+}
+
+.dolar-joker {
+    background: url(img/barrier/dolarJoker.png) no-repeat;
 }
 
 @keyframes dolar {
     0% { transform:rotateY(0deg); }
     50% { transform:rotateY(180deg); }
     100% { transform:rotateY(360deg); }
-}
-
-/* Descuenta 100 dolares al jugador */
-/* Se debe de agachar para no agarrarlo */
-.dolar-joker {
-    top: 460px;
-    left: 700px;
-    background: url(img/barrier/dolarJoker.png) no-repeat;
 }
 
 
