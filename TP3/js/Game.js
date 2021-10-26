@@ -61,5 +61,21 @@ class Game {
             batman.classList.remove("dodge");
         }
     }
+
+    setDifficulty () {
+        time.innerHTML = userTime.value;
+    }
+
+    beforePlay () {
+        document.getElementById("customize").classList.add("dontShow");
+        let aux = Array();
+        aux.push( document.getElementById("character") );
+        aux.push( document.getElementById("joker") );
+        aux.push( document.getElementById("dolarJoker") );
+        aux.push( document.getElementById("dolar") );
+        aux.forEach( e => {
+            e.classList.remove("dontShow");
+        });
+    }
 }
 
