@@ -181,3 +181,14 @@
 .dontShow {
     display: none !important;
 }
+
+.font-winner { 
+    font-family: 'Courier New','cursive' !important;
+    font-style: italic !important;
+    font-size: 400% !important;
+}
+
+.myModal { 
+    cursor:  pointer !important;
+    pointer-events:all !important; 
+}

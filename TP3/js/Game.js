@@ -33,6 +33,8 @@ class Game {
             if(this.isCrashed() || this.hasWinner()) {
                 // Can we clean all the calls or the last?
                 // Since we don't have the id that returned by the SetInterval function at this point
+                document.getElementById("winner").classList.remove("dontShow");
+                document.getElementById("gameOver").classList.remove("dontShow");
                 clearInterval();
             }
         }, 1000)
@@ -76,6 +78,21 @@ class Game {
         aux.forEach( e => {
             e.classList.remove("dontShow");
         });
+        //document.getElementById("gameOver").classList.remove("dontShow");
+    }
+
+    restart () { 
+        document.getElementById("customize").classList.remove("dontShow");
+        let aux = Array();
+        aux.push( document.getElementById("character") );
+        aux.push( document.getElementById("joker") );
+        aux.push( document.getElementById("dolarJoker") );
+        aux.push( document.getElementById("dolar") );
+        aux.forEach( e => {
+            e.classList.add("dontShow");
+        });
+        document.getElementById("winner").classList.add("dontShow");
+        document.getElementById("gameOver").classList.add("dontShow");
     }
 }
 

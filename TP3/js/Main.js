@@ -7,6 +7,7 @@ const userTime = document.getElementById("userTime");
 const lastLayer = document.getElementById("layer6");
 const user = document.getElementById("playerName");
 const initButton = document.getElementById("initButton");
+const restart = document.querySelectorAll(".restart");
 
 let userName = "User"
 let game = new Game();
@@ -17,6 +18,9 @@ document.getElementById("playerName").addEventListener('keyup', setName );
 userTime.addEventListener("change", game.setDifficulty);
 initButton.addEventListener('click', game.beforePlay );
 batman.addEventListener("click", game.jump);
+restart.forEach(  e => e.addEventListener( "click", game.restart ) );
+
+
 
 game.init();
 
