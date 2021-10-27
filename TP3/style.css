@@ -149,34 +149,22 @@
     position: absolute;
 }
 
-.move { 
-    animation: movement 4s infinite linear;
-}
-
 .dolar {
     margin: auto;
-    background: url( img/reward/dolar1.png );
     position: absolute;
-    animation: dolar 3s infinite
-    /*animation-duration: 3s;
-    animation-name: dolar;
-    animation-iteration-count: infinite; */
 }
 
+/* WE HAVE TO DELETE THIS CLASS, BUT NOT NOW, IT'S TOO LATE */
 .dolar-joker {
-    background: url(img/barrier/dolarJoker.png) no-repeat;
+    /*background: url(img/barrier/dolarJoker.png) no-repeat;*/
 }
 
 .dollar360{ 
-    width: 100% !important;
-    height: 100% !important;
-    max-height: inherit !important;
-    max-width: inherit !important;
-    min-width: 100% !important;
-    min-height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    animation: movement 4s infinite linear;
+    animation: dolar 2s infinite;
+}
+
+.move { 
+    animation: movement 10s infinite linear;
 }
 
 @keyframes dolar {
@@ -186,7 +174,7 @@
 }
 
 @keyframes movement { 
-    0% { transform:translateX(0px) }
+    0% { transform:translateX(-80px) }
     100% { transform: translateX(-1920px); }
 }
 
@@ -194,12 +182,15 @@
     width: 71px !important;
     height: 40px;
 }
+
 .city {
     background-image: url( img/background/cityPNG.png);
 }
+
 .night {
     background-image: url( img/background/night.png);
 }
+
 .dontShow {
     display: none !important;
 }
