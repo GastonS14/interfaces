@@ -149,23 +149,45 @@
     position: absolute;
 }
 
+.move { 
+    animation: movement 4s infinite linear;
+}
+
 .dolar {
     margin: auto;
     background: url( img/reward/dolar1.png );
     position: absolute;
-    animation-duration: 3s;
+    animation: dolar 3s infinite
+    /*animation-duration: 3s;
     animation-name: dolar;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
 }
 
 .dolar-joker {
     background: url(img/barrier/dolarJoker.png) no-repeat;
 }
 
+.dollar360{ 
+    width: 100% !important;
+    height: 100% !important;
+    max-height: inherit !important;
+    max-width: inherit !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    animation: movement 4s infinite linear;
+}
+
 @keyframes dolar {
     0% { transform:rotateY(0deg); }
     50% { transform:rotateY(180deg); }
     100% { transform:rotateY(360deg); }
+}
+
+@keyframes movement { 
+    0% { transform:translateX(0px) }
+    100% { transform: translateX(-1920px); }
 }
 
 .my-btn {
