@@ -28,7 +28,8 @@
 
 .jump {
     animation: jump 1.2s linear 1;
-    /* TODO("Change url image to a jump animation") */
+    /* TODO("Change url image to a jump animation")
+    background: url( img/character/jump.png ); */
     background: url( img/character/run.png );
 }
 

@@ -1,13 +1,7 @@
 // Gaston
 1-En el salto cambiar la imagen
-12-Agregar texto de como no perder
-13-Agregar la clase escenario
 
 // Juan
-6-pantalla final
-win
-game over
-7-Timer
 8-Contador de dolares
 9-Generar animaciones de obstaculos(scroll horizontal izquierdo)
 
