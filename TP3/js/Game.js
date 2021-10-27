@@ -29,11 +29,12 @@ class Game {
 
     play() {
         // if it crashes, it loses
-        setInterval( () => {
+        let intervalId;
+        intervalId = setInterval( () => {
             if(this.isCrashed() || this.hasWinner()) {
                 // Can we clean all the calls or the last?
                 // Since we don't have the id that returned by the SetInterval function at this point
-                clearInterval();
+                clearInterval(intervalId);
             }
         }, 1000)
     }   
