@@ -2,6 +2,7 @@ let agachado = false;
 let currentTime = parseInt( userTime.value ); 
 let timer = 0;
 var start = 0;
+let amountOfDollars = document.getElementById("amountDollars");
 
 class Game {
 
@@ -16,10 +17,11 @@ class Game {
     }
 
     generateObstacles() {
-        let dolarObstacle = new Obstacle(dolar, "900px", "71%", "50px", "38px");
+        this.obstacles = [];
+        let dolarObstacle = new Obstacle(dolar, "900px", "76%", "50px", "38px", 200, false);
         this.obstacles.push(dolarObstacle);
-        this.obstacles.push(new Obstacle(dolarJoker, "40%", "63%", dolarObstacle.getWidth(), dolarObstacle.getHeight()));
-        this.obstacles.push(new Obstacle(joker, "1150px", "63%", "70px", "120px"));
+        this.obstacles.push(new Obstacle(dolarJoker, "40%", "68%", dolarObstacle.getWidth(), dolarObstacle.getHeight(),-100, false));
+        this.obstacles.push(new Obstacle(joker, "1150px", "67.5%", "70px", "120px", 0, true ));
     }
 
     // Events => Actions
@@ -27,30 +29,47 @@ class Game {
         setTimeout( () => {
             batman.classList.remove("jump");
         }, 1500);
-
         batman.classList.add("jump");
     }
 
     play() {
-        this.chrometer();
-        // if it crashes, it loses
         /*
-        setInterval( () => {
-            if(this.isCrashed() || this.hasWinner()) {
-                document.getElementById("winner").classList.remove("dontShow");
-                document.getElementById("gameOver").classList.remove("dontShow");
-                clearInterval();
-            }
-        }, 1000)
+            batman.x + batman.width = 316
         */
+        this.chrometer();
+        let element = 0, elementX = 0, elementY = 0, batmanPos = 0;
+        let obstacles = this.obstacles;
+        let gOver = this.gameOver;
+        let interval = setInterval( () => {
+            obstacles.forEach( obstacle => {
+                obstacle.restartPosX();
+                element = obstacle.name.getBoundingClientRect();
+                elementX = parseInt( element.x );
+                elementY = parseInt( element.y );
+                batmanPos = batman.getBoundingClientRect();
+                let batmanPosY0 = parseInt ( batmanPos.y );
+                let batmanPosY1 = parseInt (batmanPosY0 )+ 160; // 160 = height de batman
+                if ( elementX >= 280 &&  elementX <= 320 && elementY >= batmanPosY0 && elementY <= batmanPosY1  ){ 
+                    if ( obstacle.isKiller ) {
+                        gOver();
+                        obstacle.name.style.left = elementX + parseInt(obstacle.width) + 'px';               
+                        clearInterval( interval );
+                    } else {
+                        let currentDollars = parseInt( amountOfDollars.innerHTML );
+                        if ( currentDollars === 0 && obstacle.value < 0 )
+                            return;
+                        else {
+                            amountOfDollars.innerHTML = currentDollars + obstacle.value;
+                        }
+                        obstacle.setPositionX( "200px" )
+                    }
+                } 
+            })
+        }, 200)
     }   
 
-    isCrashed() {
-        return false;
-    }
-
-    hasWinner() {
-        return false;
+    isCrashed( ) {
+       return;
     }
 
     crouch () {
@@ -87,7 +106,7 @@ class Game {
         });
         document.getElementById("divChrometer").classList.remove("dontShow");
         document.getElementById("divDollars").classList.remove("dontShow");
-        //document.getElementById("gameOver").classList.remove("dontShow");
+        this.startMovement();
     }
 
     showMenu () { 
@@ -100,6 +119,8 @@ class Game {
         aux.forEach( e => {
             e.classList.add("dontShow");
         });
+        document.getElementById("divChrometer").classList.add("dontShow");
+        document.getElementById("divDollars").classList.add("dontShow");
     }
 
     showWinner () { 
@@ -108,6 +129,8 @@ class Game {
 
     restart () { 
         this.showMenu();
+        this.setDifficulty();
+        amountOfDollars.innerHTML = 0;
         document.getElementById("winner").classList.add("dontShow");
         document.getElementById("gameOver").classList.add("dontShow");
     }
@@ -127,6 +150,15 @@ class Game {
     gameOver () { 
         document.getElementById("gameOver").classList.remove("dontShow");
         clearInterval( timer );
+        joker.classList.remove("move");
+        dolar.classList.remove("move");
+        dolarJoker.classList.remove("move");
+    }
+
+    startMovement() { 
+        joker.classList.add("move");
+        dolar.classList.add("move");
+        dolarJoker.classList.add("move");
     }
 }
 

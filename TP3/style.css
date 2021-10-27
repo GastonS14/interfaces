@@ -154,11 +154,6 @@
     position: absolute;
 }
 
-/* WE HAVE TO DELETE THIS CLASS, BUT NOT NOW, IT'S TOO LATE */
-.dolar-joker {
-    /*background: url(img/barrier/dolarJoker.png) no-repeat;*/
-}
-
 .dollar360{ 
     animation: dolar 2s infinite;
 }

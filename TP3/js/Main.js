@@ -1,6 +1,6 @@
 const batman = document.querySelector(".batman");
 const dolar = document.querySelector(".dolar");
-const dolarJoker = document.querySelector(".dolar-joker");
+const dolarJoker = document.querySelector("#dolarJoker");
 const joker = document.querySelector(".joker");
 const time = document.getElementById("time");
 const userTime = document.getElementById("userTime");
