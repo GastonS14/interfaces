@@ -1,8 +1,10 @@
-let agachado = false;
+let isCrouched = false;
+
 class Game {
 
     constructor() {
         this.obstacles = [];
+        this.userName = "User" // Default user name
     }
 
     // Set up
@@ -20,11 +22,13 @@ class Game {
 
     // Events => Actions
     jump() {
-        setTimeout( () => {
-            batman.classList.remove("jump");
-        }, 1500);
+        if(event.key === 'w') {
+            setTimeout( () => {
+                batman.classList.remove("jump");
+            }, 1500);
 
-        batman.classList.add("jump");
+            batman.classList.add("jump");
+        }
     }
 
     play() {
@@ -47,24 +51,32 @@ class Game {
         return false;
     }
 
-    agachate () {
+    crouch () {
         if ( event.key === 's' ) {
-            if ( !agachado ){
-                agachado = true;
+            if ( !isCrouched ){
+                isCrouched = true;
                 batman.classList.add ("dodge");
             }
         }
     }
 
-    run () {
-        if ( agachado ) {
-            agachado = false;
+    run() {
+        if ( isCrouched ) {
+            isCrouched = false;
             batman.classList.remove("dodge");
         }
     }
 
     setDifficulty () {
         time.innerHTML = userTime.value;
+    }
+
+    setUserName() {
+        this.userName = user.value;
+    }
+
+    getUserName() {
+        return this.userName;
     }
 
     /**

@@ -17,9 +17,7 @@
     /*
     top: 46.3%;
     left: 15%;
-
      */
-
 }
 
 /* ACTIONS */
@@ -30,8 +28,8 @@
 
 .jump {
     animation: jump 1.2s linear 1;
-    /* TODO("Change url image") */
-    background: url( img/barrier/dolarJoker.png );
+    /* TODO("Change url image to a jump animation") */
+    background: url( img/character/run.png );
 }
 
 .dodge {
@@ -137,8 +135,8 @@
 }
 
 @keyframes scroll { 
-    0% { background-position: 0px}
-    100% { background-position: -1944px;}
+    0% { background-position: 0; }
+    100% { background-position: -1944px; }
 }
 
 /* OBSTACLES */

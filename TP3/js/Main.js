@@ -8,21 +8,23 @@ const lastLayer = document.getElementById("layer6");
 const user = document.getElementById("playerName");
 const initButton = document.getElementById("initButton");
 
-let userName = "User"
+let city = document.querySelector(".city");
+let night = document.querySelector(".night");
+
 let game = new Game();
 
-document.addEventListener("keydown", game.agachate );
+document.addEventListener("keydown", game.crouch );
+document.addEventListener("keydown", game.jump );
 document.addEventListener("keyup", game.run );
-document.getElementById("playerName").addEventListener('keyup', setName );
+user.addEventListener('keyup', game.setUserName );
 userTime.addEventListener("change", game.setDifficulty);
 initButton.addEventListener('click', game.beforePlay );
-batman.addEventListener("click", game.jump);
+// batman.addEventListener("click", game.jump);
+city.addEventListener("click", changeBackground);
+night.addEventListener("click", changeBackground);
 
 game.init();
 
-function setName () {
-    userName = user.value;
-}
 
 function changeBackground() {
     let layer7, layer8;
