@@ -56,11 +56,10 @@ class Game {
                         clearInterval( interval );
                     } else {
                         let currentDollars = parseInt( amountOfDollars.innerHTML );
-                        if ( currentDollars === 0 && obstacle.value < 0 )
-                            return;
-                        else {
+
+                        if ( !(currentDollars === 0 && obstacle.value < 0) )
                             amountOfDollars.innerHTML = currentDollars + obstacle.value;
-                        }
+
                         obstacle.setPositionX( "200px" )
                     }
                 } 
