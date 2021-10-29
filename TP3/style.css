@@ -31,8 +31,9 @@ body {
 
 .jump {
     animation: jump 1.2s linear 1;
-    /* TODO("Change url image") */
-    background: url( img/barrier/dolarJoker.png );
+    width: 125px;
+    height: 102px;
+    background: url( img/character/jumping.png );
 }
 
 .dodge {
