@@ -2,9 +2,10 @@ body {
     overflow: hidden; /* Hide scrollbars */
 }
 
-/* CONSTANTS */
+/* CONSTANT */
 :root {
-    --constant-velocity: 5s;
+    --obstacles-velocity: 5s;
+    --bg-velocity: 5s;
 }
 
 .batman {
@@ -18,6 +19,10 @@ body {
     left: 20%;
 }
 
+.inCity { 
+    top: 78%;
+}
+
 /* ACTIONS */
 
 .run {
@@ -26,8 +31,9 @@ body {
 
 .jump {
     animation: jump 1.2s linear 1;
-    /* TODO("Change url image to a jump animation") */
-    background: url( img/character/run.png );
+    width: 125px;
+    height: 102px;
+    background: url( img/character/jumping.png );
 }
 
 .dodge {
@@ -36,6 +42,30 @@ body {
     top: 72%;
     background: url( img/character/dodge.png );
     animation: dodge .5s steps(4) infinite;
+}
+
+.dodgeInCity { 
+    top: 92%;
+}
+
+.die { 
+    width: 100px;
+    top: 65%;
+    background: url( img/character/die.png );
+    animation: die .5s steps(9) forwards;
+}
+
+.won { 
+    width: 100px;
+    height: 180px;
+    top: 75%;
+    background: url( img/character/won.png) no-repeat;
+    animation: none;
+}
+
+@keyframes die { 
+    0% { background-position: 0;}
+    100% { background-position: -948px;}
 }
 
 @keyframes dodge {
@@ -54,7 +84,7 @@ body {
     100% { background-position: -1754px; }
 }
 
-/* SCENARIOS */
+/* BACKGROUND */
 
 .layer {
     min-height: 600px; 
@@ -70,22 +100,22 @@ body {
 
 .layer-0 {
     background: url(img/parallax/night/layer_1.png);
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-1 { 
     background: url( img/parallax/night/layer_3.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-2 { 
     background: url( img/parallax/night/layer_2.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-3 { 
     background: url( img/parallax/night/layer_4.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-4 { 
@@ -98,22 +128,22 @@ body {
 
 .layer-6 {
     background: url(img/parallax/city/layer_1.png);
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-7 {
     background: url( img/parallax/city/layer_2.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-8 {
     background: url( img/parallax/city/layer_3.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-9 {
     background: url( img/parallax/city/layer_4.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-10 {
@@ -155,7 +185,7 @@ body {
 }
 
 .move { 
-    animation: movement 5s infinite linear;
+    animation: movement var(--obstacles-velocity) infinite linear;
 }
 
 @keyframes dolar {
@@ -212,9 +242,44 @@ body {
     width: 25% !important;
     max-width: 25% !important;
     padding-top: 1%;
-    /*border: 1px solid white !important;*/
     margin-right: 10%;
     text-align: center;
     justify-content: center !important;
     align-content: center !important;
+}
+
+.advice {
+    animation: color 4s infinite; 
+}
+
+.adviceInCity { 
+    animation: colorInCity 4s infinite;
+}
+
+@keyframes color { 
+   0% { color: white ; }
+   50% { color: rgba(255, 0, 0, 0.837);}
+   100% { color: white ; }
+}
+
+@keyframes colorInCity { 
+    0% { color: white ; }
+    50% { color: black; }
+    100% { color: white ; }
+ }
+
+.scale {
+    animation: zoom 4s infinite;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
 }

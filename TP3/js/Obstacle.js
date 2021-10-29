@@ -1,4 +1,5 @@
 class Obstacle  {
+    static frameRate = 1500;
 
     constructor(name, positionX, positionY, width, height, value, isKiller) {
         this.name = document.createElement("div");
@@ -97,11 +98,16 @@ class Obstacle  {
         this.isKiller = isKiller;
     }
 
+    static setFrameRate ( newValue ) { 
+        Obstacle.frameRate = newValue;
+    }
+
     restartPosX() { 
+        const frameRate = Obstacle.frameRate;
         if ( ! this.isKiller && this.positionX != this.originalPosX ) {
             setTimeout(() => {
                 this.setPositionX( this.originalPosX );
-            }, 1500);
+            }, frameRate);
         }
     }
 

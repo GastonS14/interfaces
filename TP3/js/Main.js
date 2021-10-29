@@ -9,6 +9,10 @@ const user = document.getElementById("playerName");
 const initButton = document.getElementById("initButton");
 const restart = document.querySelectorAll(".restart");
 const chrometer = document.getElementById("chrometer");
+const containerTimer = document.getElementById("containerTimer");
+const containerChrometer = document.querySelector(".chrometer"); 
+const html = document.querySelector("html");
+let background = 'night';
 let userName = "Player"
 let game = new Game();
 let isJumping = false;
@@ -55,6 +59,7 @@ static setName () {
 static changeBackground() {
     let layer7, layer8;
     if ( event.currentTarget.value === 'city' ) {
+        background = 'city';
         Main.removeNightClasses ();
         layer7 = document.createElement("div");
         layer7.classList.add( "layer", "layer-7");
@@ -66,6 +71,7 @@ static changeBackground() {
         lastLayer.insertAdjacentElement('afterend', layer7 );
         Main.addCityClasses();
     } else {
+        background = 'night';
         layer7 = document.getElementById("layer7");
         if ( layer7 )
             layer7.remove();
@@ -99,6 +105,7 @@ static addCityClasses() {
     document.getElementById("layer4").classList.add("layer-10");
     document.getElementById("layer5").classList.add("layer-9");
     document.getElementById("layer6").classList.add("layer-8");
+    batman.classList.add("inCity");
 }
 
 static removeNightClasses () {
@@ -117,6 +124,11 @@ static removeCityClasses () {
     document.getElementById("layer4").classList.remove("layer-10");
     document.getElementById("layer5").classList.remove("layer-9");
     document.getElementById("layer6").classList.remove("layer-8");
+    batman.classList.remove("inCity");
+}
+
+static setDifficulty () { 
+    game.setUpDifficulty();
 }
 
 }
@@ -124,6 +136,6 @@ static removeCityClasses () {
 document.addEventListener("keydown", Main.keyPress, false );
 document.addEventListener("keyup", Main.keyUp, false );
 document.getElementById("playerName").addEventListener('keyup', Main.setName );
-userTime.addEventListener("change", game.setDifficulty);
+userTime.addEventListener("change", Main.setDifficulty);
 initButton.addEventListener('click', Main.configure );
 restart.forEach(  e => e.addEventListener( "click", Main.restartGame ) );
