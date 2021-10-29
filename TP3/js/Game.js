@@ -1,6 +1,5 @@
 let currentTime = parseInt( userTime.value ); 
 let timer = 0;
-var start = 0;
 let amountOfDollars = document.getElementById("amountDollars");
 let gameLoop = 0;
 
@@ -118,6 +117,8 @@ class Game {
         });
         document.getElementById("divChrometer").classList.add("dontShow");
         document.getElementById("divDollars").classList.add("dontShow");
+        containerTimer.classList.remove("advice");
+        containerChrometer.classList.remove("scale");
     }
 
     showWinner () { 
@@ -139,6 +140,10 @@ class Game {
     }
 
     setTime ( value, func ) { 
+        if ( value == userTime.value/2 ) {
+            containerTimer.classList.add("advice");
+            containerChrometer.classList.add("scale");
+        }
         if ( value === 0 ) 
             func();
         chrometer.innerHTML = value;

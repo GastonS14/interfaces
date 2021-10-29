@@ -3,8 +3,13 @@ body {
 }
 
 /* CONSTANTS */
+/* velocities
+* bg => 5s
+* movement / obstacles => 5s 
+*/
 :root {
-    --constant-velocity: 5s;
+    --obstacles-velocity: 5s;
+    --bg-velocity: 5s;
 }
 
 .batman {
@@ -70,22 +75,22 @@ body {
 
 .layer-0 {
     background: url(img/parallax/night/layer_1.png);
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-1 { 
     background: url( img/parallax/night/layer_3.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-2 { 
     background: url( img/parallax/night/layer_2.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-3 { 
     background: url( img/parallax/night/layer_4.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-4 { 
@@ -98,22 +103,22 @@ body {
 
 .layer-6 {
     background: url(img/parallax/city/layer_1.png);
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-7 {
     background: url( img/parallax/city/layer_2.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-8 {
     background: url( img/parallax/city/layer_3.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-9 {
     background: url( img/parallax/city/layer_4.png );
-    animation: scroll var(--constant-velocity) infinite linear;
+    animation: scroll var(--bg-velocity) infinite linear;
 }
 
 .layer-10 {
@@ -155,7 +160,7 @@ body {
 }
 
 .move { 
-    animation: movement 5s infinite linear;
+    animation: movement var(--obstacles-velocity) infinite linear;
 }
 
 @keyframes dolar {
@@ -217,4 +222,30 @@ body {
     text-align: center;
     justify-content: center !important;
     align-content: center !important;
+}
+
+.advice {
+    animation: color 4s infinite; 
+}
+
+@keyframes color { 
+   0% { color: white ; }
+   50% { color: rgba(255, 0, 0, 0.837);}
+   100% { color: white ; }
+}
+
+.scale {
+    animation: zoom 4s infinite;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
 }
