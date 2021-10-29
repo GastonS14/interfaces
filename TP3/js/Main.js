@@ -1,35 +1,61 @@
 const batman = document.querySelector(".batman");
 const dolar = document.querySelector(".dolar");
-const dolarJoker = document.querySelector(".dolar-joker");
+const dolarJoker = document.querySelector("#dolarJoker");
 const joker = document.querySelector(".joker");
 const time = document.getElementById("time");
 const userTime = document.getElementById("userTime");
 const lastLayer = document.getElementById("layer6");
 const user = document.getElementById("playerName");
 const initButton = document.getElementById("initButton");
-
-let city = document.querySelector(".city");
-let night = document.querySelector(".night");
-
+const restart = document.querySelectorAll(".restart");
+const chrometer = document.getElementById("chrometer");
+let userName = "Player"
 let game = new Game();
+let isJumping = false;
+let isCrouching = false;
 
-document.addEventListener("keydown", game.crouch );
-document.addEventListener("keydown", game.jump );
-document.addEventListener("keyup", game.run );
-user.addEventListener('keyup', game.setUserName );
-userTime.addEventListener("change", game.setDifficulty);
-initButton.addEventListener('click', game.beforePlay );
-// batman.addEventListener("click", game.jump);
-city.addEventListener("click", changeBackground);
-night.addEventListener("click", changeBackground);
+class Main {
 
-game.init();
+static keyPress ( event ) { 
+    if ( event.key === 's' ) {
+        if ( !isJumping ) {
+            game.crouch();
+            isCrouching = true;
+        }
+    }else{ 
+        if ( event.key === 'w') {
+            if ( !isCrouching && !isJumping ) {
+                game.jump();
+                isJumping = true;
+            }
+        }
+    }
+}
 
+static keyUp ( event ) { 
+    if ( event.key === 's' && isCrouching ) {
+        game.run();
+        isCrouching = false;
+    }
+}
 
-function changeBackground() {
+static configure () { 
+    game.beforePlay();
+    game.init();
+}
+
+static restartGame () { 
+    game.restart();
+}
+
+static setName () {
+    userName = user.value;
+}
+
+static changeBackground() {
     let layer7, layer8;
     if ( event.currentTarget.value === 'city' ) {
-        removeNightClasses ();
+        Main.removeNightClasses ();
         layer7 = document.createElement("div");
         layer7.classList.add( "layer", "layer-7");
         layer7.id = "layer7";
@@ -38,7 +64,7 @@ function changeBackground() {
         layer8.id = "layer8";
         lastLayer.insertAdjacentElement('afterend', layer8 );
         lastLayer.insertAdjacentElement('afterend', layer7 );
-        addCityClasses();
+        Main.addCityClasses();
     } else {
         layer7 = document.getElementById("layer7");
         if ( layer7 )
@@ -46,12 +72,12 @@ function changeBackground() {
         layer8 = document.getElementById("layer8")
         if ( layer8)
             layer8.remove();
-        removeCityClasses();
-        addNightClasses();
+        Main.removeCityClasses();
+        Main.addNightClasses();
     }
 }
 
-function addNightClasses ( ) {
+static addNightClasses ( ) {
     document.getElementById("layer1").classList.add("layer-5");
     document.getElementById("layer2").classList.add("layer-4");
     document.getElementById("layer3").classList.add("layer-3");
@@ -66,7 +92,7 @@ function addNightClasses ( ) {
         layer8.remove();
 }
 
-function addCityClasses() {
+static addCityClasses() {
     document.getElementById("layer1").classList.add("layer-13");
     document.getElementById("layer2").classList.add("layer-12");
     document.getElementById("layer3").classList.add("layer-11");
@@ -75,7 +101,7 @@ function addCityClasses() {
     document.getElementById("layer6").classList.add("layer-8");
 }
 
-function removeNightClasses () {
+static removeNightClasses () {
     document.getElementById("layer1").classList.remove("layer-5");
     document.getElementById("layer2").classList.remove("layer-4");
     document.getElementById("layer3").classList.remove("layer-3");
@@ -84,7 +110,7 @@ function removeNightClasses () {
     document.getElementById("layer6").classList.remove("layer-0");
 }
 
-function removeCityClasses () {
+static removeCityClasses () {
     document.getElementById("layer1").classList.remove("layer-13");
     document.getElementById("layer2").classList.remove("layer-12");
     document.getElementById("layer3").classList.remove("layer-11");
@@ -92,3 +118,12 @@ function removeCityClasses () {
     document.getElementById("layer5").classList.remove("layer-9");
     document.getElementById("layer6").classList.remove("layer-8");
 }
+
+}
+
+document.addEventListener("keydown", Main.keyPress, false );
+document.addEventListener("keyup", Main.keyUp, false );
+document.getElementById("playerName").addEventListener('keyup', Main.setName );
+userTime.addEventListener("change", game.setDifficulty);
+initButton.addEventListener('click', Main.configure );
+restart.forEach(  e => e.addEventListener( "click", Main.restartGame ) );

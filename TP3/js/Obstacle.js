@@ -1,13 +1,16 @@
-class Obstacle {
+class Obstacle  {
 
     constructor(name, positionX, positionY, width, height, value, isKiller) {
-        this.name = name;
+        this.name = document.createElement("div");
+        this.name =  name;
+        this.originalPosX = positionX;
         this.positionX = positionX;
         this.positionY = positionY;
         this.height = height;
         this.width = width;
         this.value = value;
         this.isKiller = isKiller;
+        this.restoredPosX = false;
         this.setCss(name, positionX, positionY, width, height);
     }
 
@@ -39,6 +42,7 @@ class Obstacle {
     }
 
     setPositionX(positionX) {
+        this.name.style.left = positionX;
         this.positionX = positionX;
     }
 
@@ -91,6 +95,14 @@ class Obstacle {
      */
     setIsKiller(isKiller) {
         this.isKiller = isKiller;
+    }
+
+    restartPosX() { 
+        if ( ! this.isKiller && this.positionX != this.originalPosX ) {
+            setTimeout(() => {
+                this.setPositionX( this.originalPosX );
+            }, 1500);
+        }
     }
 
 }

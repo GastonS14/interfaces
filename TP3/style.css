@@ -1,7 +1,10 @@
+body {
+    overflow: hidden; /* Hide scrollbars */
+}
 
 /* CONSTANTS */
 :root {
-    --constant-velocity: 15s;
+    --constant-velocity: 5s;
 }
 
 .batman {
@@ -11,13 +14,8 @@
     position: absolute;
     background: url( img/character/run.png );
     bottom: 11%;
-
     top: 59%;
     left: 20%;
-    /*
-    top: 46.3%;
-    left: 15%;
-     */
 }
 
 /* ACTIONS */
@@ -149,15 +147,15 @@
 
 .dolar {
     margin: auto;
-    background: url( img/reward/dolar1.png );
     position: absolute;
-    animation-duration: 3s;
-    animation-name: dolar;
-    animation-iteration-count: infinite;
 }
 
-.dolar-joker {
-    background: url(img/barrier/dolarJoker.png) no-repeat;
+.dollar360{ 
+    animation: dolar 2s infinite;
+}
+
+.move { 
+    animation: movement 5s infinite linear;
 }
 
 @keyframes dolar {
@@ -166,16 +164,57 @@
     100% { transform:rotateY(360deg); }
 }
 
+@keyframes movement { 
+    0% { transform:translateX(-80px) }
+    100% { transform: translateX(-1920px); }
+}
+
 .my-btn {
     width: 71px !important;
     height: 40px;
 }
+
 .city {
     background-image: url( img/background/cityPNG.png);
 }
+
 .night {
     background-image: url( img/background/night.png);
 }
+
 .dontShow {
     display: none !important;
+}
+
+.font-winner { 
+    font-family: 'Courier New','cursive' !important;
+    font-style: italic !important;
+    font-size: 400% !important;
+}
+
+.myModal { 
+    cursor:  pointer !important;
+    pointer-events:all !important; 
+}
+
+.chrometer { 
+    width: 30% !important;
+    max-width: 30% !important;
+    padding-top: 1%;
+    border: 1px solid white !important;
+    margin-left: 10%;
+    text-align: center;
+    justify-content: center !important;
+    align-content: center !important;
+}
+
+.dollars { 
+    width: 25% !important;
+    max-width: 25% !important;
+    padding-top: 1%;
+    /*border: 1px solid white !important;*/
+    margin-right: 10%;
+    text-align: center;
+    justify-content: center !important;
+    align-content: center !important;
 }
