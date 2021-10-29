@@ -19,6 +19,10 @@ body {
     left: 20%;
 }
 
+.inCity { 
+    top: 78%;
+}
+
 /* ACTIONS */
 
 .run {
@@ -37,6 +41,10 @@ body {
     top: 72%;
     background: url( img/character/dodge.png );
     animation: dodge .5s steps(4) infinite;
+}
+
+.dodgeInCity { 
+    top: 92%;
 }
 
 @keyframes dodge {
@@ -223,11 +231,21 @@ body {
     animation: color 4s infinite; 
 }
 
+.adviceInCity { 
+    animation: colorInCity 4s infinite;
+}
+
 @keyframes color { 
    0% { color: white ; }
    50% { color: rgba(255, 0, 0, 0.837);}
    100% { color: white ; }
 }
+
+@keyframes colorInCity { 
+    0% { color: white ; }
+    50% { color: black; }
+    100% { color: white ; }
+ }
 
 .scale {
     animation: zoom 4s infinite;

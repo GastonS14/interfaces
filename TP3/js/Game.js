@@ -18,15 +18,20 @@ class Game {
     // positionX original = 900px , 40%,  1150px
     generateObstacles() {
         this.obstacles = [];
-        let dolarObstacle = new Obstacle(dolar, "1500px", "76%", "50px", "38px", 200, false);
+        let topJoker = "67.5%", topDolar = "76%", topDolarJoker = "68%";
+        if ( background === 'city' ){
+            topJoker = "78%"
+            topDolar = "87%"
+            topDolarJoker = "78%";
+        }
+        let dolarObstacle = new Obstacle(dolar, "1500px", topDolar, "50px", "38px", 200, false);
         this.obstacles.push(dolarObstacle);
-        this.obstacles.push(new Obstacle(dolarJoker, "80%", "68%", dolarObstacle.getWidth(), dolarObstacle.getHeight(),-100, false));
-        this.obstacles.push(new Obstacle(joker, "1850px", "67.5%", "70px", "120px", 0, true ));
+        this.obstacles.push(new Obstacle(dolarJoker, "80%", topDolarJoker, dolarObstacle.getWidth(), dolarObstacle.getHeight(),-100, false));
+        this.obstacles.push(new Obstacle(joker, "1850px", topJoker, "70px", "120px", 0, true ));
     }
 
     // Events => Actions
     jump() {
-        console.log( "jump" );
         setTimeout( () => {
             batman.classList.remove("jump");
             isJumping = false;
@@ -74,10 +79,13 @@ class Game {
 
     crouch () {
         batman.classList.add ("dodge");
+        if ( background === 'city' ) 
+            batman.classList.add("dodgeInCity");
     }
 
     run () {
         batman.classList.remove("dodge");
+        batman.classList.remove("dodgeInCity");
     }
 
     setUpDifficulty () {
@@ -165,8 +173,11 @@ class Game {
 
     setTime ( value, func ) { 
         if ( value == userTime.value/2 ) {
-            containerTimer.classList.add("advice");
             containerChrometer.classList.add("scale");
+            if ( background === 'city' )
+                containerTimer.classList.add("adviceInCity");
+            else
+                containerTimer.classList.add("advice");
         }
         if ( value === 0 ) 
             func();
