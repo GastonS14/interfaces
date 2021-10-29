@@ -3,10 +3,10 @@ let timer = 0;
 let amountOfDollars = document.getElementById("amountDollars");
 let gameLoop = 0;
 
-
 class Game {
     constructor() {
         this.obstacles = [];
+        this.frameRate = 500;
     }
 
     // Set up
@@ -39,6 +39,7 @@ class Game {
             batman.x + batman.width = 316
         */
         this.chrometer();
+        const frameRate = this.frameRate;
         let element = 0, elementX = 0, elementY = 0, batmanPos = 0;
         let obstacles = this.obstacles;
         let gOver = this.gameOver;
@@ -68,15 +69,10 @@ class Game {
                     }
                 } 
             })
-        }, 500)
+        }, frameRate)
     }   
 
-    isCrashed( ) {
-       return;
-    }
-
     crouch () {
-        console.log("agachado");
         batman.classList.add ("dodge");
     }
 
@@ -84,10 +80,38 @@ class Game {
         batman.classList.remove("dodge");
     }
 
-    setDifficulty () {
+    setUpDifficulty () {
+        this.setUpTime();
+        this.setSpeed();
+    }
+
+    setUpTime () { 
         time.innerHTML = userTime.value;
         chrometer.innerHTML = userTime.value;
         currentTime = parseInt( userTime.value );
+    }
+
+    setSpeed() { 
+        switch ( userTime.value ) {
+            case '90':
+                this.setCssSpeed( '7s' );
+                this.frameRate = 700;
+                break;
+            case '60':
+                this.setCssSpeed( '5s' );
+                this.frameRate = 500;
+                break;
+            case '30':
+                this.setCssSpeed( '3s' );
+                this.frameRate = 300;
+                break;
+        }
+        Obstacle.setFrameRate( this.frameRate * 3 );
+    }
+
+    setCssSpeed ( value ) {
+        html.style.setProperty( "--obstacles-velocity", value );
+        html.style.setProperty( "--bg-velocity", value );
     }
 
     beforePlay () {
@@ -127,7 +151,7 @@ class Game {
 
     restart () { 
         this.showMenu();
-        this.setDifficulty();
+        this.setUpDifficulty();
         amountOfDollars.innerHTML = 0;
         document.getElementById("winner").classList.add("dontShow");
         document.getElementById("gameOver").classList.add("dontShow");
@@ -154,10 +178,8 @@ class Game {
         document.getElementById("winner").classList.remove("dontShow");
         clearInterval( timer );
         clearInterval( gameLoop );
-        joker.classList.remove("move");
-        dolar.classList.remove("move");
+        joker.classList.add("dontShow");
         dolar.classList.add( "dontShow" );
-        dolarJoker.classList.remove("move");
         dolarJoker.classList.add("dontShow");
     }
 
@@ -167,8 +189,6 @@ class Game {
         clearInterval( gameLoop );
         joker.classList.remove("move");
         dolar.classList.add( "dontShow" );
-        dolar.classList.remove("move");
-        dolarJoker.classList.remove("move");
         dolarJoker.classList.add( "dontShow" );
     }
 

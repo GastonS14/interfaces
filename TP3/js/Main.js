@@ -11,6 +11,7 @@ const restart = document.querySelectorAll(".restart");
 const chrometer = document.getElementById("chrometer");
 const containerTimer = document.getElementById("containerTimer");
 const containerChrometer = document.querySelector(".chrometer"); 
+const html = document.querySelector("html");
 let userName = "Player"
 let game = new Game();
 let isJumping = false;
@@ -121,11 +122,15 @@ static removeCityClasses () {
     document.getElementById("layer6").classList.remove("layer-8");
 }
 
+static setDifficulty () { 
+    game.setUpDifficulty();
+}
+
 }
 
 document.addEventListener("keydown", Main.keyPress, false );
 document.addEventListener("keyup", Main.keyUp, false );
 document.getElementById("playerName").addEventListener('keyup', Main.setName );
-userTime.addEventListener("change", game.setDifficulty);
+userTime.addEventListener("change", Main.setDifficulty);
 initButton.addEventListener('click', Main.configure );
 restart.forEach(  e => e.addEventListener( "click", Main.restartGame ) );

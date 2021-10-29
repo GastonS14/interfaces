@@ -2,11 +2,7 @@ body {
     overflow: hidden; /* Hide scrollbars */
 }
 
-/* CONSTANTS */
-/* velocities
-* bg => 5s
-* movement / obstacles => 5s 
-*/
+/* CONSTANT */
 :root {
     --obstacles-velocity: 5s;
     --bg-velocity: 5s;
@@ -59,7 +55,7 @@ body {
     100% { background-position: -1754px; }
 }
 
-/* SCENARIOS */
+/* BACKGROUND */
 
 .layer {
     min-height: 600px; 
@@ -217,7 +213,6 @@ body {
     width: 25% !important;
     max-width: 25% !important;
     padding-top: 1%;
-    /*border: 1px solid white !important;*/
     margin-right: 10%;
     text-align: center;
     justify-content: center !important;
