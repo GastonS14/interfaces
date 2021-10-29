@@ -15,7 +15,6 @@ class Game {
         this.play();
     }
 
-    // positionX original = 900px , 40%,  1150px
     generateObstacles() {
         this.obstacles = [];
         let topJoker = "67.5%", topDolar = "76%", topDolarJoker = "68%";
@@ -39,16 +38,16 @@ class Game {
         batman.classList.add("jump");
     }
 
+    /**
+     * Meneja el gameLoop y la logica general del juego.
+     */
     play() {
-        /*
-            batman.x + batman.width = 316
-        */
         this.chrometer();
         const frameRate = this.frameRate;
         let element = 0, elementX = 0, elementY = 0, batmanPos = 0;
         let obstacles = this.obstacles;
         let gOver = this.gameOver;
-        gameLoop = setInterval( () => { // MATAR ESTE INTERVALO EN GAMEOVER Y EN WON ;
+        gameLoop = setInterval( () => {
             obstacles.forEach( obstacle => {
                 obstacle.restartPosX();
                 element = obstacle.name.getBoundingClientRect();
@@ -56,8 +55,7 @@ class Game {
                 elementY = parseInt( element.y );
                 batmanPos = batman.getBoundingClientRect();
                 let batmanPosY0 = parseInt ( batmanPos.y );
-                let batmanPosY1 = parseInt (batmanPosY0 )+ 160; // 160 = height de batman
-                // 280 y 320 
+                let batmanPosY1 = parseInt (batmanPosY0 )+ 160;
                 if ( elementX >= batmanPos.x &&  elementX <= batmanPos.x + batmanPos.width ) {
                     if ( elementY >= batmanPosY0 && elementY < batmanPosY1 || 
                             elementY+element.height >= batmanPosY0 && elementY+element.height <= batmanPosY1  ) { 
@@ -77,6 +75,9 @@ class Game {
         }, frameRate)
     }   
 
+    /**
+     * Agachado
+     */
     crouch () {
         batman.classList.add ("dodge");
         if ( background === 'city' ) 
@@ -88,6 +89,9 @@ class Game {
         batman.classList.remove("dodgeInCity");
     }
 
+    /**
+     * Configura la velocidad y el tiempo del juego.
+     */
     setUpDifficulty () {
         this.setUpTime();
         this.setSpeed();
@@ -122,6 +126,9 @@ class Game {
         html.style.setProperty( "--bg-velocity", value );
     }
 
+    /**
+     * Prepara todo para iniciar el juego, saca clases que no se deben mostrar y agrega clases que se deben mostrar.
+     */
     beforePlay () {
         document.getElementById("customize").classList.add("dontShow");
         let aux = Array();
@@ -151,12 +158,17 @@ class Game {
         document.getElementById("divDollars").classList.add("dontShow");
         containerTimer.classList.remove("advice");
         containerChrometer.classList.remove("scale");
+        batman.classList.remove("die");
+        batman.classList.remove("won");
     }
 
     showWinner () { 
         document.getElementById("winner").classList.remove("dontShow");
     }
 
+    /**
+     * Vuelve al menu principal
+     */
     restart () { 
         this.showMenu();
         this.setUpDifficulty();
@@ -192,6 +204,7 @@ class Game {
         joker.classList.add("dontShow");
         dolar.classList.add( "dontShow" );
         dolarJoker.classList.add("dontShow");
+        batman.classList.add("won");
     }
 
     gameOver () { 
@@ -201,6 +214,7 @@ class Game {
         joker.classList.remove("move");
         dolar.classList.add( "dontShow" );
         dolarJoker.classList.add( "dontShow" );
+        batman.classList.add("die");
     }
 
     startMovement() { 

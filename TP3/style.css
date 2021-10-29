@@ -48,6 +48,26 @@ body {
     top: 92%;
 }
 
+.die { 
+    width: 100px;
+    top: 65%;
+    background: url( img/character/die.png );
+    animation: die .5s steps(9) forwards;
+}
+
+.won { 
+    width: 100px;
+    height: 180px;
+    top: 75%;
+    background: url( img/character/won.png) no-repeat;
+    animation: none;
+}
+
+@keyframes die { 
+    0% { background-position: 0;}
+    100% { background-position: -948px;}
+}
+
 @keyframes dodge {
     0% { background-position: 0;}
     0% { background-position: -468px;}
