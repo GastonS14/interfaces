@@ -1,11 +1,11 @@
-let agachado = false;
 let currentTime = parseInt( userTime.value ); 
 let timer = 0;
 var start = 0;
 let amountOfDollars = document.getElementById("amountDollars");
+let gameLoop = 0;
+
 
 class Game {
-
     constructor() {
         this.obstacles = [];
     }
@@ -16,18 +16,21 @@ class Game {
         this.play();
     }
 
+    // positionX original = 900px , 40%,  1150px
     generateObstacles() {
         this.obstacles = [];
-        let dolarObstacle = new Obstacle(dolar, "900px", "76%", "50px", "38px", 200, false);
+        let dolarObstacle = new Obstacle(dolar, "1500px", "76%", "50px", "38px", 200, false);
         this.obstacles.push(dolarObstacle);
-        this.obstacles.push(new Obstacle(dolarJoker, "40%", "68%", dolarObstacle.getWidth(), dolarObstacle.getHeight(),-100, false));
-        this.obstacles.push(new Obstacle(joker, "1150px", "67.5%", "70px", "120px", 0, true ));
+        this.obstacles.push(new Obstacle(dolarJoker, "80%", "68%", dolarObstacle.getWidth(), dolarObstacle.getHeight(),-100, false));
+        this.obstacles.push(new Obstacle(joker, "1850px", "67.5%", "70px", "120px", 0, true ));
     }
 
     // Events => Actions
     jump() {
+        console.log( "jump" );
         setTimeout( () => {
             batman.classList.remove("jump");
+            isJumping = false;
         }, 1500);
         batman.classList.add("jump");
     }
@@ -40,7 +43,7 @@ class Game {
         let element = 0, elementX = 0, elementY = 0, batmanPos = 0;
         let obstacles = this.obstacles;
         let gOver = this.gameOver;
-        let interval = setInterval( () => {
+        gameLoop = setInterval( () => { // MATAR ESTE INTERVALO EN GAMEOVER Y EN WON ;
             obstacles.forEach( obstacle => {
                 obstacle.restartPosX();
                 element = obstacle.name.getBoundingClientRect();
@@ -49,22 +52,24 @@ class Game {
                 batmanPos = batman.getBoundingClientRect();
                 let batmanPosY0 = parseInt ( batmanPos.y );
                 let batmanPosY1 = parseInt (batmanPosY0 )+ 160; // 160 = height de batman
-                if ( elementX >= 280 &&  elementX <= 320 && elementY >= batmanPosY0 && elementY <= batmanPosY1  ){ 
-                    if ( obstacle.isKiller ) {
-                        gOver();
-                        obstacle.name.style.left = elementX + parseInt(obstacle.width) + 'px';               
-                        clearInterval( interval );
-                    } else {
-                        let currentDollars = parseInt( amountOfDollars.innerHTML );
-
-                        if ( !(currentDollars === 0 && obstacle.value < 0) )
-                            amountOfDollars.innerHTML = currentDollars + obstacle.value;
-
-                        obstacle.setPositionX( "200px" )
+                // 280 y 320 
+                if ( elementX >= batmanPos.x &&  elementX <= batmanPos.x + batmanPos.width ) {
+                    if ( elementY >= batmanPosY0 && elementY < batmanPosY1 || 
+                            elementY+element.height >= batmanPosY0 && elementY+element.height <= batmanPosY1  ) { 
+                        if ( obstacle.isKiller ) {
+                            gOver();
+                            obstacle.name.style.left = elementX + parseInt(obstacle.width) + 'px';               
+                            clearInterval( gameLoop );
+                        } else {
+                            let currentDollars = parseInt( amountOfDollars.innerHTML );
+                            if ( !(currentDollars === 0 && obstacle.value < 0) )
+                                amountOfDollars.innerHTML = currentDollars + obstacle.value;
+                            obstacle.setPositionX( "5000px" )
+                        }
                     }
                 } 
             })
-        }, 200)
+        }, 500)
     }   
 
     isCrashed( ) {
@@ -72,19 +77,12 @@ class Game {
     }
 
     crouch () {
-        if ( event.key === 's' ) {
-            if ( !agachado ){
-                agachado = true;
-                batman.classList.add ("dodge");
-            }
-        }
+        console.log("agachado");
+        batman.classList.add ("dodge");
     }
 
     run () {
-        if ( agachado ) {
-            agachado = false;
-            batman.classList.remove("dodge");
-        }
+        batman.classList.remove("dodge");
     }
 
     setDifficulty () {
@@ -136,8 +134,8 @@ class Game {
 
     chrometer () { 
         let setTimee = this.setTime;
-        let gameOverr = this.gameOver;
-        timer = setInterval ( function() { setTimee ( currentTime--, gameOverr ) }, 1000 );
+        let hasWon = this.won;
+        timer = setInterval ( function() { setTimee ( currentTime--, hasWon ) }, 1000 );
     }
 
     setTime ( value, func ) { 
@@ -146,12 +144,27 @@ class Game {
         chrometer.innerHTML = value;
     }
 
+    won () { 
+        document.getElementById("winnerName").innerHTML = userName;
+        document.getElementById("winner").classList.remove("dontShow");
+        clearInterval( timer );
+        clearInterval( gameLoop );
+        joker.classList.remove("move");
+        dolar.classList.remove("move");
+        dolar.classList.add( "dontShow" );
+        dolarJoker.classList.remove("move");
+        dolarJoker.classList.add("dontShow");
+    }
+
     gameOver () { 
         document.getElementById("gameOver").classList.remove("dontShow");
         clearInterval( timer );
+        clearInterval( gameLoop );
         joker.classList.remove("move");
+        dolar.classList.add( "dontShow" );
         dolar.classList.remove("move");
         dolarJoker.classList.remove("move");
+        dolarJoker.classList.add( "dontShow" );
     }
 
     startMovement() { 

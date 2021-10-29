@@ -98,7 +98,7 @@ class Obstacle  {
         if ( ! this.isKiller && this.positionX != this.originalPosX ) {
             setTimeout(() => {
                 this.setPositionX( this.originalPosX );
-            }, 2000);
+            }, 1500);
         }
     }
 
