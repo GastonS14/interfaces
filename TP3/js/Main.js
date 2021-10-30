@@ -125,6 +125,7 @@ static removeCityClasses () {
     document.getElementById("layer5").classList.remove("layer-9");
     document.getElementById("layer6").classList.remove("layer-8");
     batman.classList.remove("inCity");
+    containerTimer.classList.remove("adviceInCity");
 }
 
 static setDifficulty () { 
