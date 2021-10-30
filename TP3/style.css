@@ -50,9 +50,14 @@ body {
 
 .die { 
     width: 100px;
+    height: 146px;
     top: 65%;
     background: url( img/character/die.png );
     animation: die .5s steps(9) forwards;
+}
+
+.dieInCity {
+    top: 83% !important;
 }
 
 .won { 
@@ -61,6 +66,10 @@ body {
     top: 75%;
     background: url( img/character/won.png) no-repeat;
     animation: none;
+}
+
+.wonInCity { 
+    top: 95%;
 }
 
 @keyframes die { 
