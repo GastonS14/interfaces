@@ -4,6 +4,7 @@ let amountOfDollars = document.getElementById("amountDollars");
 let gameLoop = 0;
 
 class Game {
+    
     constructor() {
         this.obstacles = [];
         this.frameRate = 500;
@@ -159,7 +160,10 @@ class Game {
         containerTimer.classList.remove("advice");
         containerChrometer.classList.remove("scale");
         batman.classList.remove("die");
+        batman.classList.remove("dieInCity");
         batman.classList.remove("won");
+        batman.classList.remove("wonInCity");
+        Game.startParallax();
     }
 
     showWinner () { 
@@ -205,6 +209,9 @@ class Game {
         dolar.classList.add( "dontShow" );
         dolarJoker.classList.add("dontShow");
         batman.classList.add("won");
+        if ( background === 'city')
+            batman.classList.add( "wonInCity");
+        Game.stopParallax();
     }
 
     gameOver () { 
@@ -215,12 +222,29 @@ class Game {
         dolar.classList.add( "dontShow" );
         dolarJoker.classList.add( "dontShow" );
         batman.classList.add("die");
+        if ( background === 'city' )
+            batman.classList.add("dieInCity");
+        Game.stopParallax();
     }
 
     startMovement() { 
         joker.classList.add("move");
         dolar.classList.add("move");
         dolarJoker.classList.add("move");
+    }
+
+    static stopParallax () { 
+        let layers = document.querySelectorAll(".layer");
+        layers.forEach( layer => { 
+            layer.style.animationPlayState = 'paused';
+        });
+    }
+
+    static startParallax () { 
+        let layers = document.querySelectorAll(".layer");
+        layers.forEach( layer => { 
+            layer.style.animationPlayState = 'running';
+        });
     }
 }
 
