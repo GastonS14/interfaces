@@ -283,3 +283,7 @@ body {
         transform: scale(1,1);
     }
 }
+
+.animationNone { 
+    animation: none !important;
+}
