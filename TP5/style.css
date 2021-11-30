@@ -1,0 +1,321 @@
+html body { 
+    font-family:'Red Hat Text';
+    overflow-y: hidden;
+} 
+
+h2 { 
+    font-size: 48px !important;
+    font-weight: 600 !important;
+}
+
+small { 
+    font-size: small !important;
+}
+
+.grayFont { 
+    color: rgba(130, 127, 127, 0.8);
+}
+
+body{ 
+    margin: 0;
+    padding: 0;
+}
+
+nav { 
+    width: 100%;
+    height: 10%;
+    left: calc(50% - 1440px/2);
+    top: calc(50% - 86px/2 - 277px);
+    background: rgba(227, 174, 216, 0.72)!important;
+}
+
+.myNavBar { 
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.actions{ 
+    align-items: center;
+}
+
+.navButton { 
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content:center !important;
+    align-items: center;
+    margin-right: 20px !important;
+}
+
+.inside-shadow { 
+    box-shadow: inset 0px 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.bg-login{ 
+    position: absolute;
+    top: 10.1%;
+    width: 100% !important;
+    overflow-y: hidden !important;
+    z-index: -10;
+}
+
+nav h1.title {
+    font-family: 'Red Hat';
+    font-style: italic ;
+    font-weight: bold;
+    font-size: 48px !important;
+    line-height: 66px !important;
+    color: #000000;
+}
+
+nav img.logo { 
+    position: absolute;
+    width: 83px;
+    height: 78px;
+    left: 30px;
+    top: 4px;
+    background: url(dsasdasd.png);
+}
+
+.logIn { 
+    display: flex;
+    justify-content: space-around;
+    width: 1240px;
+    height: 385px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+section.logIn {
+    padding-top: 2%; 
+    position: absolute;
+    width: 1240px;
+    height: 385px;
+    left: calc(50% - 1240px/2);
+    top: calc(50% - 385px/2 + 23.5px);
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.welcome { 
+    display: flex;
+    width: 509px;
+    height: 272px;
+    left: 204px;
+    top: 46px;
+    flex-wrap: wrap;
+    align-content: space-between !important;
+}
+
+.DescriptionWelcome{ 
+    width: 450px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form { 
+    width: 373px;
+    height: 385px;
+    left: 0px;
+    top: 0px;
+}
+
+.input { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    margin-left: 5%!important;
+}
+
+.input label { 
+    font-weight: bold;
+}
+
+.input input{ 
+    width: 100%;
+}
+
+.notAccount { 
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-send{ 
+    padding: 5px 20px 5px 20px;
+    border: none;
+    background: rgba(76, 161, 209, 0.87) !important;
+    font-weight: 600;
+}
+
+.controlForm { 
+    display: flex;
+    justify-content: center;
+}
+
+.closeButton { 
+    display: flex;
+    position: absolute;
+    left: 91%;
+}
+
+.customModal { 
+    border: 5px solid rgba(227, 174, 216, 0.72) !important;
+}
+
+.bg-page { 
+    background: #F8F2F2 !important;
+}
+
+.borderRadius { 
+    border-radius: 10px !important;
+}
+
+.asideLeft { 
+    width: 20%;
+    height: 555px;
+    margin: 1% 1% 1% 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+}
+
+.aside-title{
+    font-size: 20px; 
+}
+
+.frame-title{
+    margin: 0 2px 0 2px;
+    width: 96%;
+    height: 56px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.myContainer { 
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    /*justify-content: space-around;*/
+    /*justify-content: space-evenly;*/
+}
+
+.shadow { 
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+.recommend { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: 2% 0 2% 0;
+    padding: 4% 4% 4% 4%;
+}
+
+.flexColumn { 
+    flex-direction: column;
+}
+
+.profilePic { 
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50% !important;
+}
+
+.mini-profilePic { 
+    max-width: 40px;
+    max-height: 40px
+}
+
+.text-overflow{ 
+    width: 50%;
+    white-space: nowrap !important;
+    overflow-x: hidden;
+}
+
+.align-items-center{ 
+    align-items: center;
+}
+
+.scroll-y { 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll !important;
+}
+
+.scroll-y::-webkit-scrollbar {
+    display: none;
+}
+
+.feed { 
+    width: 60%;
+    height: 570px;
+    margin: 1% 1% 1% 1%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+}
+
+.flex-row { 
+    display: flex;
+    flex-direction: row;
+}
+
+.post { 
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 2%;
+    background-color: white;
+}
+
+.reaction-post { 
+    border-bottom: 1px solid black;
+    padding-top: 2%;
+    margin-bottom: 2%;
+}
+
+.comments { 
+    display: flex;
+    flex-direction: column;
+    max-height: 60px;
+    height: fit-content !important;
+}
+
+.comment { 
+    width: 90%;
+    height: fit-content !important;
+}
+
+.bg-gray { 
+    background: rgba(232, 232, 232, 0.6);
+}
+
+.font-size-18 { 
+    font-size: 18px;
+}
+
+.font-size-14 { 
+    font-size: 14px;
+}
+
+.font-size-13 { 
+    font-size: 13px;
+}
+
+.font-size-12 { 
+    font-size: 12px;
+}
