@@ -31,14 +31,16 @@
                 <h2 class="text-center"> Iniciar Sesión </h2>
                 <div class="input mt-4">
                     <label> Usuario</label>
-                    <input type="text">
+                    <input type="text" id="user">
+                    <small id="wrongUser" class="dontShow text-danger fw-bolder"> Usuario Incorrecto ! </small>
                 </div>
                 <div class="input mt-4">
                     <label> Contraseña</label>
-                    <input type="password">
+                    <input type="password" id="pass">
+                    <small id="wrongPass" class="dontShow text-danger fw-bolder"> Contraseña Incorrecta ! </small>
                 </div>
                 <div class="controlForm">
-                    <a href="home.html"><button type="button" class="btn-send borderRadius mt-4">Iniciar sesión</button></a>
+                    <button type="button" id="signIn" class="btn-send borderRadius mt-4">Iniciar sesión</button>
                 </div>
                 <div class="controlForm">
                     <p class="notAccount mt-2" data-bs-toggle="modal" data-bs-target="#Registrarse"> No tengo una cuenta </p>
@@ -79,5 +81,6 @@
             </div>
         </div>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
