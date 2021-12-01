@@ -1,6 +1,7 @@
 html body { 
     font-family:'Red Hat Text';
     overflow-y: hidden;
+    overflow-x: hidden;
 } 
 
 h2 { 
@@ -26,6 +27,14 @@ body{
 
 .show { 
     display: block !important;
+}
+
+.width-80 { 
+    width: 90% !important;
+}
+
+.width-100 { 
+    width: 100% !important;
 }
 
 nav { 
@@ -200,7 +209,7 @@ nav img.logo {
 
 .frame-title{
     margin: 0 2px 0 2px;
-    width: 96%;
+    width: 100%;
     height: 56px;/*56px;*/ 
     display: flex;
     justify-content: center;
@@ -256,6 +265,11 @@ nav img.logo {
 .mini-profilePic { 
     max-width: 40px;
     max-height: 40px
+}
+
+.meet-pic { 
+    max-width: 70% !important;
+    max-height: 70% !important;
 }
 
 .text-overflow{ 
@@ -412,7 +426,7 @@ nav img.logo {
     display: block;
     background-color: white;
     margin: 1% 2% 0 2%;
-    padding: 0 2% 0 2%;
+    padding: 0 3% 0 3%;
 }
 
 .chat { 
@@ -468,15 +482,47 @@ p span {
     white-space: nowrap !important;
     overflow-x: hidden;
 }
-/*
-div.flexColumn.text-overflow-chat small.lastLineChat{ 
-    width: 2% !important;
-    max-width: 2% !important;
-    overflow-x: hidden;
-    text-overflow: clip;
+
+.meet-container{ 
+    width: 100vmax !important;
+    height: 100vh !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.max-widht{ 
-    width: 7px !important;
-    max-width: 8px !important;
+.partnerCamera { 
+    min-height: 30vh !important;
+    height: 40vh !important;
+}
+
+.button-meet { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2rem !important;
+    min-width: 2rem !important;
+    height: 3rem !important;
+    width: 3rem !important;
+    border: 1px solid white;
+    border-radius: 50%;
+    margin: 2%;
+}
+
+.max-button-meet { 
+    height: 4rem !important;
+    width: 4rem !important;
+    background-color: rgba(255, 0, 0, 0.878);
+}
+
+.myCamera { 
+    width: 20%;
+    height: 20vh;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
 }
