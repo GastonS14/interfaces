@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="chat.js"></script>
 </head>
 <body>
     <!-- Mirar el tamaño de la fuente en post y tendencias  -->
@@ -139,28 +140,28 @@
                         </a></button> 
                     </div>
                 </div>  
-                <div class="d-flex flex-column chat p-3 scroll-y "> 
+                <div class="d-flex flex-column chat p-3 scroll-y " id="chatP2P"> 
                     <div class="flex-row comment">
                         <img class="profilePic mini-profilePic me-2" src="img/ProfilePic/men/man4.jpg" alt="Profile Pic">
                             <p class="flex-row bg-gray borderRadius font-size-14 p-2 ps-2 pe-3"> 
-                                Que lindos perritos tenes Juan Carlos Florentinoa !!! <span> 21:00</span></p>
+                                Que lindos perritos tenes Juan Carlos Florentinoa !!! <span> 20:00</span></p>
                     </div>
                     <div class="flex-row comment">
                         <img class="profilePic mini-profilePic me-2" src="img/ProfilePic/men/man4.jpg" alt="Profile Pic">
-                        <p class="flex-row borderRadius bg-gray font-size-14 p-2 ps-2 pe-3"> Te felicito <span> 21:00</span> </p>
+                        <p class="flex-row borderRadius bg-gray font-size-14 p-2 ps-2 pe-3"> Te felicito <span> 20:00</span> </p>
                     </div>
                     <div class="d-flex flex-row-reverse ms-5"> 
-                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Gracias querido Javier Milei, vos como estas man ? <span> 21:05</span></p>
+                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Gracias querido Javier Milei, vos como estas man ? <span> 20:05</span></p>
                     </div>
                     <div class="flex-row comment">
                         <img class="profilePic mini-profilePic me-2" src="img/ProfilePic/men/man4.jpg" alt="Profile Pic">
-                        <p class="flex-row borderRadius bg-gray font-size-14 p-2 ps-2 pe-3"> Bien, todo tranquilo por ahora jeje <span> 21:10</span></p>
+                        <p class="flex-row borderRadius bg-gray font-size-14 p-2 ps-2 pe-3"> Bien, todo tranquilo por ahora jeje <span> 20:10</span></p>
                     </div>
                     <div class="d-flex flex-row-reverse ms-5"> 
-                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Me alegro javi <span> 21:20</span></p>
+                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Me alegro javi <span> 20:20</span></p>
                     </div>
                     <div class="d-flex flex-row-reverse ms-5"> 
-                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Che me dijeron que te metiste en politica, ¿ es verdad ? <span> 21:20</span></p>
+                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Che me dijeron que te metiste en politica, ¿ es verdad ? <span> 20:20</span></p>
                     </div>
                     <div class="flex-row comment">
                         <img class="profilePic mini-profilePic me-2" src="img/ProfilePic/men/man4.jpg" alt="Profile Pic">
@@ -168,18 +169,18 @@
                     </div>
                     <div class="flex-row comment">
                         <img class="profilePic mini-profilePic me-2" src="img/ProfilePic/men/man4.jpg" alt="Profile Pic">
-                        <p class="flex-row borderRadius bg-gray font-size-14 p-2 ps-2 pe-3"> Vos seguis en la veterinaria de siempre ? <span> 21:22</span></p>
+                        <p class="flex-row borderRadius bg-gray font-size-14 p-2 ps-2 pe-3"> Vos seguis en la veterinaria de siempre ? <span> 20:22</span></p>
                     </div>
                     <div class="d-flex flex-row-reverse ms-5"> 
-                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Si, siempre en la misma jaja <span> 21:30</span></p>
+                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Si, siempre en la misma jaja <span> 20:30</span></p>
                     </div>
                     <div class="d-flex flex-row-reverse ms-5"> 
-                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Pero en dos años me jubilo querido Javier <span> 21:30</span></p>
+                        <p class="flex-row borderRadius bg-myMessage font-size-14 p-2 ps-2 pe-3"> Pero en dos años me jubilo querido Javier <span> 20:30</span></p>
                     </div>
                 </div>
                 <div class="chat-response borderRadius flex-row"> 
                     <div class="add-comment bg-gray borderRadius"> 
-                        <input class="borderRadius inputComment" type="text" placeholder="Agrega un comentario">
+                        <input class="borderRadius inputComment" id="addMessage" type="text" placeholder="Agrega un comentario">
                         <div class="flex-row">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -189,9 +190,11 @@
                                 <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
                             </svg>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                        </svg>
+                        <button type="button" class="btn" id="sendMessage"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </section>
