@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- Mirar el tamaño de la fuente en post y tendencias  -->
     <nav class="myNavBar">
         <!-- <img class="logo" src=""> -->
         <h1 class="title"> VeTTan </h1>
@@ -177,9 +176,16 @@
                 <div class="post borderRadius shadow mb-3">
                     <div class="flex-row mb-3">
                         <img class="profilePic me-2" src="img/ProfilePic/blackPerson.jpg" alt="Profile Pic">
-                        <div class="ms-3">
+                        <div class="ms-3 w-100">
                             <h5 class="mb-1 fw-bolder"> Juan Carlos Florentino </h5>
                             <small class="grayFont"> 5hs </small>
+                        </div>
+                        <div class="d-flex justify-content-end width-30 align-items-start">
+                            <!-- Button trigger MODAL PROMOTION -->
+                            <button type="button" class="btn bg-nav p-1 fw-bolder font-size-12" data-bs-toggle="modal"
+                             data-bs-target="#promotion" disabled>
+                                Promocionado
+                            </button>
                         </div>
                     </div>
                     <div class="flex-row mb-3 font-size-14"> 
@@ -222,9 +228,15 @@
                 <div class="post borderRadius shadow mb-3">
                     <div class="flex-row mb-3">
                         <img class="profilePic me-2" src="img/ProfilePic/blackPerson.jpg" alt="Profile Pic">
-                        <div class="ms-3">
+                        <div class="ms-3 w-100">
                             <h5 class="mb-1 fw-bolder"> Juan Carlos Florentino </h5>
                             <small class="grayFont"> 1 dia </small>
+                        </div>
+                        <div class="d-flex justify-content-end width-30 align-items-start">
+                            <!-- Button trigger MODAL PROMOTION -->
+                            <button type="button" class="btn bg-nav p-1 fw-bolder font-size-12" data-bs-toggle="modal" data-bs-target="#promotion">
+                                Promocionar
+                            </button>
                         </div>
                     </div>
                     <div class=" mb-3 font-size-14"> 
@@ -338,6 +350,51 @@
                     </div>
                 </div>
             </aside>
+        </div>
+    </div>
+     <!-- Modal Promotion -->
+     <div class="modal fade" id="promotion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-modal borderRadius">
+                <div class="d-flex justify-content-center p-2">
+                    <h3 class="modal-title fw-bolder" id="exampleModalLabel">Promocionar</h3>
+                    <button type="button" class="btn-close closeButton" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 mt-1 border-b-black">
+                        <h4 class="fw-bolder"> Tipo de promocion </h4>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">1 dia por</label>
+                        <label class="form-check-label fw-bolder ms-3" for="exampleCheck1">$ 1000</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">3 dias por </label>
+                        <label class="form-check-label fw-bolder ms-2" for="exampleCheck1">$ 2000</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">7 dias por </label>
+                        <label class="form-check-label fw-bolder ms-2" for="exampleCheck1">$ 3000</label>
+                    </div>
+                    <div class="mb-3 mt-3 border-b-black">
+                        <h4 class="fw-bolder"> Tarjeta </h4>
+                    </div>
+                    <div class="mb-3 input input-promotion">
+                        <label for="formGroupExampleInput" class="form-label">Titular de la tarjeta</label>
+                        <input type="text" class="m-0 w-100" id="formGroupExampleInput" required>
+                    </div>
+                    <div class="mb-3 input input-promotion">
+                        <label for="formGroupExampleInput" class="form-label">Número de la tarjeta</label>
+                        <input type="number" class="w-100" id="formGroupExampleInput" required>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center bg-gradient border-none">
+                    <button type="button" class="btn btn-send fw-bolder" data-bs-dismiss="modal" aria-label="Close">Confirmar</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
