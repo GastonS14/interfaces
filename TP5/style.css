@@ -4,6 +4,12 @@ html body {
     overflow-x: hidden;
 } 
 
+.oleo-script{ 
+    font-family: 'Oleo Script' !important;
+    font-size: 48px !important;
+    
+}
+
 h2 { 
     font-size: 48px !important;
     font-weight: 600 !important;
@@ -14,7 +20,7 @@ small {
 }
 
 .grayFont { 
-    color: rgba(130, 127, 127, 0.8);
+    color: rgba(130, 127, 127, 0.9);
 }
 
 div p.flex-row.borderRadius.font-size-14.p-2.ps-2.pe-3 {
@@ -47,6 +53,21 @@ body{
 
 .width-100 { 
     width: 100% !important;
+}
+
+.interactios{ 
+    padding: .5% 1% !important;
+}
+
+.btn-media-send { 
+    background-color: none;
+}
+.btn-media-send:hover{ 
+    background-color: rgba(227, 174, 216, 0.72);
+}
+
+.interactios:hover { 
+    background-color: rgba(227, 174, 216, 0.72);
 }
 
 nav { 
@@ -125,12 +146,13 @@ nav {
 }
 
 nav h1.title {
-    font-family: 'Red Hat';
+    font-family: 'Oleo Script';
     font-style: italic ;
     font-weight: bold;
     font-size: 48px !important;
     line-height: 66px !important;
     color: #000000;
+    margin-left: 1%;
 }
 
 nav img.logo { 

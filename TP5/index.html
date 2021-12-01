@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Text">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
     <title>VeTTan</title>
     <link rel="stylesheet" href="style.css">
     <!-- CSS only -->
@@ -19,7 +21,7 @@
     <div class="img-login"> 
         <section class="logIn">
             <article class="welcome">
-                <h2> Bienvenidos a VeTTan </h2>
+                <h2> Bienvenidos a <span class="oleo-script"> VeTTan </span></h2>
                 <h5 class="DescriptionWelcome"> La mejor red social para los que amamos a los animales </h5>
                 <ul class="mt-4 ps-3">
                     <li class="mt-2 fw-bold">+ 300.000 usuarios</li>
@@ -31,12 +33,12 @@
                 <h2 class="text-center"> Iniciar Sesión </h2>
                 <div class="input">
                     <label> Usuario</label>
-                    <input type="text" id="user">
+                    <input type="text" id="user" placeholder="juanCarlos">
                     <small id="wrongUser" class="dontShow text-danger fw-bolder"> Usuario Incorrecto ! </small>
                 </div>
                 <div class="input">
                     <label> Contraseña</label>
-                    <input type="password" id="pass">
+                    <input type="password" id="pass" placeholder="1234">
                     <small id="wrongPass" class="dontShow text-danger fw-bolder"> Contraseña Incorrecta ! </small>
                 </div>
                 <div class="controlForm">
@@ -76,7 +78,7 @@
                     </div>
                     <p class="input mt-1 mb-1 ms-0">* Campos Obligatorios</p>
                     <div class="controlForm">
-                        <button type="button" class="btn-send borderRadius mt-4">Registrarse</button>
+                        <button type="button" id="signUp" class="btn-send borderRadius mt-4">Registrarse</button>
                     </div>
                 </div>
             </div>

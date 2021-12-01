@@ -3,8 +3,13 @@ document.addEventListener("DOMContentLoaded", cargarPagina);
 
 function cargarPagina() { 
     document.getElementById("signIn").addEventListener("click", goToHome );
+    document.getElementById("signUp").addEventListener("click", signUp );
     document.getElementById("user").addEventListener("click", clearError );
     document.getElementById("pass").addEventListener("click", clearError );
+}
+
+function signUp () { 
+    window.location.href = getPath() + "home.html";
 }
 
 function goToHome() {
