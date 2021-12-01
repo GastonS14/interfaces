@@ -31,8 +31,6 @@ body{
 nav { 
     width: 100%;
     height: 10%;
-    left: calc(50% - 1440px/2);
-    top: calc(50% - 86px/2 - 277px);
     background: rgba(227, 174, 216, 0.72)!important;
 }
 
@@ -66,6 +64,17 @@ nav {
     z-index: -10;
 }
 
+.img-login { 
+    width: 100vmax !important;
+    height: 100vh !important;
+    background-image: url(img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 nav h1.title {
     font-family: 'Red Hat';
     font-style: italic ;
@@ -87,49 +96,38 @@ nav img.logo {
 .logIn { 
     display: flex;
     justify-content: space-around;
-    width: 1240px;
-    height: 385px;
-    background: rgba(255, 255, 255, 0.35);
-}
-
-section.logIn {
-    padding-top: 2%; 
-    position: absolute;
-    width: 1240px;
-    height: 385px;
-    left: calc(50% - 1240px/2);
-    top: calc(50% - 385px/2 + 23.5px);
-    background: rgba(255, 255, 255, 0.65);
+    padding: 1%;
+    width: 90% !important;
+    height: 57vh !important;
+    background: rgba(255, 255, 255, 0.550);
 }
 
 .welcome { 
     display: flex;
-    width: 509px;
-    height: 272px;
-    left: 204px;
-    top: 46px;
+    width: 50%;/*509px;*/
+    height: 75%;/*272px;*/
     flex-wrap: wrap;
     align-content: space-between !important;
 }
 
 .DescriptionWelcome{ 
-    width: 450px;
+    width: 75%;/*450px;*/
     font-size: 24px;
     font-weight: bold;
 }
 
 .form { 
-    width: 373px;
-    height: 385px;
-    left: 0px;
-    top: 0px;
+    width: 32%;/*373px;*/
+    max-height: 100% !important;
+    overflow-y: hidden;
 }
 
 .input { 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 5px;
+    margin-top: 4% !important;
+    padding: 1%;/*5px;*/
     margin-left: 5%!important;
 }
 
@@ -148,7 +146,7 @@ section.logIn {
 }
 
 .btn-send{ 
-    padding: 5px 20px 5px 20px;
+    padding: 2% 4% 2% 4%;/*5px 20px 5px 20px;*/
     border: none;
     background: rgba(76, 161, 209, 0.87) !important;
     font-weight: 600;
@@ -171,6 +169,10 @@ section.logIn {
 
 .bg-page { 
     height: 100vh !important;
+    background: #F8F2F2 !important;
+}
+
+.bg-modal { 
     background: #F8F2F2 !important;
 }
 

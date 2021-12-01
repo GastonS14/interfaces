@@ -14,9 +14,9 @@
 <body>
     <nav>
         <!-- <img class="logo" src=""> -->
-        <h1 class="title text-center"> VeTTan </h1>
+        <h1 class="title text-center m-0"> VeTTan </h1>
     </nav>
-    <img class="bg-login" src="img/fondo.jpg">
+    <div class="img-login"> 
         <section class="logIn">
             <article class="welcome">
                 <h2> Bienvenidos a VeTTan </h2>
@@ -29,12 +29,12 @@
             </article>
             <article class="form"> 
                 <h2 class="text-center"> Iniciar Sesión </h2>
-                <div class="input mt-4">
+                <div class="input">
                     <label> Usuario</label>
                     <input type="text" id="user">
                     <small id="wrongUser" class="dontShow text-danger fw-bolder"> Usuario Incorrecto ! </small>
                 </div>
-                <div class="input mt-4">
+                <div class="input">
                     <label> Contraseña</label>
                     <input type="password" id="pass">
                     <small id="wrongPass" class="dontShow text-danger fw-bolder"> Contraseña Incorrecta ! </small>
@@ -47,10 +47,11 @@
                 </div>
             </article>
         </section>
+    </div>
 
     <div class="modal" tabindex="-1" id="Registrarse">
         <div class="modal-dialog-centered modal-dialog">
-            <div class="modal-content customModal bg-page borderRadius">
+            <div class="modal-content customModal bg-modal borderRadius">
                 <div class="d-flex justify-content-center p-2">
                     <h2 class="text-center">Registrarse</h2>
                     <button type="button" class="btn-close closeButton" data-bs-dismiss="modal" aria-label="Close"></button>
