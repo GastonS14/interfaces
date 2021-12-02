@@ -9,23 +9,33 @@ function cargarPagina() {
 }
 
 function signUp () { 
-    window.location.href = getPath() + "home.html";
+    document.getElementById("loader").classList.remove("dontShow");
+    let time = setTimeout( () => { 
+        window.location.href = getPath() + "home.html";
+        document.getElementById("loader").classList.add("dontShow");
+        clearTimeout(time);
+    }, 1500); 
 }
 
 function goToHome() {
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
-    if ( user === "juanCarlos") {
-        if ( pass == 1234 )
-            window.location.href = getPath() + "home.html"; 
-        else{
-            document.getElementById("wrongPass").classList.remove("dontShow");
-            document.getElementById("wrongPass").classList.add("show");
+    document.getElementById("loader").classList.remove("dontShow");
+    let time = setTimeout( () => { 
+        let user = document.getElementById("user").value;
+        let pass = document.getElementById("pass").value;
+        if ( user === "juanCarlos") {
+            if ( pass == 1234 )
+                window.location.href = getPath() + "home.html"; 
+            else{
+                document.getElementById("wrongPass").classList.remove("dontShow");
+                document.getElementById("wrongPass").classList.add("show");
+            }
+        } else {
+            document.getElementById("wrongUser").classList.remove("dontShow") 
+            document.getElementById("wrongUser").classList.add("show");
         }
-    } else {
-        document.getElementById("wrongUser").classList.remove("dontShow") 
-        document.getElementById("wrongUser").classList.add("show");
-    }
+        document.getElementById("loader").classList.add("dontShow");
+        clearTimeout(time);
+    }, 1500); 
 }
 
 function getPath (){

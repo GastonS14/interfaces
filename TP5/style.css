@@ -2,6 +2,7 @@ html body {
     font-family:'Red Hat Text';
     overflow-y: hidden;
     overflow-x: hidden;
+    height: 100vmin !important;
 } 
 
 .oleo-script{ 
@@ -28,8 +29,8 @@ div p.flex-row.borderRadius.font-size-14.p-2.ps-2.pe-3 {
 }
 
 body{ 
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 .dontShow { 
     display: none !important;
@@ -135,14 +136,13 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center !important;
+    animation: login 10s infinite ;
 }
 
-.parallax1 { 
-    background-image: url(img/fondo.jpg);
-}
-
-.parallax2 { 
-    background-image: url(img/fondo2.jpg);
+@keyframes login { 
+    0% { background-image: url(img/fondo.jpg);} 
+    50% { background-image: url(img/fondo2.jpg); }
+    100% { background-image: url(img/fondo.jpg);}
 }
 
 nav h1.title {
@@ -171,6 +171,14 @@ nav img.logo {
     width: 90% !important;
     height: 50vh !important;
     background: rgba(255, 255, 255, 0.550);
+    animation: logIn 1s 1;
+    animation-delay: 4.1s;
+}
+
+@keyframes logIn { 
+    0% { transform:scale( 1 )}
+    50% { transform:scale( 1.1 )}
+    100% { transform:scale( 1 )}
 }
 
 .welcome { 
@@ -179,6 +187,13 @@ nav img.logo {
     height: 75%;/*272px;*/
     flex-wrap: wrap;
     align-content: space-between !important;
+    animation: parallaxDownToUp 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes parallaxUpToDown { 
+    0% { transform:translate( 0, -1000px); }
+    100% { transform:translate( 0px); }
 }
 
 .DescriptionWelcome{ 
@@ -191,6 +206,13 @@ nav img.logo {
     width: 32%;/*373px;*/
     max-height: 100% !important;
     overflow-y: hidden;
+    animation: parallaxDownToUp 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes parallaxDownToUp { 
+    0% { transform:translate( 0, 1000px); }
+    100% { transform:translate(0,0); }
 }
 
 .input { 
@@ -200,6 +222,10 @@ nav img.logo {
     margin-top: 4% !important;
     padding: 1%;/*5px;*/
     margin-left: 5%!important;
+}
+
+.input-logIn { 
+    margin-top: 2% !important;
 }
 
 .input-promotion{ 
@@ -249,7 +275,7 @@ nav img.logo {
 }
 
 .bg-page { 
-    height: 100vh !important;
+    height: 100vmin !important;
     background: #F8F2F2 !important;
 }
 
@@ -290,8 +316,8 @@ nav img.logo {
 }
 
 .myContainer { 
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     /*justify-content: space-around;*/
@@ -607,3 +633,185 @@ p span {
     align-items: center;
     border: 1px solid white;
 }
+
+.container-loader{ 
+    width: 100% !important;
+    height: 100vh !important;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(152, 153, 155, 0.7);
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid rgba(227, 174, 216, 0.72); /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1.7s linear infinite;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media only screen and (max-width: 500px) {
+    .chat-container { 
+        width: 100% !important;
+        max-height: 96% !important;
+        margin: 0;
+        padding: 2%;
+    }
+
+    .frame-title{ 
+        margin-left: 0 !important;
+    }
+
+    .chat-response { 
+        padding: 0;
+        height: 9% !important;
+        max-height: 14% !important;
+    }
+
+    .chat { 
+        max-height: 100% !important;
+    }
+
+    div.width-80  { 
+        display: flex !important;
+    }
+
+    div.width-80 .back-mobile.dontShow {
+        display: flex !important;
+    }
+
+    .back-mobile { 
+        align-self: center !important;
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 8%;
+        border-right: 1px solid black !important;
+    }
+
+    .inputComment{ 
+        font-size: 12px !important;
+    }
+
+    .btn-media-send { 
+        padding: 0 2% !important;
+    }
+
+    .asideLeft { 
+        display: none;
+        width: 100% !important;
+        height: 90vmax !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .scroll-y{ 
+        height: auto !important;
+        max-height: 88.5% !important;
+    }
+
+    .chat-justify { 
+        justify-content: start !important;
+    }
+
+    .flexColumn.text-overflow-chat{ 
+        margin-left: 8% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .recommend { 
+        box-shadow: none !important;
+    }
+
+    aside.shadow {
+        box-shadow: none !important; 
+    }
+
+    .myNavBar{ 
+        display: none;
+        justify-content: center;
+    }
+
+    /* title en mobile */
+    nav h1.title{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px !important;
+    }
+
+    /* oculto el nav bar desktop */
+    nav div.d-flex.actions{ 
+        display: none !important;
+    }
+
+    /* container principal */
+    .bg-page { 
+        height: 100vmax !important;
+        background-color: white !important;
+    }
+
+    /* container del chat */
+    .myContainer{ 
+        height: 100% !important;
+        background-color: white !important;
+        flex-direction: column !important;
+    }
+
+    /* title chat*/
+    h3.text-center { 
+        text-align: start !important;
+        font-size: 15px;
+    }
+
+    /* icons */
+    svg { 
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    /* Nav bar en footer sticky */
+    .navMobile { 
+        display: flex !important;
+        background-color:rgba(227, 174, 216, 0.72) !important ;
+        justify-content: space-evenly;
+        align-content: center !important;
+    }
+
+    button.btn a svg { 
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    #personalChatP2P{ 
+        display: none !important;
+    }
+
+    #listOfChats { 
+        display: initial !important;
+    }
+
+    div.scroll-y.align-items-center.gap-10 { 
+        gap: 0 !important;
+        background-color: white !important;
+    }
+    
+  }
+
+  @media (max-height: 600px) {
+    html body { 
+        overflow-y: scroll;
+    }
+
+    nav { 
+        height: 70px;
+    }
+  }

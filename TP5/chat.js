@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => { 
     document.getElementById("sendMessage").addEventListener("click", sendMessage );
+    document.getElementById("javierMilei").addEventListener("click", goToChatP2P )
     updateScroll();
 });
 
@@ -12,6 +13,11 @@ function sendMessage() {
         inputMessage.value = "";
         createMessage( newMessage, date.getHours(), date.getMinutes() );
     }
+}
+
+function goToChatP2P () { 
+    if ( window.innerWidth < 720 )
+        window.location.href = getPath() + "personal-chat.html";
 }
 
 function createMessage ( message, hour, minutes ) { 
@@ -35,4 +41,10 @@ function createMessage ( message, hour, minutes ) {
 function updateScroll(){
     let containerChat = document.getElementById("chatP2P");
     containerChat.scrollTop = containerChat.scrollHeight;
+}
+
+function getPath (){
+    let loc = window.location;
+    let pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
 }
