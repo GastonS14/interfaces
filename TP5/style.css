@@ -134,7 +134,7 @@ nav {
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center !important;
 }
 
 .parallax1 { 
@@ -169,7 +169,7 @@ nav img.logo {
     justify-content: space-around;
     padding: 1%;
     width: 90% !important;
-    height: 57vh !important;
+    height: 50vh !important;
     background: rgba(255, 255, 255, 0.550);
 }
 

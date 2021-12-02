@@ -32,20 +32,20 @@
             <article class="form"> 
                 <h2 class="text-center"> Iniciar Sesión </h2>
                 <div class="input">
-                    <label> Usuario</label>
-                    <input type="text" id="user" placeholder="juanCarlos">
+                    <label class="font-size-15"> Usuario</label>
+                    <input type="text" id="user" placeholder="juanCarlos" class="font-size-14">
                     <small id="wrongUser" class="dontShow text-danger fw-bolder"> Usuario Incorrecto ! </small>
                 </div>
                 <div class="input">
-                    <label> Contraseña</label>
-                    <input type="password" id="pass" placeholder="1234">
+                    <label class="font-size-15"> Contraseña</label>
+                    <input type="password" id="pass" placeholder="1234" class="font-size-14">
                     <small id="wrongPass" class="dontShow text-danger fw-bolder"> Contraseña Incorrecta ! </small>
                 </div>
                 <div class="controlForm">
-                    <button type="button" id="signIn" class="btn-send borderRadius mt-4">Iniciar sesión</button>
+                    <button type="button" id="signIn" class="btn-send borderRadius mt-4 font-size-14">Iniciar sesión</button>
                 </div>
                 <div class="controlForm">
-                    <p class="notAccount mt-2" data-bs-toggle="modal" data-bs-target="#Registrarse"> No tengo una cuenta </p>
+                    <p class="notAccount mt-2 font-size-14" data-bs-toggle="modal" data-bs-target="#Registrarse"> No tengo una cuenta </p>
                 </div>
             </article>
         </section>
@@ -55,30 +55,30 @@
         <div class="modal-dialog-centered modal-dialog">
             <div class="modal-content customModal bg-modal borderRadius">
                 <div class="d-flex justify-content-center p-2">
-                    <h2 class="text-center">Registrarse</h2>
+                    <h3 class="text-center fw-bolder">Registrarse</h3>
                     <button type="button" class="btn-close closeButton" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="input ms-0">
-                        <label> Usuario *</label>
+                <div class="modal-body pt-0">
+                    <div class="input ms-0 mt-1">
+                        <label class="font-size-14"> Usuario *</label>
                         <input type="text">
                     </div>
                     <div class="input mt-2 ms-0">
-                        <label> Ciudad actual</label>
+                        <label class="font-size-14"> Ciudad actual</label>
                         <input type="text">
                     </div>
                     <div class="input mt-2 ms-0">
-                        <label> Profesión</label>
+                        <label class="font-size-14"> Profesión</label>
                         <input type="text">
                     </div>
                     <div class="input mt-2 ms-0">
-                        <label> Contraseña *</label>
+                        <label class="font-size-14"> Contraseña *</label>
                         <input type="password">
-                        <small> Las contraseñas seguras tienen al menos 8 caracteres</small>
+                        <small class="font-size-12"> Las contraseñas seguras tienen al menos 8 caracteres</small>
                     </div>
-                    <p class="input mt-1 mb-1 ms-0">* Campos Obligatorios</p>
+                    <p class="input mt-1 mb-1 ms-0 font-size-14">* Campos Obligatorios</p>
                     <div class="controlForm">
-                        <button type="button" id="signUp" class="btn-send borderRadius mt-4">Registrarse</button>
+                        <button type="button" id="signUp" class="btn-send borderRadius mt-3 font-size-14">Registrarse</button>
                     </div>
                 </div>
             </div>
