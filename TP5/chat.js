@@ -15,13 +15,16 @@ function sendMessage() {
 }
 
 function createMessage ( message, hour, minutes ) { 
+    if ( minutes < 10 )
+        minutes = "0" + minutes;
     const containerChat = document.getElementById("chatP2P");
     let div = document.createElement("div");
     let p = document.createElement("p");
-    p.classList.add("flex-row", "borderRadius", "bg-myMessage","font-size-14", "p-2","ps-2", "pe-3");
+    p.classList.add("flex-row", "borderRadius", "bg-myMessage","font-size-13", "p-2","ps-2", "pe-3","mb-1");
     div.classList.add( "d-flex" ,"flex-row-reverse" ,"ms-5");
     p.innerHTML = message;
     let span = document.createElement("span");
+    console.log(minutes);
     span.innerHTML = hour + ":" + minutes; 
     p.appendChild( span );
     div.appendChild( p );
