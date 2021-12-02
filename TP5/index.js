@@ -35,7 +35,7 @@ function goToHome() {
         }
         document.getElementById("loader").classList.add("dontShow");
         clearTimeout(time);
-    }, 1500); 
+    }, 1500);
 }
 
 function getPath (){

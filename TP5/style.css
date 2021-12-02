@@ -187,13 +187,6 @@ nav img.logo {
     height: 75%;/*272px;*/
     flex-wrap: wrap;
     align-content: space-between !important;
-    animation: parallaxDownToUp 4s;
-    animation-iteration-count: 1;
-}
-
-@keyframes parallaxUpToDown { 
-    0% { transform:translate( 0, -1000px); }
-    100% { transform:translate( 0px); }
 }
 
 .DescriptionWelcome{ 
@@ -206,6 +199,9 @@ nav img.logo {
     width: 32%;/*373px;*/
     max-height: 100% !important;
     overflow-y: hidden;
+}
+
+.down-to-up { 
     animation: parallaxDownToUp 4s;
     animation-iteration-count: 1;
 }
