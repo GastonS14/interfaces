@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => { 
     document.getElementById("sendMessage").addEventListener("click", sendMessage );
-    document.getElementById("javierMilei").addEventListener("click", goToChatP2P )
+    if ( document.getElementById("javierMilei")  )
+        document.getElementById("javierMilei").addEventListener("click", goToChatP2P );
     updateScroll();
 });
 
@@ -30,7 +31,6 @@ function createMessage ( message, hour, minutes ) {
     div.classList.add( "d-flex" ,"flex-row-reverse" ,"ms-5");
     p.innerHTML = message;
     let span = document.createElement("span");
-    console.log(minutes);
     span.innerHTML = hour + ":" + minutes; 
     p.appendChild( span );
     div.appendChild( p );
