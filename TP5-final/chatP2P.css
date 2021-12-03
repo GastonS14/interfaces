@@ -1,0 +1,10 @@
+.mobile-chat-height{
+    height: 91% !important;
+}
+
+.height-auto { 
+    height: auto !important;
+    max-height: 91% !important;
+    padding: 0.5rem !important;
+    padding-bottom: 0.1rem !important;
+}
